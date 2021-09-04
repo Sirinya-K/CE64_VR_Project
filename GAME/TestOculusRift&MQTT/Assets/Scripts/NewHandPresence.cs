@@ -54,7 +54,8 @@ public class NewHandPresence : MonoBehaviour
             // handAnimator.SetFloat("Index", float.Parse(mqtt.data)/99);
         }
 
-        Debug.Log("MQTT Data : "+mqtt.data);
+        // Debug.Log("MQTT Data: "+mqtt.data);
+
         // handAnimator.SetFloat("Grip", float.Parse(mqtt.data)/99);
 
         // if(targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
