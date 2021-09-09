@@ -45,10 +45,11 @@ public class NewHandPresence : MonoBehaviour
         if (mqtt.data!="")
         {
             string[] buffer = mqtt.data.Split(':');
-            if(buffer[0] == "hl" || buffer[0] == "hr"){
-                handAnimator.SetFloat("Thumb", float.Parse(buffer[1].Split(' ')[0])/90);
-                handAnimator.SetFloat("Index", float.Parse(buffer[1].Split(' ')[1])/90);
-                handAnimator.SetFloat("ThreeFingers", float.Parse(buffer[1].Split(' ')[2])/90);
+            if(buffer[0] == "hl" || buffer[0] == "hr")
+            {
+                handAnimator.SetFloat("Thumb", float.Parse(buffer[1].Split(' ')[0])/20);
+                handAnimator.SetFloat("Index", float.Parse(buffer[1].Split(' ')[1])/20);
+                handAnimator.SetFloat("ThreeFingers", float.Parse(buffer[1].Split(' ')[2])/20);
             }
 
             // handAnimator.SetFloat("Index", float.Parse(mqtt.data)/99);

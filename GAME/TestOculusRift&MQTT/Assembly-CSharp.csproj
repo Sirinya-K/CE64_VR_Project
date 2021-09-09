@@ -38,12 +38,14 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CheckToggleLight.cs" />
      <Compile Include="Assets\Scripts\MqttProtocol.cs" />
+     <Compile Include="Assets\Scripts\CheckFingerCollision.cs" />
      <Compile Include="Assets\Scripts\CheckCollision.cs" />
      <Compile Include="Assets\NewHands\XRHandController.cs" />
      <Compile Include="Assets\Scripts\NewHandPresence.cs" />
-     <Compile Include="Assets\ToggleLightScript.cs" />
-     <Compile Include="Assets\Scripts\HandPresence.cs" />
      <Compile Include="Assets\Scripts\GrabItem.cs" />
+     <Compile Include="Assets\Scripts\ToggleLightScript.cs" />
+     <Compile Include="Assets\Scripts\HandPresence.cs" />
+     <Compile Include="Assets\Scripts\GrabItemByClosetPoint.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.16f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
