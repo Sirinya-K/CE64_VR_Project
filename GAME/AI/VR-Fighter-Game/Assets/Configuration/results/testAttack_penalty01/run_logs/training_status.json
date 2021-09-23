@@ -1,0 +1,29 @@
+{
+    "Default": {
+        "checkpoints": [
+            {
+                "steps": 499975,
+                "file_path": "results\\testAttack_penalty01\\Default\\Default-499975.onnx",
+                "reward": 0.8455882361706566,
+                "creation_time": 1631114477.0842857
+            },
+            {
+                "steps": 500043,
+                "file_path": "results\\testAttack_penalty01\\Default\\Default-500043.onnx",
+                "reward": 0.850000000851495,
+                "creation_time": 1631114477.244857
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500043,
+            "file_path": "results\\testAttack_penalty01\\Default.onnx",
+            "reward": 0.850000000851495,
+            "creation_time": 1631114477.244857
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.2.0",
+        "mlagents_version": "0.25.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}

@@ -1,0 +1,458 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.17f1 (a4537701e4ab) revision 10769271'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19042.1237; Version 2009; 64bit' Language: 'en' Physical Memory: 8075 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+D:\Unity\2020.3.17f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+D:/CE64_VR_Project/GAME/AI/VR-Fighter-Game
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+57628
+Successfully changed project path to: D:/CE64_VR_Project/GAME/AI/VR-Fighter-Game
+D:/CE64_VR_Project/GAME/AI/VR-Fighter-Game
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 178.14 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.17f1 (a4537701e4ab)
+[Subsystems] Discovering subsystems at path D:/Unity/2020.3.17f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/CE64_VR_Project/GAME/AI/VR-Fighter-Game/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1050 Ti (ID=0x1c8c)
+    Vendor:   
+    VRAM:     4021 MB
+    Driver:   30.0.14.7141
+Initialize mono
+Mono path[0] = 'D:/Unity/2020.3.17f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Unity/2020.3.17f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'D:/Unity/2020.3.17f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56068
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/Unity/2020.3.17f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001541 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 104.85 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.061 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1061ms)
+		BeginReloadAssembly (66ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (519ms)
+			LoadAssemblies (65ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (165ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (36ms)
+			SetupLoadedEditorAssemblies (242ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (105ms)
+				BeforeProcessingInitializeOnLoad (14ms)
+				ProcessInitializeOnLoadAttributes (88ms)
+				ProcessInitializeOnLoadMethodAttributes (31ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.008321 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\CE64_VR_Project\GAME\AI\VR-Fighter-Game\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\CE64_VR_Project\GAME\AI\VR-Fighter-Game\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 101.92 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.333 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2334ms)
+		BeginReloadAssembly (176ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (24ms)
+		EndReloadAssembly (2092ms)
+			LoadAssemblies (131ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (436ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (54ms)
+			SetupLoadedEditorAssemblies (1343ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (102ms)
+				BeforeProcessingInitializeOnLoad (101ms)
+				ProcessInitializeOnLoadAttributes (1126ms)
+				ProcessInitializeOnLoadMethodAttributes (5ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
+Refreshing native plugins compatible for Editor in 1.21 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3483 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 130.5 MB.
+System memory in use after: 130.7 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 3900.
+Total: 4.672400 ms (FindLiveObjects: 0.341200 ms CreateObjectMapping: 0.136300 ms MarkObjects: 4.095800 ms  DeleteObjects: 0.097400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Configuration/results/Attacking_R2Collision/Default/Default-499994.onnx
+  artifactKey: Guid(0689852f7ff20f64da0587887c5ed820) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/Attacking_R2Collision/Default/Default-499994.onnx using Guid(0689852f7ff20f64da0587887c5ed820) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebf0a5a7111b098bbcc2a9ae175634b1') in 0.083770 seconds 
+  Import took 0.093595 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000361 seconds.
+  path: Assets/Configuration/results/Attacking_V1/Default/Default-500074.onnx
+  artifactKey: Guid(4e55fb4aea186384d9911bb3cc1f19bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/Attacking_V1/Default/Default-500074.onnx using Guid(4e55fb4aea186384d9911bb3cc1f19bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '609ec854af7f6ca78e0015d4821ef25a') in 0.010372 seconds 
+  Import took 0.015828 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000438 seconds.
+  path: Assets/Configuration/results/Attacking_DR2Collision_V2/Default/Default-500002.onnx
+  artifactKey: Guid(2a6b574d92d093f45b3369fb7e356152) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/Attacking_DR2Collision_V2/Default/Default-500002.onnx using Guid(2a6b574d92d093f45b3369fb7e356152) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ead9d0928e88a4f7f1cdb6a632920ff1') in 0.007968 seconds 
+  Import took 0.023816 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000431 seconds.
+  path: Assets/Configuration/results/walking/Default/Default-499986.onnx
+  artifactKey: Guid(154a7d519f1869247878f3f51f295ea6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/walking/Default/Default-499986.onnx using Guid(154a7d519f1869247878f3f51f295ea6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '550365fc52fbf2baba73368cdc71785f') in 0.009147 seconds 
+  Import took 0.031037 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000723 seconds.
+  path: Assets/Configuration/results/Attacking_DR2Collision_UPGRADE/Default/Default-500017.onnx
+  artifactKey: Guid(8d9288680b6bd834eb7d34f7e141682e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/Attacking_DR2Collision_UPGRADE/Default/Default-500017.onnx using Guid(8d9288680b6bd834eb7d34f7e141682e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e34b9c4e9ca4a588d9f9afafdf17d8b') in 0.008753 seconds 
+  Import took 0.026805 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000595 seconds.
+  path: Assets/Configuration/results/ppo/Default/Default-500202.onnx
+  artifactKey: Guid(ad6bc99ae7332864c9df3cb036405193) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/ppo/Default/Default-500202.onnx using Guid(ad6bc99ae7332864c9df3cb036405193) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26f2e715e43ebbd2d55c9e821affa230') in 0.013142 seconds 
+  Import took 0.038494 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000437 seconds.
+  path: Assets/Configuration/results/Attacking_DR2Collision_V2/Default/Default-499977.onnx
+  artifactKey: Guid(fbb96090b9d659d4f880d8973117d414) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/Attacking_DR2Collision_V2/Default/Default-499977.onnx using Guid(fbb96090b9d659d4f880d8973117d414) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2afa931ebac28b0866267fea345135f4') in 0.006653 seconds 
+  Import took 0.013487 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000403 seconds.
+  path: Assets/Configuration/results/Attacking_DR2Collision_UPGRADE/Default/Default-499997.onnx
+  artifactKey: Guid(b298b7d4874651149b784b683ded108c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/Attacking_DR2Collision_UPGRADE/Default/Default-499997.onnx using Guid(b298b7d4874651149b784b683ded108c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '288507c7e05de88c055e6b1b98e5b820') in 0.012617 seconds 
+  Import took 0.028458 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000490 seconds.
+  path: Assets/Configuration/results/testAttack_penalty01/Default/Default-500043.onnx
+  artifactKey: Guid(817e6ccde763fce4b946caa1a4b31f49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/testAttack_penalty01/Default/Default-500043.onnx using Guid(817e6ccde763fce4b946caa1a4b31f49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85880fb113e18056df3f19465379b1f3') in 0.008790 seconds 
+  Import took 0.022385 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000430 seconds.
+  path: Assets/Configuration/results/Attacking_V1/Default/Default-499982.onnx
+  artifactKey: Guid(e5f6dc4c87018394e88db6fc5a413c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/Attacking_V1/Default/Default-499982.onnx using Guid(e5f6dc4c87018394e88db6fc5a413c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b2547fd62d627306375abe5d6eed79a9') in 0.007227 seconds 
+  Import took 0.016181 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000391 seconds.
+  path: Assets/Configuration/results/walking/Default/Default-500040.onnx
+  artifactKey: Guid(945468b4b8e921c4b820b3f290ddc06f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/walking/Default/Default-500040.onnx using Guid(945468b4b8e921c4b820b3f290ddc06f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a074777abe9bba95282dfe879eda295e') in 0.009300 seconds 
+  Import took 0.016772 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000407 seconds.
+  path: Assets/Configuration/results/Attacking_DR2Collision/Default/Default-500120.onnx
+  artifactKey: Guid(7bf4c040a15c1914985ce749cef5b1b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/Attacking_DR2Collision/Default/Default-500120.onnx using Guid(7bf4c040a15c1914985ce749cef5b1b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f5d32957fcd552576506e589caa17bf') in 0.010047 seconds 
+  Import took 0.017207 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000431 seconds.
+  path: Assets/Configuration/results/walking_completely/Default/Default-500238.onnx
+  artifactKey: Guid(f4783a63357dca94194e2774070565f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/walking_completely/Default/Default-500238.onnx using Guid(f4783a63357dca94194e2774070565f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '251aac9aef0488a1af0ad98cff569494') in 0.008485 seconds 
+  Import took 0.027173 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000472 seconds.
+  path: Assets/Configuration/results/walking_completely/Default/Default-499985.onnx
+  artifactKey: Guid(3bc85f0ef23dff1498eabfef46bf9be8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/walking_completely/Default/Default-499985.onnx using Guid(3bc85f0ef23dff1498eabfef46bf9be8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'acc26b0e973e732296272bd525976445') in 0.008011 seconds 
+  Import took 0.023373 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000476 seconds.
+  path: Assets/Configuration/results/Attacking_R2Collision/Default/Default-500140.onnx
+  artifactKey: Guid(4ceb0aa4085d61b4c972b5711f8b52e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/Attacking_R2Collision/Default/Default-500140.onnx using Guid(4ceb0aa4085d61b4c972b5711f8b52e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '545b1d225aeb28dfc55b8ebf300a08a5') in 0.009522 seconds 
+  Import took 0.022318 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000582 seconds.
+  path: Assets/Configuration/results/Attacking_DR2Collision/Default/Default-499984.onnx
+  artifactKey: Guid(bdfa8eb5652214c49ba1021d3c2564ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Configuration/results/Attacking_DR2Collision/Default/Default-499984.onnx using Guid(bdfa8eb5652214c49ba1021d3c2564ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be846eebcd1c3c5a410418101de5f2fe') in 0.008184 seconds 
+  Import took 0.017295 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.008145 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\CE64_VR_Project\GAME\AI\VR-Fighter-Game\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\CE64_VR_Project\GAME\AI\VR-Fighter-Game\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.09 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.634 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1634ms)
+		BeginReloadAssembly (161ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (52ms)
+		EndReloadAssembly (1393ms)
+			LoadAssemblies (129ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (475ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (49ms)
+			SetupLoadedEditorAssemblies (628ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (118ms)
+				ProcessInitializeOnLoadAttributes (492ms)
+				ProcessInitializeOnLoadMethodAttributes (6ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (10ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.87 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3477 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 130.4 MB.
+System memory in use after: 130.7 MB.
+
+Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 3902.
+Total: 5.503200 ms (FindLiveObjects: 0.513100 ms CreateObjectMapping: 0.235900 ms MarkObjects: 4.706900 ms  DeleteObjects: 0.046300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 178.444682 seconds.
+  path: Assets/Scripts/SimpleCollectorAgent.cs
+  artifactKey: Guid(15523e51c2f093b4aadc26c14f757010) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SimpleCollectorAgent.cs using Guid(15523e51c2f093b4aadc26c14f757010) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb0d896d2bc5341e903eb917b7447efa') in 0.036881 seconds 
+  Import took 0.060667 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.423163 seconds.
+  path: Assets/Scripts/SimpleCollectorAgent.cs
+  artifactKey: Guid(15523e51c2f093b4aadc26c14f757010) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SimpleCollectorAgent.cs using Guid(15523e51c2f093b4aadc26c14f757010) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb0d896d2bc5341e903eb917b7447efa') in 0.001606 seconds 
+  Import took 0.008114 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.508991 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\CE64_VR_Project\GAME\AI\VR-Fighter-Game\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\CE64_VR_Project\GAME\AI\VR-Fighter-Game\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.81 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.454 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1455ms)
+		BeginReloadAssembly (141ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (48ms)
+		EndReloadAssembly (1249ms)
+			LoadAssemblies (126ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (432ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (49ms)
+			SetupLoadedEditorAssemblies (542ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (102ms)
+				ProcessInitializeOnLoadAttributes (426ms)
+				ProcessInitializeOnLoadMethodAttributes (5ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.85 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3477 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 130.5 MB.
+System memory in use after: 130.7 MB.
+
+Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 3904.
+Total: 4.920600 ms (FindLiveObjects: 0.458800 ms CreateObjectMapping: 0.283000 ms MarkObjects: 4.123200 ms  DeleteObjects: 0.054200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.102639 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\CE64_VR_Project\GAME\AI\VR-Fighter-Game\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\CE64_VR_Project\GAME\AI\VR-Fighter-Game\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.94 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.470 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1471ms)
+		BeginReloadAssembly (127ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (45ms)
+		EndReloadAssembly (1273ms)
+			LoadAssemblies (132ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (396ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (51ms)
+			SetupLoadedEditorAssemblies (582ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (116ms)
+				ProcessInitializeOnLoadAttributes (450ms)
+				ProcessInitializeOnLoadMethodAttributes (5ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.78 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3477 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 130.5 MB.
+System memory in use after: 130.8 MB.
+
+Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 3906.
+Total: 4.801600 ms (FindLiveObjects: 0.661700 ms CreateObjectMapping: 0.319000 ms MarkObjects: 3.794600 ms  DeleteObjects: 0.025200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 112.783666 seconds.
+  path: Assets/Animations/characterController.controller
+  artifactKey: Guid(09387c1b4b3f185419d1044fed25e730) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/characterController.controller using Guid(09387c1b4b3f185419d1044fed25e730) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '44dbe9d469c4dfac01a7f7f73164c1be') in 0.044589 seconds 
+  Import took 0.050519 seconds .
+

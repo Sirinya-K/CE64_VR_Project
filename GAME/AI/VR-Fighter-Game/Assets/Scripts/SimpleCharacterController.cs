@@ -12,26 +12,30 @@ public class SimpleCharacterController : MonoBehaviour
     [Tooltip("Turn speed in degrees/second, left (+) or right (-)")]
     public float turnSpeed = 300;
     [Tooltip("Whether the character can jump")]
-    public bool allowJump = false;
+    public bool allowAttack = false;
     [Tooltip("Upward speed to apply when jumping in meters/second")]
     public float jumpSpeed = 4f;
     public bool IsGrounded { get; private set; }
     public float ForwardInput { get; set; }
     public float TurnInput { get; set; }
     public bool JumpInput { get; set; }
+    public bool AttackInput { get; set; }
     new private Rigidbody rigidbody;
     private CapsuleCollider capsuleCollider;
+    private Animator anim;
+    private bool canAttack;
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
+        anim = GetComponent<Animator>();
     }
     private void FixedUpdate()
     {
         CheckGrounded();
         ProcessActions();
     }
-     private void CheckGrounded()
+    private void CheckGrounded()
     {
         IsGrounded = false;
         float capsuleHeight = Mathf.Max(capsuleCollider.radius * 2f, capsuleCollider.height);
@@ -64,32 +68,22 @@ public class SimpleCharacterController : MonoBehaviour
         Vector3 move = transform.forward * Mathf.Clamp(ForwardInput, -1f, 1f) *
             moveSpeed * Time.fixedDeltaTime;
         rigidbody.MovePosition(transform.position + move);
+        if(Input.GetAxisRaw("Vertical") != 0f || ForwardInput != 0){
+            anim.SetFloat("Speed", 1f);
+        }
+        else if(Input.GetAxisRaw("Vertical") == 0f){
+            anim.SetFloat("Speed", 0f);
+        }
+        
 
         // Jump
-        if (JumpInput && allowJump && IsGrounded)
-        {
-            rigidbody.AddForce(transform.up * jumpSpeed, ForceMode.VelocityChange);
+        // if (JumpInput && allowAttack && IsGrounded)
+        // {
+        //     rigidbody.AddForce(transform.up * jumpSpeed, ForceMode.VelocityChange);
+        // }
+        if(AttackInput && allowAttack && anim.GetCurrentAnimatorStateInfo(0).IsName("Movement")){
+            anim.SetTrigger("Attack"); 
+            //Debug.Log("is Attacking now !!");
         }
-    }
-    public override void Heuristic(in ActionBuffers actionsOut)
-    {
-        int vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
-        int horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
-        bool jump = Input.GetKey(KeyCode.Space);
-
-        ActionSegment<int> actions = actionsOut.DiscreteActions;
-        actions[0] = vertical >= 0 ? vertical : 2;
-        actions[1] = horizontal >= 0 ? horizontal : 2;
-        actions[2] = jump ? 1 : 0;
-    }
-    public override void OnActionReceived(ActionBuffers actions)
-    {
-        float vertical = actions.DiscreteActions[0] <= 1 ? actions.DiscreteActions[0] : -1;
-        float horizontal = actions.DiscreteActions[1] <= 1 ? actions.DiscreteActions[1] : -1;
-        bool jump = actions.DiscreteActions[2] > 0;
-
-        characterController.ForwardInput = vertical;
-        characterController.TurnInput = horizontal;
-        characterController.JumpInput = jump;
     }
 }
