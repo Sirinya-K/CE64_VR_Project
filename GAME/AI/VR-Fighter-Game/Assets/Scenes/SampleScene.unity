@@ -270,7 +270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &22061576
 Transform:
   m_ObjectHideFlags: 0
@@ -403,7 +403,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &22061583
 Rigidbody:
@@ -1800,7 +1800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &119852598
 Transform:
   m_ObjectHideFlags: 0
@@ -2370,7 +2370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &170042162
 Transform:
   m_ObjectHideFlags: 0
@@ -2657,7 +2657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &184393940
 Transform:
   m_ObjectHideFlags: 0
@@ -2970,7 +2970,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &191807004
 Transform:
   m_ObjectHideFlags: 0
@@ -3194,7 +3194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &200988123
 Transform:
   m_ObjectHideFlags: 0
@@ -3327,7 +3327,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &200988130
 Rigidbody:
@@ -4353,7 +4353,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &282115110
 Rigidbody:
@@ -4661,7 +4661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &297643155
 Transform:
   m_ObjectHideFlags: 0
@@ -4794,7 +4794,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &297643162
 Rigidbody:
@@ -5208,7 +5208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &327235324
 Transform:
   m_ObjectHideFlags: 0
@@ -5341,7 +5341,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &327235331
 Rigidbody:
@@ -5863,7 +5863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &353163450
 Transform:
   m_ObjectHideFlags: 0
@@ -5996,7 +5996,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &353163457
 Rigidbody:
@@ -6175,7 +6175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &367191819
 Transform:
   m_ObjectHideFlags: 0
@@ -6589,7 +6589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &392434345
 Transform:
   m_ObjectHideFlags: 0
@@ -7156,7 +7156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &430657056
 Transform:
   m_ObjectHideFlags: 0
@@ -7871,7 +7871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &491128693
 Transform:
   m_ObjectHideFlags: 0
@@ -7995,7 +7995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &503207355
 Transform:
   m_ObjectHideFlags: 0
@@ -8224,7 +8224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &511690359
 Transform:
   m_ObjectHideFlags: 0
@@ -8482,7 +8482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &519417786
 Transform:
   m_ObjectHideFlags: 0
@@ -8886,7 +8886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &541781114
 Transform:
   m_ObjectHideFlags: 0
@@ -9596,7 +9596,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &578865551
 Transform:
   m_ObjectHideFlags: 0
@@ -9729,7 +9729,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &578865558
 Rigidbody:
@@ -10303,7 +10303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &610411011
 Transform:
   m_ObjectHideFlags: 0
@@ -10436,7 +10436,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &610411018
 Rigidbody:
@@ -10598,7 +10598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &617647161
 Transform:
   m_ObjectHideFlags: 0
@@ -11451,7 +11451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &663791359
 Transform:
   m_ObjectHideFlags: 0
@@ -11672,7 +11672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &668090540
 Transform:
   m_ObjectHideFlags: 0
@@ -12438,7 +12438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &710990555
 Transform:
   m_ObjectHideFlags: 0
@@ -13342,7 +13342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &747888704
 Transform:
   m_ObjectHideFlags: 0
@@ -13814,7 +13814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &768814635
 Transform:
   m_ObjectHideFlags: 0
@@ -16600,7 +16600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &951587115
 Transform:
   m_ObjectHideFlags: 0
@@ -17117,7 +17117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &978699341
 Transform:
   m_ObjectHideFlags: 0
@@ -17677,7 +17677,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1000514102
 Transform:
   m_ObjectHideFlags: 0
@@ -18152,7 +18152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1022368105
 Transform:
   m_ObjectHideFlags: 0
@@ -18285,7 +18285,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &1022368112
 Rigidbody:
@@ -18708,7 +18708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1053478526
 Transform:
   m_ObjectHideFlags: 0
@@ -18915,7 +18915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1067837102
 Transform:
   m_ObjectHideFlags: 0
@@ -19016,7 +19016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1068935112
 Transform:
   m_ObjectHideFlags: 0
@@ -19149,7 +19149,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &1068935119
 Rigidbody:
@@ -19753,7 +19753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1119412070
 Transform:
   m_ObjectHideFlags: 0
@@ -20543,7 +20543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1168558658
 Transform:
   m_ObjectHideFlags: 0
@@ -20676,7 +20676,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &1168558665
 Rigidbody:
@@ -21026,7 +21026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1185220594
 Transform:
   m_ObjectHideFlags: 0
@@ -22136,7 +22136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1249306093
 Transform:
   m_ObjectHideFlags: 0
@@ -22269,7 +22269,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &1249306100
 Rigidbody:
@@ -22851,7 +22851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1293227193
 Transform:
   m_ObjectHideFlags: 0
@@ -23563,7 +23563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1324198654
 Transform:
   m_ObjectHideFlags: 0
@@ -23945,7 +23945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1355439031
 Transform:
   m_ObjectHideFlags: 0
@@ -24078,7 +24078,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &1355439038
 Rigidbody:
@@ -24660,7 +24660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1391627698
 Transform:
   m_ObjectHideFlags: 0
@@ -24763,7 +24763,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1398721346
 Transform:
   m_ObjectHideFlags: 0
@@ -24896,7 +24896,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &1398721353
 Rigidbody:
@@ -25689,7 +25689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1446502407
 Transform:
   m_ObjectHideFlags: 0
@@ -25813,7 +25813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1455756448
 Transform:
   m_ObjectHideFlags: 0
@@ -25938,7 +25938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1464608614
 Transform:
   m_ObjectHideFlags: 0
@@ -26009,7 +26009,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1466628992
 Transform:
   m_ObjectHideFlags: 0
@@ -26142,7 +26142,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &1466628999
 Rigidbody:
@@ -27519,7 +27519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1546648404
 Transform:
   m_ObjectHideFlags: 0
@@ -27707,7 +27707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1565364389
 Transform:
   m_ObjectHideFlags: 0
@@ -28267,7 +28267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1601713156
 Transform:
   m_ObjectHideFlags: 0
@@ -28551,7 +28551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1633432090
 Transform:
   m_ObjectHideFlags: 0
@@ -28981,7 +28981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1671908243
 Transform:
   m_ObjectHideFlags: 0
@@ -29045,7 +29045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1673438594
 Transform:
   m_ObjectHideFlags: 0
@@ -29462,7 +29462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1708647905
 Transform:
   m_ObjectHideFlags: 0
@@ -29595,7 +29595,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &1708647912
 Rigidbody:
@@ -29655,7 +29655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1708680243
 Transform:
   m_ObjectHideFlags: 0
@@ -29788,7 +29788,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!54 &1708680250
 Rigidbody:
@@ -30275,7 +30275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1747452304
 Transform:
   m_ObjectHideFlags: 0
@@ -30632,7 +30632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1764530950
 Transform:
   m_ObjectHideFlags: 0
@@ -30732,7 +30732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1767641968
 Transform:
   m_ObjectHideFlags: 0
@@ -31400,7 +31400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1801551297
 Transform:
   m_ObjectHideFlags: 0
@@ -31944,7 +31944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1837071145
 Transform:
   m_ObjectHideFlags: 0
@@ -32526,7 +32526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1862234198
 Transform:
   m_ObjectHideFlags: 0
@@ -33007,7 +33007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1888511269
 Transform:
   m_ObjectHideFlags: 0
@@ -33199,7 +33199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1907943716
 Transform:
   m_ObjectHideFlags: 0
@@ -33359,7 +33359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1916484109
 Transform:
   m_ObjectHideFlags: 0
@@ -33861,7 +33861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1936787221
 Transform:
   m_ObjectHideFlags: 0
@@ -35410,7 +35410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2043457453
 Transform:
   m_ObjectHideFlags: 0
@@ -36470,7 +36470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2109985166
 Transform:
   m_ObjectHideFlags: 0
@@ -38420,6 +38420,7 @@ GameObject:
   - component: {fileID: 8798788683541592150}
   - component: {fileID: 8798788683541592148}
   - component: {fileID: 8798788683541592154}
+  - component: {fileID: 8798788683541592156}
   m_Layer: 0
   m_Name: enemyAgent
   m_TagString: Untagged
@@ -38523,9 +38524,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 945468b4b8e921c4b820b3f290ddc06f, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 1
   m_BehaviorName: Default
   TeamId: 0
   m_UseChildSensors: 1
@@ -38546,7 +38547,7 @@ MonoBehaviour:
   slopeLimit: 45
   moveSpeed: 2
   turnSpeed: 300
-  allowAttack: 0
+  allowAttack: 1
   jumpSpeed: 4
 --- !u!136 &8798788683541592154
 CapsuleCollider:
@@ -38578,6 +38579,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &8798788683541592156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8798788683541592147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Record: 1
+  NumStepsToRecord: 0
+  DemonstrationName: attackingDemo
+  DemonstrationDirectory: Demos
 --- !u!4 &8798788683541947393
 Transform:
   m_ObjectHideFlags: 0

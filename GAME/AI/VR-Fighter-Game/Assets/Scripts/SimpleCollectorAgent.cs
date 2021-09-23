@@ -32,10 +32,6 @@ public class SimpleCollectorAgent : Agent
         // Reset enemy position (5 meters away from the agent in a random direction)
         enemy.transform.position = startPosition + Quaternion.Euler(Vector3.up * Random.Range(0f, 360f)) * Vector3.forward * 5f;
     }
-    void Update()
-    {
-        canAttack = Input.GetKeyDown(KeyCode.Return);
-    }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         // Read input values and round them. GetAxisRaw works better in this case
@@ -43,6 +39,7 @@ public class SimpleCollectorAgent : Agent
         int vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
         int horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
         bool jump = Input.GetKey(KeyCode.Space);
+        canAttack = Input.GetKey(KeyCode.Return);
 
         // Convert the actions to Discrete choices (0, 1, 2)
         ActionSegment<int> actions = actionsOut.DiscreteActions;
