@@ -39,7 +39,7 @@ public class NewHandPresence : MonoBehaviour
         }
     }
 
-    void UpdateHandAnimation ()
+    void UpdateHandAnimation()
     {
 
         if (mqtt.data!="")
@@ -61,18 +61,18 @@ public class NewHandPresence : MonoBehaviour
 
         // if(targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
         // {
-        //     handAnimator.SetFloat("Grip", gripValue);
+        //     // Debug.Log("gripValue: " + gripValue);
+        //     handAnimator.SetFloat("Index", gripValue);
         // }
         // else
         // {
-        //     handAnimator.SetFloat("Grip", 0);
+        //     handAnimator.SetFloat("Index", 0);
         // }
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateHandAnimation ();
-
+        UpdateHandAnimation();
     }
 }
