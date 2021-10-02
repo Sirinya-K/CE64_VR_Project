@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637679332766725995
-    m_Hash: 3099042017
+      ticks: 637686645872237452
+    m_Hash: 2745670417
   m_LockFileStatus:
     m_FilePath: D:/GitHub/CE64_VR_Project/GAME/TestPlayerBody/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637679332767106083
-    m_Hash: 1760140025
+      ticks: 637686646755157044
+    m_Hash: 1983697146
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -83,7 +83,7 @@ m_PackageAssets:
       - name: com.unity.mathematics
         version: 1.2.1
       - name: com.unity.test-framework
-        version: 1.1.27
+        version: 1.1.29
       - name: com.unity.ext.nunit
         version: 1.0.6
       - name: com.unity.modules.imgui
@@ -114,12 +114,12 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.animation.rigging.git
         revision: 536ae6adeb6f1066ee89b6938f6ba5828ea92e5f
         path: 
-    - packageId: com.unity.collab-proxy@1.7.1
+    - packageId: com.unity.collab-proxy@1.9.0
       testable: 0
       isDirectDependency: 1
-      version: 1.7.1
+      version: 1.9.0
       source: 1
-      resolvedPath: D:\GitHub\CE64_VR_Project\GAME\TestPlayerBody\Library\PackageCache\com.unity.collab-proxy@1.7.1
+      resolvedPath: D:\GitHub\CE64_VR_Project\GAME\TestPlayerBody\Library\PackageCache\com.unity.collab-proxy@1.9.0
       assetPath: Packages/com.unity.collab-proxy
       name: com.unity.collab-proxy
       displayName: Version Control
@@ -173,8 +173,6 @@ m_PackageAssets:
         - 2.1.0-preview.5
         - 2.1.0-preview.6
         compatible:
-        - 1.7.1
-        - 1.8.0
         - 1.9.0
         - 1.10.2
         - 1.11.2
@@ -188,13 +186,9 @@ m_PackageAssets:
         - 2.1.0-preview.3
         - 2.1.0-preview.5
         - 2.1.0-preview.6
-        verified: 1.7.1
-      dependencies:
-      - name: com.unity.nuget.newtonsoft-json
-        version: 2.0.0
-      resolvedDependencies:
-      - name: com.unity.nuget.newtonsoft-json
-        version: 2.0.0
+        verified: 1.9.0
+      dependencies: []
+      resolvedDependencies: []
       keywords:
       - backup
       - cloud
@@ -221,13 +215,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637616921650000000
+      datePublishedTicks: 637637594290000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
-        revision: 30ef59f552633de9ff0401db4e73ac89982d4ac0
+        revision: 51447944a1e7d94937e6b7f9e887d58f5097ed13
         path: 
     - packageId: com.unity.ide.rider@2.0.7
       testable: 0
@@ -308,7 +302,7 @@ m_PackageAssets:
         version: 1.1.1
       resolvedDependencies:
       - name: com.unity.test-framework
-        version: 1.1.27
+        version: 1.1.29
       - name: com.unity.ext.nunit
         version: 1.0.6
       - name: com.unity.modules.imgui
@@ -395,7 +389,7 @@ m_PackageAssets:
         version: 1.1.9
       resolvedDependencies:
       - name: com.unity.test-framework
-        version: 1.1.27
+        version: 1.1.29
       - name: com.unity.ext.nunit
         version: 1.0.6
       - name: com.unity.modules.imgui
@@ -423,12 +417,12 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.visualstudio.git
         revision: 680e06d94ffca728223ae2cb14bb919cd354e2c1
         path: 
-    - packageId: com.unity.ide.vscode@1.2.3
+    - packageId: com.unity.ide.vscode@1.2.4
       testable: 0
       isDirectDependency: 1
-      version: 1.2.3
+      version: 1.2.4
       source: 1
-      resolvedPath: D:\GitHub\CE64_VR_Project\GAME\TestPlayerBody\Library\PackageCache\com.unity.ide.vscode@1.2.3
+      resolvedPath: D:\GitHub\CE64_VR_Project\GAME\TestPlayerBody\Library\PackageCache\com.unity.ide.vscode@1.2.4
       assetPath: Packages/com.unity.ide.vscode
       name: com.unity.ide.vscode
       displayName: Visual Studio Code Editor
@@ -486,20 +480,20 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637394922300000000
+      datePublishedTicks: 637660806170000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.vscode.git
-        revision: b5ec9b38109e52b1b26597d521e4df75e042ebb9
+        url: git+https://github.com/Unity-Technologies/com.unity.ide.vscode.git
+        revision: 1f4f605d5c988cb610c372b5c5216c46cc8f5d30
         path: 
-    - packageId: com.unity.test-framework@1.1.27
+    - packageId: com.unity.test-framework@1.1.29
       testable: 0
       isDirectDependency: 1
-      version: 1.1.27
+      version: 1.1.29
       source: 1
-      resolvedPath: D:\GitHub\CE64_VR_Project\GAME\TestPlayerBody\Library\PackageCache\com.unity.test-framework@1.1.27
+      resolvedPath: D:\GitHub\CE64_VR_Project\GAME\TestPlayerBody\Library\PackageCache\com.unity.test-framework@1.1.29
       assetPath: Packages/com.unity.test-framework
       name: com.unity.test-framework
       displayName: Test Framework
@@ -546,7 +540,6 @@ m_PackageAssets:
         - 1.1.27
         - 1.1.29
         compatible:
-        - 1.1.27
         - 1.1.29
         verified: 1.1.29
       dependencies:
@@ -578,13 +571,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637594751620000000
+      datePublishedTicks: 637647922650000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: git+https://github.com/Unity-Technologies/com.unity.test-framework.git
-        revision: c2f2cc9b7ea61d42964257363595dff5e8c47c42
+        revision: dac53542acdab7a12e9ebf111ac588d0e53cf483
         path: 
     - packageId: com.unity.textmeshpro@3.0.6
       testable: 0
@@ -1037,7 +1030,7 @@ m_PackageAssets:
       - name: com.unity.modules.audio
         version: 1.0.0
       - name: com.unity.xr.legacyinputhelpers
-        version: 2.1.7
+        version: 2.1.8
       - name: com.unity.modules.vr
         version: 1.0.0
       - name: com.unity.modules.jsonserialize
@@ -1175,7 +1168,7 @@ m_PackageAssets:
       - name: com.unity.modules.xr
         version: 1.0.0
       - name: com.unity.xr.legacyinputhelpers
-        version: 2.1.7
+        version: 2.1.8
       - name: com.unity.subsystemregistration
         version: 1.0.6
       keywords:
@@ -1206,12 +1199,12 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/xr.sdk.management.git
         revision: 9b85c8cea3fedb70fbf7716d4db31a29b8d20f98
         path: 
-    - packageId: com.unity.xr.oculus@1.9.1
+    - packageId: com.unity.xr.oculus@1.10.0
       testable: 0
       isDirectDependency: 1
-      version: 1.9.1
+      version: 1.10.0
       source: 1
-      resolvedPath: D:\GitHub\CE64_VR_Project\GAME\TestPlayerBody\Library\PackageCache\com.unity.xr.oculus@1.9.1
+      resolvedPath: D:\GitHub\CE64_VR_Project\GAME\TestPlayerBody\Library\PackageCache\com.unity.xr.oculus@1.10.0
       assetPath: Packages/com.unity.xr.oculus
       name: com.unity.xr.oculus
       displayName: Oculus XR Plugin
@@ -1270,11 +1263,8 @@ m_PackageAssets:
         - 1.10.0-preview.2
         - 1.10.0
         compatible:
-        - 1.9.1
-        - 1.10.0-preview.1
-        - 1.10.0-preview.2
         - 1.10.0
-        verified: 1.9.1
+        verified: 1.10.0
       dependencies:
       - name: com.unity.xr.management
         version: 4.0.1
@@ -1294,7 +1284,7 @@ m_PackageAssets:
       - name: com.unity.modules.xr
         version: 1.0.0
       - name: com.unity.xr.legacyinputhelpers
-        version: 2.1.7
+        version: 2.1.8
       - name: com.unity.subsystemregistration
         version: 1.0.6
       - name: com.unity.ugui
@@ -1323,13 +1313,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637563688360000000
+      datePublishedTicks: 637635137630000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/xr.sdk.oculus.git
-        revision: 55b70323e1ab2aefa33ac785aa17022e0e9b4ad1
+        revision: 2badea056ed7d508ea62ed8441cf21aac1ce80b2
         path: 
     - packageId: com.unity.modules.ai@1.0.0
       testable: 0
@@ -3073,12 +3063,12 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
-    - packageId: com.unity.xr.legacyinputhelpers@2.1.7
+    - packageId: com.unity.xr.legacyinputhelpers@2.1.8
       testable: 0
       isDirectDependency: 0
-      version: 2.1.7
+      version: 2.1.8
       source: 1
-      resolvedPath: D:\GitHub\CE64_VR_Project\GAME\TestPlayerBody\Library\PackageCache\com.unity.xr.legacyinputhelpers@2.1.7
+      resolvedPath: D:\GitHub\CE64_VR_Project\GAME\TestPlayerBody\Library\PackageCache\com.unity.xr.legacyinputhelpers@2.1.8
       assetPath: Packages/com.unity.xr.legacyinputhelpers
       name: com.unity.xr.legacyinputhelpers
       displayName: XR Legacy Input Helpers
@@ -3122,7 +3112,6 @@ m_PackageAssets:
         - 2.1.7
         - 2.1.8
         compatible:
-        - 2.1.7
         - 2.1.8
         verified: 2.1.8
       dependencies:
@@ -3159,13 +3148,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637434003470000000
+      datePublishedTicks: 637623088970000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.xr.legacyinputhelpers.git
-        revision: b2024928b8140a10ad43aeb5824d2f08bb8796bc
+        revision: ed3b32c709a0e51cf73fda4b200c59b48955c4be
         path: 
     - packageId: com.unity.subsystemregistration@1.0.6
       testable: 0
@@ -3397,80 +3386,6 @@ m_PackageAssets:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ext.nunit.git
         revision: 29ea4d6504a5f58fb3a6934db839aa80ae6d9d88
-        path: 
-    - packageId: com.unity.nuget.newtonsoft-json@2.0.0
-      testable: 0
-      isDirectDependency: 0
-      version: 2.0.0
-      source: 1
-      resolvedPath: D:\GitHub\CE64_VR_Project\GAME\TestPlayerBody\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0
-      assetPath: Packages/com.unity.nuget.newtonsoft-json
-      name: com.unity.nuget.newtonsoft-json
-      displayName: Newtonsoft Json
-      author:
-        name: 
-        email: 
-        url: 
-      category: 
-      type: 
-      description: 'Newtonsoft Json for use in Unity projects and Unity packages.
-        Currently synced to version 12.0.2.
-
-
-        This package is used for advanced
-        json serialization and deserialization. Most Unity users will be better suited
-        using the existing json tools built into Unity.
-
-        To avoid assembly
-        clashes, please use this package if you intend to use Newtonsoft Json.'
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 1.0.0-preview.2
-        - 1.0.0-preview.3
-        - 1.0.0-preview.4
-        - 1.0.1-preview.1
-        - 1.1.2
-        - 2.0.0-preview
-        - 2.0.0-preview.1
-        - 2.0.0-preview.2
-        - 2.0.0
-        - 2.0.1-preview.1
-        compatible:
-        - 1.0.0-preview.2
-        - 1.0.0-preview.3
-        - 1.0.0-preview.4
-        - 1.0.1-preview.1
-        - 1.1.2
-        - 2.0.0-preview
-        - 2.0.0-preview.1
-        - 2.0.0-preview.2
-        - 2.0.0
-        - 2.0.1-preview.1
-        verified: 2.0.0
-      dependencies: []
-      resolvedDependencies: []
-      keywords: []
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 637237898320000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: https://github.cds.internal.unity3d.com/unity/com.unity.nuget.newtonsoft-json.git
-        revision: d2fd6ed876261bbd82f59199ad711e7667bf633a
         path: 
     - packageId: com.unity.burst@1.3.4
       testable: 0
@@ -3775,4 +3690,4 @@ m_PackageAssets:
   m_LocalPackages:
     m_LocalFileStatus: []
 m_ProjectPath: D:/GitHub/CE64_VR_Project/GAME/TestPlayerBody/Packages
-m_EditorVersion: 2020.3.16f1 (049d6eca3c44)
+m_EditorVersion: 2020.3.19f1 (68f137dc9bbe)
