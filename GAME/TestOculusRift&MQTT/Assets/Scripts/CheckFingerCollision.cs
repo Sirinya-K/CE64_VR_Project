@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class CheckFingerCollision : MonoBehaviour
 {
-    public bool collisionStatus = false;
+    private GrabItem grabItem;
+    // public bool collisionStatus = false;
 
+    private void Awake()
+    {
+        grabItem = GameObject.FindObjectOfType<GrabItem>();
+    }
     private void OnCollisionEnter(Collision other)
     {
-        collisionStatus = true;
-        Debug.Log("Object: " + gameObject.name + ", Collision with: " + other.collider.name + ", Status: " + collisionStatus);
+        grabItem.finCollisionStatus = true;
+        Debug.Log("Object: " + gameObject.name + ", Collision with: " + other.collider.name + ", Status: " + grabItem.finCollisionStatus);
     }
 
     private void OnCollisionExit(Collision other)
     {
-        collisionStatus = false;
-        Debug.Log("Object: " + gameObject.name + ", Collision with: " + other.collider.name + ", Status: " + collisionStatus);
+        grabItem.finCollisionStatus = false;
+        Debug.Log("Object: " + gameObject.name + ", Collision with: " + other.collider.name + ", Status: " + grabItem.finCollisionStatus);
     }
 }
