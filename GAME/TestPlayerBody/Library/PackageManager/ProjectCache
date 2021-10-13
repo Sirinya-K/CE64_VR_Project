@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637686645872237452
+      ticks: 637696570756302344
     m_Hash: 2745670417
   m_LockFileStatus:
     m_FilePath: D:/GitHub/CE64_VR_Project/GAME/TestPlayerBody/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637686646755157044
+      ticks: 637696570757232629
     m_Hash: 1983697146
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -162,6 +162,8 @@ m_PackageAssets:
         - 1.9.0
         - 1.10.2
         - 1.11.2
+        - 1.12.5
+        - 1.13.5
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -176,6 +178,8 @@ m_PackageAssets:
         - 1.9.0
         - 1.10.2
         - 1.11.2
+        - 1.12.5
+        - 1.13.5
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -1262,8 +1266,10 @@ m_PackageAssets:
         - 1.10.0-preview.1
         - 1.10.0-preview.2
         - 1.10.0
+        - 1.10.1-preview.3
         compatible:
         - 1.10.0
+        - 1.10.1-preview.3
         verified: 1.10.0
       dependencies:
       - name: com.unity.xr.management
@@ -3647,6 +3653,7 @@ m_PackageAssets:
         - 1.1.0-preview.1
         - 1.1.0
         - 1.2.1
+        - 1.2.4
         compatible:
         - 0.0.12-preview.2
         - 0.0.12-preview.5
@@ -3662,7 +3669,8 @@ m_PackageAssets:
         - 1.1.0-preview.1
         - 1.1.0
         - 1.2.1
-        verified: 1.2.1
+        - 1.2.4
+        verified: 1.2.4
       dependencies: []
       resolvedDependencies: []
       keywords:

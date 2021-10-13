@@ -8,13 +8,13 @@ public class FingerCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log(gameObject.name + ": Enter");
+        // Debug.Log(gameObject.name + ": Enter");
         collisionStatus = true;
     }
 
     private void OnCollisionExit(Collision other)
     {
-        Debug.Log(gameObject.name + ": Exit");
+        // Debug.Log(gameObject.name + ": Exit");
         collisionStatus = false;
     }
 }
