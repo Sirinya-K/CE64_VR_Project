@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerGtabItem : MonoBehaviour
 {
-    private MqttProtocol mqtt;
     private LayerMask grabbableLayer;
 
     private Rigidbody connectedRigidbody;
