@@ -12,6 +12,7 @@
     {
       "FullName": "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "LastWriteTime": "2021-09-16T18:20:44Z"
+<<<<<<< Updated upstream
     },
     {
       "FullName": "UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -28,6 +29,8 @@
     {
       "FullName": "UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "LastWriteTime": "2021-09-16T18:25:48Z"
+=======
+>>>>>>> Stashed changes
     }
   ],
   "Functions": [
@@ -52,6 +55,7 @@
         1,
         2
       ]
+<<<<<<< Updated upstream
     },
     {
       "FullName": "System.Void UnityEngine.Animations.ProcessAnimationJobStruct`1<UnityEngine.Animations.Rigging.RigSyncSceneToStreamJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
@@ -94,6 +98,8 @@
         1,
         2
       ]
+=======
+>>>>>>> Stashed changes
     }
   ]
 }
