@@ -21,7 +21,7 @@ public class PlayerHandController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void ControlHand()
+    void ControlHandByMqtt()
     {
         string[] handSide = mqtt.data.Split(':');
         if(handSide[0] == "hr")
@@ -29,6 +29,22 @@ public class PlayerHandController : MonoBehaviour
             RIndexValue = float.Parse(handSide[1].Split(' ')[1])/divisor;
             RMiddleValue = float.Parse(handSide[1].Split(' ')[2])/divisor;
             RThumbValue = float.Parse(handSide[1].Split(' ')[0])/divisor;
+        }
+    }
+
+    void ControlHandByKeyboard()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            RIndexValue -= 0.1f;
+            RMiddleValue -= 0.1f;
+            RThumbValue -= 0.1f;
+        }
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            RIndexValue += 0.1f;
+            RMiddleValue += 0.1f;
+            RThumbValue += 0.1f;
         }
     }
 
@@ -40,13 +56,17 @@ public class PlayerHandController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(mqttTempData != mqtt.data)
         {
             Debug.Log(mqtt.data);
             mqttTempData = mqtt.data;
-            ControlHand();
+            ControlHandByMqtt();
+        }
+        else if(Input.anyKeyDown)
+        {
+            ControlHandByKeyboard();
         }
 
         AnimateHand();
