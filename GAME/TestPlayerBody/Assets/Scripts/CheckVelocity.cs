@@ -17,6 +17,6 @@ public class CheckVelocity : MonoBehaviour
     void FixedUpdate()
     {
         itemVelocityMagnitude = itemRigidbody.velocity.magnitude;
-        Debug.Log("Velocity Magnitude of " + gameObject.name + ": " + itemVelocityMagnitude);
+        // Debug.Log("Velocity Magnitude of " + gameObject.name + ": " + itemVelocityMagnitude);
     }
 }

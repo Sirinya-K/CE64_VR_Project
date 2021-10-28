@@ -24,6 +24,8 @@ public class PlayerGtabItem : MonoBehaviour
     private float fingerValue = 0f;
     private float diff = 0.1f;
 
+    // private Collider[] itemColliders;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,16 +51,14 @@ public class PlayerGtabItem : MonoBehaviour
                     Debug.Log("Grab");
 
                     // Create Fixed Joint between the Item and Hand
-                    itemBody = other.gameObject.GetComponent<Rigidbody>();
-                    itemBody.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                    itemBody.interpolation = RigidbodyInterpolation.Interpolate;
-
                     itemJoint = other.gameObject.AddComponent<FixedJoint>();
                     itemJoint.connectedBody = connectedBody;
                     itemJoint.connectedMassScale = 0;
-
-                    // Set the Item's gravity to false
+                    
+                    itemBody = other.gameObject.GetComponent<Rigidbody>();
                     itemBody.useGravity = false;
+                    itemBody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+                    itemBody.interpolation = RigidbodyInterpolation.Interpolate;
 
                     // Add CheckVelocity Script to the Item
                     other.gameObject.AddComponent<CheckVelocity>();
@@ -79,6 +79,10 @@ public class PlayerGtabItem : MonoBehaviour
                         finger = "middle";
                         fingerValue = hand.RMiddleValue;
                     }
+                    
+                    // Set Trigger on the Item
+                    // itemColliders = other.gameObject.GetComponentsInChildren<Collider>();
+                    // foreach (Collider c in itemColliders) c.isTrigger = true;
                 }
             }
         }
@@ -87,10 +91,12 @@ public class PlayerGtabItem : MonoBehaviour
     private void Release()
     {
         Debug.Log("Release");
-        
+
         Destroy(itemJoint);
         itemBody.useGravity = true;
         itemBody = null;
+
+        // foreach (Collider c in itemColliders) c.isTrigger = false;
 
         finger = "";
         fingerValue = 0f;
@@ -103,11 +109,11 @@ public class PlayerGtabItem : MonoBehaviour
         {
             Release();
         }
-        else if(finger == "middle" && (fingerValue - hand.RMiddleValue >= diff))
+        else if (finger == "middle" && (fingerValue - hand.RMiddleValue >= diff))
         {
             Release();
         }
-        else if(finger == "both" && (fingerValue - hand.RIndexValue >= diff && fingerValue - hand.RMiddleValue >= diff))
+        else if (finger == "both" && (fingerValue - hand.RIndexValue >= diff && fingerValue - hand.RMiddleValue >= diff))
         {
             Release();
         }
