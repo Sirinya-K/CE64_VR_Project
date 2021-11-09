@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public MqttProtocol mqtt;
+
     public GameObject floatingDamagePrefab;
     public GameObject floatingDamageParent;
 
     public HealthBar healthBar;
     [SerializeField] private int maxHealth = 1000;
     private int currentHealth;
+
+    private string armState;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +22,12 @@ public class Enemy : MonoBehaviour
         enemyBody.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
         currentHealth = maxHealth;
+    }
+
+    private void CheckArmState(string armState)
+    {
+        if (armState is "stop") mqtt.Publish("/un/out/", "ar:S");
+        else if (armState is "free") mqtt.Publish("/un/out/", "ar:F");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,6 +40,13 @@ public class Enemy : MonoBehaviour
         Rigidbody weaponBody = other.transform.parent.gameObject.GetComponent<Rigidbody>();
 
         TakeDamage(weaponBody);
+
+        CheckArmState("stop");
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        CheckArmState("free");
     }
 
     private void TakeDamage(Rigidbody weaponBody)
@@ -41,11 +58,11 @@ public class Enemy : MonoBehaviour
         int damage = 0;
 
         // Calculate taken damage based on weapon force
-        if (force >= 0.03) damage = (int)(Random.Range(34, 50) * CriticalHit());
+        if (force >= 0.03) damage = (int)(Random.Range(34, 50) * CheckCriticalHit());
         else if (force >= 0.0001) damage = (int)(Random.Range(1, 5));
-        else damage = (int)(Random.Range(65, 100) * CriticalHit());
+        else damage = (int)(Random.Range(65, 100) * CheckCriticalHit());
 
-        Debug.Log("force: " + force + ", damage: " + damage);
+        // Debug.Log("force: " + force + ", damage: " + damage);
 
         var parentTransform = floatingDamageParent.transform;
 
@@ -55,7 +72,7 @@ public class Enemy : MonoBehaviour
         CheckHealth(damage);
     }
 
-    private int CriticalHit()
+    private int CheckCriticalHit()
     {
         if (Random.Range(0, 20) == 2)
         {

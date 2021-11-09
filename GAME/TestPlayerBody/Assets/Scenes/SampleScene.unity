@@ -3422,6 +3422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01dc595661e6f7a488601330cf32eea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mqtt: {fileID: 489664339}
   floatingDamagePrefab: {fileID: 6635440332376312400, guid: 5f519f0020d0b294993fb54d15db8695,
     type: 3}
   floatingDamageParent: {fileID: 413809099}
