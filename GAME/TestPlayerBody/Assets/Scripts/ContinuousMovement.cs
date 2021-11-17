@@ -52,22 +52,22 @@ public class ContinuousMovement : MonoBehaviour
         sbyte fb = sbyte.Parse(currentData.Split(' ')[0]); // 8-bit integers
         sbyte lr = sbyte.Parse(currentData.Split(' ')[1]);
 
-        if (lr > 5) // Left
+        if (lr > 6) // Left
         {
             direction = headYaw * new Vector3(-1, 0, 0);
             character.Move(direction * Time.fixedDeltaTime * speed);
         }
-        if (lr < 5) // Right
+        if (lr < 4) // Right
         {
             direction = headYaw * new Vector3(1, 0, 0);
             character.Move(direction * Time.fixedDeltaTime * speed);
         }
-        if (fb > 5) // Backward
+        if (fb > 6) // Backward
         {
             direction = headYaw * new Vector3(0, 0, -1);
             character.Move(direction * Time.fixedDeltaTime * speed);
         }
-        if (fb < 5) //Forward
+        if (fb < 4) //Forward
         {
             direction = headYaw * new Vector3(0, 0, 1);
             character.Move(direction * Time.fixedDeltaTime * speed);
@@ -111,7 +111,7 @@ public class ContinuousMovement : MonoBehaviour
             mqttCurrentData = mqtt.data.Split('+')[1];
             ControlMovementByMqtt(mqttCurrentData);
         }
-        if (Input.anyKeyDown)
+        if (Input.anyKey)
         {
             ControlMovementByKeyboard();
         }
