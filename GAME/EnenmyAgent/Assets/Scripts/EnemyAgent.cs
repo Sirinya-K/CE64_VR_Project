@@ -85,6 +85,8 @@ public class EnemyAgent : Agent
                 }
             }
         }
+        // check distance bet 2 agent
+        envController.ResolveEvent(Event.OutOfRange);
     }
 
     /// <summary>
@@ -183,9 +185,13 @@ public class EnemyAgent : Agent
         if (dirToGoForwardAction == 1)
         {
             dirToGo = transform.forward * 1f;
+            anim.SetFloat("WalkDir", 2f);
         }
         else if (dirToGoForwardAction == 2)
+        {
             dirToGo = transform.forward * arenaSettings.speedReductionFactor * -1f;
+            anim.SetFloat("WalkDir", -3f);
+        }
         if (rotateDirAction == 1)
             rotateDir = transform.up * -1f;
         else if (rotateDirAction == 2)
@@ -196,7 +202,7 @@ public class EnemyAgent : Agent
             dirToGo = transform.right * arenaSettings.speedReductionFactor;
         if (attackAction == 1)
         {
-            this.Attack();
+            //this.Attack();
         }
 
         var force = agentRot * dirToGo * arenaSettings.agentRunSpeed;

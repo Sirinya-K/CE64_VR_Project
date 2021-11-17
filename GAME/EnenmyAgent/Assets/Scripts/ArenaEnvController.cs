@@ -45,6 +45,8 @@ public class ArenaEnvController : MonoBehaviour
     private int resetTimer;
     public int MaxEnvironmentSteps;
 
+    float agentRot;
+
     void Start()
     {
 
@@ -80,13 +82,13 @@ public class ArenaEnvController : MonoBehaviour
         {
             //can use for hit shield/sword it cant take damage 
             case Event.OutOfRange:
-                if (lastHitter == Team.Blue)
+                if (Vector3.Distance(blueAgentRb.transform.position,purpleAgentRb.transform.position)>12f)
                 {
                     blueAgent.AddReward(-1);
-                }
-                else if (lastHitter == Team.Purple)
-                {
                     purpleAgent.AddReward(-1);
+                    blueAgent.EndEpisode();
+                    purpleAgent.EndEpisode();
+                    ResetScene();
                 }
 
                 // end episode
@@ -186,9 +188,17 @@ public class ArenaEnvController : MonoBehaviour
         lastHitter = Team.Default; // reset last hitter
         foreach (var agent in AgentsList)
         {
+            if (agent.CompareTag("purpleAgent"))
+            {
+                agentRot = 1;
+            }
+            else if (agent.CompareTag("blueAgent"))
+            {
+                agentRot = -1;
+            }
             // randomise starting positions and rotations
-            var randomPosX = Random.Range(-0.5f, 0.5f);
-            var randomPosZ = Random.Range(-0.5f, 0.5f);
+            var randomPosX = Random.Range(-1f, 1f);
+            var randomPosZ = Random.Range(2f*agentRot, 5f*agentRot);
             var randomRot = Random.Range(-45f, 45f);
             agent.transform.localPosition = new Vector3(randomPosX, 0, randomPosZ);
             agent.transform.eulerAngles = new Vector3(0, randomRot, 0);
