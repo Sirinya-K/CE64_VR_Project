@@ -54,7 +54,7 @@ public class PlayerGtabItem : MonoBehaviour
                     itemJoint = other.gameObject.AddComponent<FixedJoint>();
                     itemJoint.connectedBody = connectedBody;
                     itemJoint.connectedMassScale = 0;
-                    
+
                     itemBody = other.gameObject.GetComponent<Rigidbody>();
                     itemBody.useGravity = false;
                     itemBody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
@@ -63,7 +63,7 @@ public class PlayerGtabItem : MonoBehaviour
                     // Add CheckVelocity Script to the Item
                     other.gameObject.AddComponent<CheckVelocity>();
 
-                    // Save Finger Value
+                    // Save Finger Value (เช็คว่าเป็นการจับแบบไหน (ฝ่ามือ,โป้ง)ชี้กลาง/(ฝ่ามือ,โป้ง)ชี้/(ฝ่ามือ,โป้ง)กลาง)
                     if (indexCollision.collisionStatus && middleCollision.collisionStatus)
                     {
                         finger = "both";
@@ -79,7 +79,7 @@ public class PlayerGtabItem : MonoBehaviour
                         finger = "middle";
                         fingerValue = hand.RMiddleValue;
                     }
-                    
+
                     // Set Trigger on the Item
                     // itemColliders = other.gameObject.GetComponentsInChildren<Collider>();
                     // foreach (Collider c in itemColliders) c.isTrigger = true;

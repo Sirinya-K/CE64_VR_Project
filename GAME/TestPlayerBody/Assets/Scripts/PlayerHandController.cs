@@ -7,11 +7,9 @@ public class PlayerHandController : MonoBehaviour
     private MqttProtocol mqtt;
     private Animator animator;
 
-    public float RIndexValue;
-    public float RMiddleValue;
-    public float RThumbValue;
+    public float RIndexValue, RMiddleValue, RThumbValue;
 
-    private int divisor = 20;
+    private float divisor = 20f;
     private string mqttTempData = "";
 
     // Start is called before the first frame update
@@ -21,26 +19,60 @@ public class PlayerHandController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    public void PublishHandToMqtt(string fingerState, string finger)
+    {
+        if (fingerState == "stop")
+        {
+            if (finger == "R_Thumb")
+            {
+                mqtt.Publish("/hr/", "t" + RThumbValue * divisor);
+            }
+            else if (finger == "R_Index")
+            {
+                mqtt.Publish("/hr/", "i" + RIndexValue * divisor);
+            }
+            else if (finger == "R_Middle")
+            {
+                mqtt.Publish("/hr/", "m" + RMiddleValue * divisor);
+            }
+        }
+        else if (fingerState == "free")
+        {
+            if (finger == "R_Thumb")
+            {
+                mqtt.Publish("/hr/", "t" + divisor);
+            }
+            else if (finger == "R_Index")
+            {
+                mqtt.Publish("/hr/", "i" + divisor);
+            }
+            else if (finger == "R_Middle")
+            {
+                mqtt.Publish("/hr/", "m" + divisor);
+            }
+        }
+    }
+
     void ControlHandByMqtt()
     {
         string[] handSide = mqtt.data.Split(':');
-        if(handSide[0] == "hr")
+        if (handSide[0] == "hr")
         {
-            RIndexValue = float.Parse(handSide[1].Split(' ')[1])/divisor;
-            RMiddleValue = float.Parse(handSide[1].Split(' ')[2])/divisor;
-            RThumbValue = float.Parse(handSide[1].Split(' ')[0])/divisor;
+            RIndexValue = float.Parse(handSide[1].Split(' ')[1]) / divisor;
+            RMiddleValue = float.Parse(handSide[1].Split(' ')[2]) / divisor;
+            RThumbValue = float.Parse(handSide[1].Split(' ')[0]) / divisor;
         }
     }
 
     void ControlHandByKeyboard()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             RIndexValue -= 0.1f;
             RMiddleValue -= 0.1f;
             RThumbValue -= 0.1f;
         }
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             RIndexValue += 0.1f;
             RMiddleValue += 0.1f;
@@ -58,13 +90,13 @@ public class PlayerHandController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(mqttTempData != mqtt.data)
+        if (mqttTempData != mqtt.data)
         {
-            Debug.Log(mqtt.data);
+            // Debug.Log(mqtt.data);
             mqttTempData = mqtt.data;
             ControlHandByMqtt();
         }
-        else if(Input.anyKeyDown)
+        else if (Input.anyKeyDown)
         {
             ControlHandByKeyboard();
         }

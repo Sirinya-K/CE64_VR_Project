@@ -18,7 +18,7 @@ public class MqttProtocol : MonoBehaviour
     public string userName = "test";
     public string password = "test";
     public TextAsset certificate;
-    static string subTopic = "/un/in/#";
+    static string subTopic = "/ui/#";
 
 	public string data = "";
 

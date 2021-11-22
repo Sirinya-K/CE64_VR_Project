@@ -29,11 +29,13 @@ public class Player : MonoBehaviour
         currentStamina = maxStamina;
     }
 
+    // Note: ควรทำ script PlayerArmController แยกออกมาเลย
+    // Note: ควรเปลี่ยนชื่อเป็น PublishArmStateToMqtt
     public void CheckArmState(string armState)
     {
-        if (armState is "stop") mqtt.Publish("/un/out/", "ar:S");
-        else if (armState is "free") mqtt.Publish("/un/out/", "ar:F");
-        else if (armState is "in") mqtt.Publish("/un/out/", "ar:I");
+        if (armState is "stop") mqtt.Publish("/ar/", "S");
+        else if (armState is "free") mqtt.Publish("/ar/", "F");
+        else if (armState is "in") mqtt.Publish("/ar/", "I");
     }
 
     public void TakeDamage(int damage)

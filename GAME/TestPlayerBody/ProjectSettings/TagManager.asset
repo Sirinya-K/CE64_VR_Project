@@ -8,6 +8,9 @@ TagManager:
   - EnemyWeapon
   - Stoppable
   - Shield
+  - blueAgent
+  - blueSword
+  - walkableSurface
   layers:
   - Default
   - TransparentFX

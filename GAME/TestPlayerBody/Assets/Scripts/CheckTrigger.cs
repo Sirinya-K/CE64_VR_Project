@@ -19,7 +19,7 @@ public class CheckTrigger : MonoBehaviour
             player.regenable = false;
             StartCoroutine(player.DelayRegenerateStamina());
 
-            if (player.currentStamina == 0) player.TakeDamage((int)(Random.Range(34, 50)));
+            if (player.currentStamina == 0) player.TakeDamage((int)(Random.Range(34, 50)/2));
             else
             {
                 player.TakeDamage(0);
@@ -28,6 +28,7 @@ public class CheckTrigger : MonoBehaviour
         }
         else player.TakeDamage((int)(Random.Range(34, 50)));
 
+        // เช็คว่าเป็นส่วนของแขนใช่มั้ย
         if (gameObject.tag == "Stoppable")
         {
             Debug.Log("in");
@@ -37,6 +38,8 @@ public class CheckTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (!other.gameObject.CompareTag("EnemyWeapon")) return;
+
         if (gameObject.tag == "Stoppable")
         {
             Debug.Log("free");

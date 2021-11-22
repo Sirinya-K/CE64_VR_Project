@@ -26,8 +26,8 @@ public class Enemy : MonoBehaviour
 
     private void CheckArmState(string armState)
     {
-        if (armState is "stop") mqtt.Publish("/un/out/", "ar:S");
-        else if (armState is "free") mqtt.Publish("/un/out/", "ar:F");
+        if (armState is "stop") mqtt.Publish("/ar/", "S");
+        else if (armState is "free") mqtt.Publish("/ar/", "F");
     }
 
     private void OnTriggerEnter(Collider other)
