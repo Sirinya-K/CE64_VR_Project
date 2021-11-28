@@ -14,13 +14,12 @@ public enum Event
     HitBlueBody = 0,
     HitPurpleBody = 1,
     OutOfRange = 2,
-    HitIntoBlueArea = 3,
-    HitIntoPurpleArea = 4
+    BlueDontHitEnemy = 3,
+    PurpleDontHitEnemy = 4
 }
 
 public class ArenaEnvController : MonoBehaviour
 {
-    int ballSpawnSide;
 
     ArenaSettings arenaSettings;
 
@@ -33,12 +32,12 @@ public class ArenaEnvController : MonoBehaviour
     Rigidbody blueAgentRb;
     Rigidbody purpleAgentRb;
 
-    public GameObject blueGoal;
-    public GameObject purpleGoal;
+    //public GameObject blueGoal;
+    //public GameObject purpleGoal;
 
-    Renderer blueGoalRenderer;
+    //Renderer blueGoalRenderer;
 
-    Renderer purpleGoalRenderer;
+    //Renderer purpleGoalRenderer;
 
     Team lastHitter;
 
@@ -55,10 +54,10 @@ public class ArenaEnvController : MonoBehaviour
         purpleAgentRb = purpleAgent.GetComponent<Rigidbody>();
 
         // Render ground to visualise which agent scored
-        blueGoalRenderer = blueGoal.GetComponent<Renderer>();
-        purpleGoalRenderer = purpleGoal.GetComponent<Renderer>();
-        RenderersList.Add(blueGoalRenderer);
-        RenderersList.Add(purpleGoalRenderer);
+        //blueGoalRenderer = blueGoal.GetComponent<Renderer>();
+        //purpleGoalRenderer = purpleGoal.GetComponent<Renderer>();
+        //RenderersList.Add(blueGoalRenderer);
+        //RenderersList.Add(purpleGoalRenderer);
 
         arenaSettings = FindObjectOfType<ArenaSettings>();
 
@@ -82,7 +81,7 @@ public class ArenaEnvController : MonoBehaviour
         {
             //can use for hit shield/sword it cant take damage 
             case Event.OutOfRange:
-                if (Vector3.Distance(blueAgentRb.transform.position,purpleAgentRb.transform.position)>12f)
+                if (Vector3.Distance(blueAgentRb.transform.position, purpleAgentRb.transform.position) > 12f)
                 {
                     blueAgent.AddReward(-1);
                     purpleAgent.AddReward(-1);
@@ -96,47 +95,41 @@ public class ArenaEnvController : MonoBehaviour
 
             case Event.HitPurpleBody:
                 // blue wins
-
                 // turn +floor blue
-                StartCoroutine(GoalScoredSwapGroundMaterial(arenaSettings.blueGoalMaterial, RenderersList, .5f));
+                //StartCoroutine(GoalScoredSwapGroundMaterial(arenaSettings.blueGoalMaterial, RenderersList, .5f));
                 // Add reward
                 blueAgent.AddReward(2);
                 purpleAgent.AddReward(-1);
 
                 // end episode
-                // blueAgent.EndEpisode();
-                // purpleAgent.EndEpisode();
+                //blueAgent.EndEpisode();
+                //purpleAgent.EndEpisode();
                 ResetScene();
                 break;
 
             case Event.HitBlueBody:
                 // purple wins
-
                 // turn floor purple
-                StartCoroutine(GoalScoredSwapGroundMaterial(arenaSettings.purpleGoalMaterial, RenderersList, .5f));
+                //StartCoroutine(GoalScoredSwapGroundMaterial(arenaSettings.purpleGoalMaterial, RenderersList, .5f));
                 // Add reward
                 blueAgent.AddReward(2);
                 purpleAgent.AddReward(-1);
 
                 // end episode
-                // blueAgent.EndEpisode();
-                // purpleAgent.EndEpisode();
+                //blueAgent.EndEpisode();
+                //purpleAgent.EndEpisode();
                 ResetScene();
                 break;
 
-            case Event.HitIntoBlueArea:
-                if (lastHitter == Team.Purple)
-                {
-                    purpleAgent.AddReward(2);
-                }
+            case Event.BlueDontHitEnemy:
+                blueAgent.AddReward(-.5f);
                 break;
 
-            case Event.HitIntoPurpleArea:
-                if (lastHitter == Team.Blue)
-                {
-                    blueAgent.AddReward(2);
-                }
+            case Event.PurpleDontHitEnemy:
+                purpleAgent.AddReward(-.5f);
                 break;
+
+
         }
     }
 
@@ -154,7 +147,7 @@ public class ArenaEnvController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(time); // wait for 2 sec
-        
+
         foreach (var renderer in rendererList)
         {
             renderer.material = arenaSettings.defaultMaterial;
@@ -198,7 +191,7 @@ public class ArenaEnvController : MonoBehaviour
             }
             // randomise starting positions and rotations
             var randomPosX = Random.Range(-1f, 1f);
-            var randomPosZ = Random.Range(2f*agentRot, 5f*agentRot);
+            var randomPosZ = Random.Range(2f * agentRot, 5f * agentRot);
             var randomRot = Random.Range(-45f, 45f);
             agent.transform.localPosition = new Vector3(randomPosX, 0, randomPosZ);
             agent.transform.eulerAngles = new Vector3(0, randomRot, 0);

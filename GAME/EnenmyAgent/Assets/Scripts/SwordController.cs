@@ -11,26 +11,58 @@ public class SwordController : MonoBehaviour
     public GameObject weapon;
     Collider weaponCollider;
 
+    public EnemyAgent enemy;
+    public bool isAttack = false;
+    public bool readyCheck = false;
+
     // Start is called before the first frame update
     private void Start()
     {
         envController = GetComponentInParent<ArenaEnvController>();
+        enemy = GetComponentInParent<EnemyAgent>();
         weaponCollider = weapon.GetComponent<Collider>();
+    }
+    void FixedUpdate()
+    {
+        if (enemy.tmpAttack)
+        {
+            readyCheck = true;
+        }
+        if (!enemy.tmpAttack && readyCheck && teamId == Team.Blue)
+        {
+            readyCheck = false;
+            if (isAttack)
+            {
+                envController.ResolveEvent(Event.HitPurpleBody);
+                isAttack = false;
+            }
+            else envController.ResolveEvent(Event.BlueDontHitEnemy);
+        }
+        else if (!enemy.tmpAttack && readyCheck && teamId == Team.Purple)
+        {
+            readyCheck = false;
+            if (isAttack)
+            {
+                envController.ResolveEvent(Event.HitBlueBody);
+                isAttack = false;
+            }
+            else envController.ResolveEvent(Event.PurpleDontHitEnemy);
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(teamId == Team.Blue)
+        if (teamId == Team.Blue && enemy.tmpAttack)
         {
             if (collision.gameObject.CompareTag("purpleAgent"))
             {
-                envController.ResolveEvent(Event.HitPurpleBody);
+                isAttack = true;
             }
         }
-        if (teamId == Team.Purple)
+        else if (teamId == Team.Purple && enemy.tmpAttack)
         {
             if (collision.gameObject.CompareTag("blueAgent"))
             {
-                envController.ResolveEvent(Event.HitBlueBody);
+                isAttack = true;
             }
         }
     }

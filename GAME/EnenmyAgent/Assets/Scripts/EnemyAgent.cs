@@ -22,6 +22,7 @@ public class EnemyAgent : Agent
     ArenaEnvController envController;
 
     private Animator anim;
+    public bool isAttack { get; set; }
 
     // Controls jump behavior
     float jumpingTime;
@@ -30,6 +31,8 @@ public class EnemyAgent : Agent
     // direction of agent
     float agentRot;
     float maxSpeed;
+
+    public bool tmpAttack { get; set; }
 
     public Collider[] hitGroundColliders = new Collider[3];
     EnvironmentParameters resetParams;
@@ -63,28 +66,17 @@ public class EnemyAgent : Agent
     {
         anim = GetComponentInChildren<Animator>();
 
-        // Controll maxSpeed of Agent
-        if (agentRb.velocity.magnitude > maxSpeed)
-        {
-            agentRb.velocity = agentRb.velocity.normalized * maxSpeed;
-        }
-        if (agentRb.velocity.magnitude >= 0)
-        {
-            var speedMap = 0f;
-            speedMap = agentRb.velocity.magnitude / maxSpeed;
-            if (speedMap >= 0)
+        var speedMap = 0f;
+        speedMap = agentRb.velocity.magnitude / maxSpeed;
+            anim.SetFloat("Speed", Mathf.Abs(speedMap));
+            if (Input.GetKey(KeyCode.W))
             {
-                anim.SetFloat("Speed", Mathf.Abs(speedMap));
-                if (Input.GetKey(KeyCode.W))
-                {
-                    anim.SetFloat("WalkDir", 2f);
-                }
-                else if (Input.GetKey(KeyCode.S))
-                {
-                    anim.SetFloat("WalkDir", -3f);
-                }
+                anim.SetFloat("WalkDir", 2f);
             }
-        }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                anim.SetFloat("WalkDir", -3f);
+            }
         // check distance bet 2 agent
         envController.ResolveEvent(Event.OutOfRange);
     }
@@ -163,8 +155,11 @@ public class EnemyAgent : Agent
     /// </summary>
     public void Attack()
     {
-        anim.SetTrigger("Attack");
-        this.AddReward(-0.1f);
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Movement"))
+        {
+            anim.SetTrigger("Attack");
+            //isAttack = true;
+        }
     }
 
     /// <summary>
@@ -175,12 +170,12 @@ public class EnemyAgent : Agent
         var dirToGo = Vector3.zero;
         var rotateDir = Vector3.zero;
 
-        var grounded = CheckIfGrounded();
-
         var dirToGoForwardAction = act[0];
         var rotateDirAction = act[1];
         var dirToGoSideAction = act[2];
         var attackAction = act[3];
+
+        tmpAttack = anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|Sword_atk01");
 
         if (dirToGoForwardAction == 1)
         {
@@ -202,9 +197,9 @@ public class EnemyAgent : Agent
             dirToGo = transform.right * arenaSettings.speedReductionFactor;
         if (attackAction == 1)
         {
-            //this.Attack();
+            this.Attack();
         }
-
+        //swordController.isAttack = false;
         var force = agentRot * dirToGo * arenaSettings.agentRunSpeed;
 
         transform.Rotate(rotateDir, Time.fixedDeltaTime * 200f);
