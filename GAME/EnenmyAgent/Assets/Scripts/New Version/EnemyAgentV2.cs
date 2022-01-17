@@ -73,7 +73,9 @@ public class EnemyAgentV2 : Agent
         var dirToGoForwardAction = act[0];
         var rotateDirAction = act[1];
         var dirToGoSideAction = act[2];
-        var attackAction = act[3];
+        var attackAction_1 = act[3];
+        var attackAction_2 = act[4];
+        var blockAttack = act[5];
 
         // tmpAttack = anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|Sword_atk01");
 
@@ -83,7 +85,7 @@ public class EnemyAgentV2 : Agent
         }
         else if (dirToGoForwardAction == 2)
         {
-            dirToGo = transform.forward * arenaSettings.speedReductionFactor * -1f;
+            dirToGo = transform.forward * -1f;
         }
         if (rotateDirAction == 1)
             rotateDir = transform.up * -1f;
@@ -97,7 +99,7 @@ public class EnemyAgentV2 : Agent
         {
             dirToGo = transform.right * arenaSettings.speedReductionFactor;
         }
-        if (attackAction == 1)
+        if (attackAction_1 == 1)
         {
             // this.Attack();
         }
@@ -105,8 +107,7 @@ public class EnemyAgentV2 : Agent
         var force = agentRot * dirToGo * arenaSettings.agentRunSpeed;
 
         transform.Rotate(rotateDir, Time.fixedDeltaTime * 200f);
-        agentRB.AddForce(force,
-            ForceMode.VelocityChange);
+        agentRB.AddForce(force, ForceMode.VelocityChange);
 
         // condition of walking animator
 
