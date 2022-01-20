@@ -1,0 +1,56 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 20499986,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-20499986.onnx",
+                "reward": 0.1272727142680775,
+                "creation_time": 1637685729.7479916,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-20499986.pt"
+                ]
+            },
+            {
+                "steps": 20999996,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-20999996.onnx",
+                "reward": 0.15321099703465033,
+                "creation_time": 1637686362.1242719,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-20999996.pt"
+                ]
+            },
+            {
+                "steps": 21499986,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-21499986.onnx",
+                "reward": 0.16424579760215802,
+                "creation_time": 1637687017.7138195,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-21499986.pt"
+                ]
+            },
+            {
+                "steps": 21999954,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-21999954.onnx",
+                "reward": 0.1928571377481733,
+                "creation_time": 1637687706.2431092,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-21999954.pt"
+                ]
+            },
+            {
+                "steps": 22499956,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-22499956.onnx",
+                "reward": 0.19771427563258578,
+                "creation_time": 1637688355.4174378,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-22499956.pt"
+                ]
+            }
+        ]
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}
