@@ -18,7 +18,7 @@ public class MqttProtocol : MonoBehaviour
     public string userName = "test";
     public string password = "test";
     public TextAsset certificate;
-    static string subTopic = "/un/in/#";
+    static string subTopic = "/ui/#";
 
 	public string data = "";
 
@@ -37,7 +37,7 @@ public class MqttProtocol : MonoBehaviour
         if (brokerHostname != null && userName != null && password != null)
 		{
 			Debug.Log("connecting to " + brokerHostname + ":" + brokerPort);
-			// Connect();
+			Connect();
 			client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
 			byte[] qosLevels = { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE };
 			client.Subscribe(new string[] { subTopic }, qosLevels);
