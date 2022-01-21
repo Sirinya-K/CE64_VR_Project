@@ -23,6 +23,8 @@ public class ContinuousMovement : MonoBehaviour
 
     private Quaternion headYaw;
 
+    private float fallingSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -118,5 +120,8 @@ public class ContinuousMovement : MonoBehaviour
 
         // Vector3 direction = new Vector3(inputAxis.x, 0, inputAxis.y);
         // character.Move(direction * Time.fixedDeltaTime * speed);
+
+        fallingSpeed = -10;
+        character.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
     }
 }
