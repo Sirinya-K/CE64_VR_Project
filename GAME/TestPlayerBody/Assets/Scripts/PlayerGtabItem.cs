@@ -26,6 +26,9 @@ public class PlayerGtabItem : MonoBehaviour
 
     // private Collider[] itemColliders;
 
+    [HideInInspector]
+    public GameObject theItem;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +86,10 @@ public class PlayerGtabItem : MonoBehaviour
                     // Set Trigger on the Item
                     // itemColliders = other.gameObject.GetComponentsInChildren<Collider>();
                     // foreach (Collider c in itemColliders) c.isTrigger = true;
+
+                    //ให้ item เป็นลูกของ player เพื่อให้ position ตามติด
+                    theItem = other.gameObject;
+                    theItem.transform.parent = this.transform;
                 }
             }
         }
@@ -93,13 +100,16 @@ public class PlayerGtabItem : MonoBehaviour
         Debug.Log("Release");
 
         Destroy(itemJoint);
-        itemBody.useGravity = true;
+        // itemBody.useGravity = true;
         itemBody = null;
 
         // foreach (Collider c in itemColliders) c.isTrigger = false;
 
         finger = "";
         fingerValue = 0f;
+
+        //ปลด parent เมื่อผู้เล่นปล่อย item แล้ว
+        theItem.transform.parent = null;
     }
 
     // Update is called once per frame
