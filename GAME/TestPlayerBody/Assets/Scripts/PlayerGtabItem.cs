@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerGtabItem : MonoBehaviour
 {
+    public Player player;
+
     private LayerMask grabbableLayer;
 
     private Rigidbody connectedBody, itemBody;
@@ -24,10 +26,9 @@ public class PlayerGtabItem : MonoBehaviour
     private float fingerValue = 0f;
     private float diff = 0.1f;
 
-    // private Collider[] itemColliders;
+    private GameObject theItem;
 
-    [HideInInspector]
-    public GameObject theItem;
+    // private Collider[] itemColliders;
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +91,9 @@ public class PlayerGtabItem : MonoBehaviour
                     //ให้ item เป็นลูกของ player เพื่อให้ position ตามติด
                     theItem = other.gameObject;
                     theItem.transform.parent = this.transform;
+
+                    if(theItem.tag == "Weapon") player.GrabbedItem("Weapon");
+                    else player.GrabbedItem("NotWeapon");
                 }
             }
         }
@@ -110,6 +114,8 @@ public class PlayerGtabItem : MonoBehaviour
 
         //ปลด parent เมื่อผู้เล่นปล่อย item แล้ว
         theItem.transform.parent = null;
+        
+        player.GrabbedItem("NotWeapon");
     }
 
     // Update is called once per frame

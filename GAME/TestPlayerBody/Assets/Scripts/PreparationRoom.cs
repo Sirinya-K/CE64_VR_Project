@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PreparationRoom : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject playerObj;
+    public GameObject playerModel;
+    private Player player;
 
     public SpawnManagement spawnManagement;
     public GameObject startWaypoint;
@@ -13,11 +15,17 @@ public class PreparationRoom : MonoBehaviour
     public ArenaEntrance arenaEntrance;
 
     public GameObject arena;
+    
+    public GameObject theRoof;
 
     // Start is called before the first frame update
     void Start()
     {
-        spawnManagement.spawn(player, startWaypoint);
+        player = playerModel.GetComponent<Player>();
+
+        spawnManagement.spawn(playerObj, startWaypoint);
+
+        theRoof.SetActive(true);
     }
 
     // Update is called once per frame
@@ -26,10 +34,12 @@ public class PreparationRoom : MonoBehaviour
         //เมื่อผู้เล่นยืนหน้าประตู
         if(arenaEntrance.collision == true)
         {
-            //เช็คว่าหยิบอาวุธหรือยัง (ถ้าหยิบแล้ว object อาวุธ จะเป็นลูกของ object ผู้เล่น)
-
-            spawnManagement.spawn(player, arenaWaypoint);
-            arena.SetActive(true);
+            //เช็คว่าหยิบอาวุธหรือยัง
+            if(player.theItem == "Weapon")
+            {
+                spawnManagement.spawn(playerObj, arenaWaypoint);
+                arena.SetActive(true);
+            }
         }
     }
 }

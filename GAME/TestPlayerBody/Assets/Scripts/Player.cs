@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     [HideInInspector] public float currentStamina;
     [HideInInspector] public bool regenable;
 
+    [HideInInspector]
+    public string theItem;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,11 @@ public class Player : MonoBehaviour
         currentHp.text = currentHealth.ToString();
 
         currentStamina = maxStamina;
+    }
+
+    public void GrabbedItem(string grabbedItem)
+    {
+        theItem = grabbedItem;
     }
 
     // Note: ควรทำ script PlayerArmController แยกออกมาเลย
