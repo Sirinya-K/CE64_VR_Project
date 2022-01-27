@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PreparationRoom : MonoBehaviour
 {
+    public StateManagement stateManagement;
+    public Text stateNumber;
+
     public GameObject playerObj;
-    public GameObject playerModel;
-    private Player player;
+    public Player player;
 
     public SpawnManagement spawnManagement;
     public GameObject startWaypoint;
@@ -18,27 +21,37 @@ public class PreparationRoom : MonoBehaviour
     
     public GameObject theRoof;
 
+    private bool playerSpawn;
+
     // Start is called before the first frame update
     void Start()
     {
-        player = playerModel.GetComponent<Player>();
-
-        spawnManagement.spawn(playerObj, startWaypoint);
-
         theRoof.SetActive(true);
     }
 
-    // Update is called once per frame
+    // Update is called once per fram e
     void Update()
     {
+        //โชว์เลข state ปัจจุบัน
+        stateNumber.text = stateManagement.GetState().ToString();
+
+        if(!playerSpawn)
+        {
+            spawnManagement.spawn(playerObj, startWaypoint);
+            playerSpawn = true;
+        }
+
         //เมื่อผู้เล่นยืนหน้าประตู
-        if(arenaEntrance.collision == true)
+        if(arenaEntrance.collision)
         {
             //เช็คว่าหยิบอาวุธหรือยัง
             if(player.theItem == "Weapon")
             {
                 spawnManagement.spawn(playerObj, arenaWaypoint);
                 arena.SetActive(true);
+
+                this.gameObject.SetActive(false);
+                playerSpawn = false;
             }
         }
     }

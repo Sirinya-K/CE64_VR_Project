@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public GameObject floatingDamageParent;
 
     public HealthBar healthBar;
-    [SerializeField] private int maxHealth = 1000;
+    private int maxHealth = 20; //Defualt: 1000
     private int currentHealth;
 
     private string armState;
@@ -93,6 +93,11 @@ public class Enemy : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.UpdateHealth((float)currentHealth / (float)maxHealth);
+    }
+
+    public int getHealth()
+    {
+        return currentHealth;
     }
 
     // Update is called once per frame

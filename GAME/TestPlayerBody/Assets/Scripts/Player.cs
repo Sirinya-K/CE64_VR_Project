@@ -19,8 +19,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public float currentStamina;
     [HideInInspector] public bool regenable;
 
-    [HideInInspector]
-    public string theItem;
+    [HideInInspector] public string theItem;
+    [HideInInspector] public bool readey, win, fail;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +29,12 @@ public class Player : MonoBehaviour
         totalHp.text = "/" + maxHealth.ToString();
         currentHp.text = currentHealth.ToString();
 
+        currentStamina = maxStamina;
+    }
+
+    public void ResetPlayerStat()
+    {
+        currentHealth = maxHealth;
         currentStamina = maxStamina;
     }
 
@@ -89,6 +95,11 @@ public class Player : MonoBehaviour
         if (currentStamina > maxStamina) currentStamina = maxStamina;
 
         staminaBar.UpdateHealth((float)currentStamina / (float)maxStamina);
+    }
+
+    public int getHealth()
+    {
+        return currentHealth;
     }
 
     // Update is called once per frame
