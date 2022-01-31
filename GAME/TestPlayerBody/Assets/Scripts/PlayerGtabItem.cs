@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerGtabItem : MonoBehaviour
 {
+    public StateManagement stateManagement;
+
+    public GameObject preparationRoom;
+
     public Player player;
 
     private LayerMask grabbableLayer;
@@ -26,7 +30,8 @@ public class PlayerGtabItem : MonoBehaviour
     private float fingerValue = 0f;
     private float diff = 0.1f;
 
-    private GameObject theItem;
+    private GameObject theItem; //คือ item ที่ player กำลังถือ
+    private Vector3 theItemDefaultPosition; //position ดั้งเดิมของ theItem
 
     // private Collider[] itemColliders;
 
@@ -88,8 +93,9 @@ public class PlayerGtabItem : MonoBehaviour
                     // itemColliders = other.gameObject.GetComponentsInChildren<Collider>();
                     // foreach (Collider c in itemColliders) c.isTrigger = true;
 
-                    //ให้ item เป็นลูกของ player เพื่อให้ position ตามติด
+                    //เก็บข้อมูล object ที่ถือ และให้ item เป็นลูกของ player เพื่อให้ position ตามติด
                     theItem = other.gameObject;
+                    theItemDefaultPosition = theItem.transform.position;
                     theItem.transform.parent = this.transform;
 
                     if(theItem.tag == "Weapon") player.GrabbedItem("Weapon");
@@ -112,9 +118,8 @@ public class PlayerGtabItem : MonoBehaviour
         finger = "";
         fingerValue = 0f;
 
-        //ปลด parent เมื่อผู้เล่นปล่อย item แล้ว
-        theItem.transform.parent = null;
-        
+        //ให้ parent เป็น ห้องเตรียมตัว เมื่อผู้เล่นปล่อย item แล้ว
+        theItem.transform.parent = preparationRoom.gameObject.transform;
         player.GrabbedItem("NotWeapon");
     }
 
@@ -132,6 +137,14 @@ public class PlayerGtabItem : MonoBehaviour
         else if (finger == "both" && (fingerValue - hand.RIndexValue >= diff && fingerValue - hand.RMiddleValue >= diff))
         {
             Release();
+        }
+
+        //ปล่อยอาวุธกรณี player กลับหน้าเมนูหลัก
+        if(stateManagement.onMainMenu && theItem != null)
+        {
+            Release();
+            theItem.transform.position = theItemDefaultPosition;
+            theItem = null;
         }
     }
 }

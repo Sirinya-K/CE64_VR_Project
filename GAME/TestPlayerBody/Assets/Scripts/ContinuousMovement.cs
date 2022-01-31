@@ -9,7 +9,7 @@ public class ContinuousMovement : MonoBehaviour
     public MqttProtocol mqtt;
 
     // public XRNode inputSource;
-    public float speed = 1;
+    public float speed = 1.8f;
     public float additionalHeight = 0.2f;
 
     // private Vector2 inputAxis;

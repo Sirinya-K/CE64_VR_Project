@@ -24,6 +24,12 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    public void ResetEnemyStat()
+    {
+        currentHealth = maxHealth;
+        healthBar.UpdateHealth((float)currentHealth / (float)maxHealth);
+    }
+
     private void CheckArmState(string armState)
     {
         if (armState is "stop") mqtt.Publish("/ar/", "S");

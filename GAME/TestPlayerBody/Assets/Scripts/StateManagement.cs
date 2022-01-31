@@ -11,6 +11,7 @@ public class StateManagement : MonoBehaviour
     public Player player;
 
     private int state = 0;
+    [HideInInspector] public bool onMainMenu, onPreparationRoom, onArena;
 
     // Start is called before the first frame update
     void Start()
@@ -23,27 +24,49 @@ public class StateManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Debug.Log(state);
+
         if(state == 0)
         {
-            player.ResetPlayerStat();
+            // if(mainMenu.activeSelf == false)
+            // {
+            //     mainMenu.SetActive(true);
+            // }
 
-            if(mainMenu.activeSelf == false)
+            if(onMainMenu == false)
             {
+                //reset ข้อมูล player ทุกครั้งที่เริ่มใหม่
+                player.ResetPlayerStat();
+                
                 mainMenu.SetActive(true);
+                onMainMenu = true;
             }
         }
         else if(state == 1)
         {
-            if(preparationRoom.activeSelf == false)
+            // if(preparationRoom.activeSelf == false)
+            // {
+            //     preparationRoom.SetActive(true);
+            // }
+
+            if(onArena == false)
             {
-                preparationRoom.SetActive(true);
+                if(onPreparationRoom == false)
+                {
+                    preparationRoom.SetActive(true);
+                    onPreparationRoom = true;
+                }
             }
         }
         else if(state == 2)
         {
-            if(preparationRoom.activeSelf == false)
+            if(onArena == false)
             {
-                preparationRoom.SetActive(true);
+                if(onPreparationRoom == false)
+                {
+                    preparationRoom.SetActive(true);
+                    onPreparationRoom = true;
+                }
             }
         }
         else if(state == 3)

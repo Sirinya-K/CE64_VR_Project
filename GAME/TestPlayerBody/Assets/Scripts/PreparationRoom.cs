@@ -47,11 +47,17 @@ public class PreparationRoom : MonoBehaviour
             //เช็คว่าหยิบอาวุธหรือยัง
             if(player.theItem == "Weapon")
             {
-                spawnManagement.spawn(playerObj, arenaWaypoint);
+                //activate arena
                 arena.SetActive(true);
+                spawnManagement.spawn(playerObj, arenaWaypoint);
+
+                stateManagement.onPreparationRoom = false;
+                stateManagement.onArena = true;
+
+                playerSpawn = false;
+                arenaEntrance.collision = false;
 
                 this.gameObject.SetActive(false);
-                playerSpawn = false;
             }
         }
     }

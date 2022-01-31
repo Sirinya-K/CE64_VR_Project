@@ -20,40 +20,52 @@ public class Arena : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyObj.SetActive(true);
         enemy = enemyObj.GetComponent<Enemy>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!enemySpawn)
+        if (!enemySpawn)
         {
+            enemyObj.SetActive(true);
             spawnManagement.spawn(enemyObj, enemyWaypoint);
             enemySpawn = true;
         }
 
         //ถ้าศัตรูตาย
-        if(enemy.getHealth() <= 0)
+        if (enemy.getHealth() <= 0)
         {
-            enemyObj.SetActive(true);
-            //นับถอยหลัง 3 วิ แล้วไปยัง state ถัดไป
-            StartCoroutine(DelayThreeSec());
+            EnemyDead();
         }
 
         //ถ้าผู้เล่นตาย
-        if(player.getHealth() <= 0)
+        if (player.getHealth() <= 0)
         {
             stateManagement.ChooseState(0);
         }
     }
 
+    private void EnemyDead()
+    {
+        enemyObj.SetActive(false);
+        enemy.ResetEnemyStat();
+        //นับถอยหลัง 3 วิ แล้วไปยัง state ถัดไป
+        // StartCoroutine(DelayThreeSec());
+
+        stateManagement.onArena = false;
+        stateManagement.GoNextState();
+        enemySpawn = false;
+        this.gameObject.SetActive(false);
+    }
+
     private IEnumerator DelayThreeSec()
     {
         yield return new WaitForSeconds(3);
+        stateManagement.onArena = false;
         stateManagement.GoNextState();
 
-        this.gameObject.SetActive(false);
         enemySpawn = false;
+        this.gameObject.SetActive(false);
     }
 }

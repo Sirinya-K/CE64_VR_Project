@@ -32,10 +32,15 @@ public class MainMenu : MonoBehaviour
         //ถ้า player กดปุ่ม start
         if(startButton.collision)
         {
+            Debug.Log("START");
+
+            stateManagement.onMainMenu = false;
             stateManagement.GoNextState();
 
-            this.gameObject.SetActive(false);
             playerSpawn = false;
+            startButton.collision = false;
+
+            this.gameObject.SetActive(false);
         }
 
         //ถ้า player กดปุ่ม score
