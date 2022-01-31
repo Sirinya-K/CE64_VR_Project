@@ -65,6 +65,21 @@ public class EnemyAgentV2 : Agent
         // * Event check distance between 2 agent (out of range?)
         envController.ResolveEvent(Event.OutOfRange);
     }
+    void attack(int attackType)
+    {
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Movement"))
+        {
+            if(attackType == 1){
+                anim.SetTrigger("Attack_1");
+            }
+            else if(attackType == 2){
+                anim.SetTrigger("Attack_2");
+            }
+        }
+    }
+    void block(bool isBlock){
+        anim.SetBool("Block", isBlock);
+    }
     public void MoveAgent(ActionSegment<int> act)
     {
         var dirToGo = Vector3.zero;
@@ -73,9 +88,8 @@ public class EnemyAgentV2 : Agent
         var dirToGoForwardAction = act[0];
         var rotateDirAction = act[1];
         var dirToGoSideAction = act[2];
-        var attackAction_1 = act[3];
-        var attackAction_2 = act[4];
-        var blockAttack = act[5];
+        var attackAction = act[3];
+        var blockAction = act[4];
 
         // tmpAttack = anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|Sword_atk01");
 
@@ -99,9 +113,17 @@ public class EnemyAgentV2 : Agent
         {
             dirToGo = transform.right * arenaSettings.speedReductionFactor;
         }
-        if (attackAction_1 == 1)
+        if (attackAction == 1 || attackAction == 2)
         {
-            // this.Attack();
+            this.attack(attackAction);
+        }
+        if (blockAction == 1)
+        {
+            this.block(true);
+        }
+        if( blockAction == 0)
+        {
+            this.block(false);
         }
         //swordController.isAttack = false;
         var force = agentRot * dirToGo * arenaSettings.agentRunSpeed;
@@ -118,7 +140,20 @@ public class EnemyAgentV2 : Agent
     }
     public override void CollectObservations(VectorSensor sensor)
     {
-
+        // // * Agent/Enemy rotation
+        // sensor.AddObservation(this.transform.rotation.y);
+        // sensor.AddObservation(enemy.transform.rotation.y);
+        // // * Agent/Enemy velocity
+        // sensor.AddObservation(agentRB.velocity);
+        // sensor.AddObservation(enemyRB.velocity);
+        // // * Sword Information
+        // Vector3 toSword = new Vector3((swordRB.transform.position.x - this.transform.position.x) * agentRot,
+        // (swordRB.transform.position.y - this.transform.position.y),
+        // (swordRB.transform.position.z - this.transform.position.z) * agentRot);
+        // sensor.AddObservation(toSword.normalized);
+        // sensor.AddObservation(swordRB.velocity.y);
+        // sensor.AddObservation(swordRB.velocity.x * agentRot);
+        // sensor.AddObservation(swordRB.velocity.z * agentRot);
     }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -153,6 +188,16 @@ public class EnemyAgentV2 : Agent
             // move right
             discreteActionsOut[2] = 2;
         }
-        discreteActionsOut[3] = Input.GetKey(KeyCode.Space) ? 1 : 0;
+        if (Input.GetKey(KeyCode.Z))
+        {
+            // acttackAction_1
+            discreteActionsOut[3] = 1;
+        }
+        if (Input.GetKey(KeyCode.X))
+        {
+            // acttackAction_2
+            discreteActionsOut[3] = 2;
+        }
+        discreteActionsOut[4] = Input.GetKey(KeyCode.Space) ? 1 : 0;
     }
 }
