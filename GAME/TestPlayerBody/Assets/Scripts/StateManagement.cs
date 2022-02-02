@@ -7,78 +7,55 @@ public class StateManagement : MonoBehaviour
     public GameObject mainMenu;
     public GameObject preparationRoom;
     public GameObject arena;
+    public GameObject player;
+    public SpawnManagement spawnManagement;
 
-    public Player player;
-
-    private int state = 0;
-    [HideInInspector] public bool onMainMenu, onPreparationRoom, onArena;
+    private int state = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        mainMenu.SetActive(false);
-        preparationRoom.SetActive(false);
-        arena.SetActive(false);
+        mainMenu = GameObject.Find("MainMenuRoom");
+        preparationRoom = GameObject.Find("PreparationRoom");
+        arena = GameObject.Find("Arena");
+        player = GameObject.Find("VR Rig");
+        spawnManagement = FindObjectOfType<SpawnManagement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log(state);
-
+        //State: Idle
         if(state == 0)
         {
-            // if(mainMenu.activeSelf == false)
-            // {
-            //     mainMenu.SetActive(true);
-            // }
 
-            if(onMainMenu == false)
-            {
-                //reset ข้อมูล player ทุกครั้งที่เริ่มใหม่
-                player.ResetPlayerStat();
-                
-                mainMenu.SetActive(true);
-                onMainMenu = true;
-            }
         }
+        //State: MM
         else if(state == 1)
         {
-            // if(preparationRoom.activeSelf == false)
-            // {
-            //     preparationRoom.SetActive(true);
-            // }
-
-            if(onArena == false)
-            {
-                if(onPreparationRoom == false)
-                {
-                    preparationRoom.SetActive(true);
-                    onPreparationRoom = true;
-                }
-            }
+            spawnManagement.spawn(player, mainMenu.transform.Find("PlayerWaypoint").gameObject);
+            state = 0;
         }
+        //State: PP
         else if(state == 2)
         {
-            if(onArena == false)
-            {
-                if(onPreparationRoom == false)
-                {
-                    preparationRoom.SetActive(true);
-                    onPreparationRoom = true;
-                }
-            }
+            spawnManagement.spawn(player, preparationRoom.transform.Find("PlayerWaypoint").gameObject);
+            state = 0;
         }
+        //State: A
         else if(state == 3)
         {
-            ChooseState(0);
+            spawnManagement.spawn(player, arena.transform.Find("PlayerWaypoint").gameObject);
+            state = 0;
         }
     }
 
-    public void ChooseState(int num){
+    public void GoState(int num)
+    {
         state = num;
     }
-    public void GoNextState(){
+    public void GoNextState()
+    {
         state++;
     }
     public int GetState()

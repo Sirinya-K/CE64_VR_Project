@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Arena : MonoBehaviour
 {
@@ -14,13 +15,22 @@ public class Arena : MonoBehaviour
 
     public SpawnManagement spawnManagement;
     public GameObject enemyWaypoint;
-
     private bool enemySpawn;
+
+    private int finalLevel = 4;
+    private float stateDelay = 2f;
+    private GameObject showResult;
+    private Text fightResult;
 
     // Start is called before the first frame update
     void Start()
     {
+        stateManagement = FindObjectOfType<StateManagement>();
         enemy = enemyObj.GetComponent<Enemy>();
+
+        showResult = GameObject.Find("ResultCanvas");
+        showResult.SetActive(false);
+        fightResult = showResult.GetComponentInChildren<Text>();
     }
 
     // Update is called once per frame
@@ -36,36 +46,58 @@ public class Arena : MonoBehaviour
         //ถ้าศัตรูตาย
         if (enemy.getHealth() <= 0)
         {
-            EnemyDead();
+            player.levelUp();
+            enemyObj.SetActive(false);
+            enemy.ResetEnemyStat();
+            
+            Debug.Log("WIN " + player.getLevel() + "/4");
+
+            if(player.getLevel() == finalLevel) //ถ้าถึงด่านสุดท้าย
+            {
+                Debug.Log("VICTORY");
+
+                FinishGame();
+            }
+            else //ถ้ายัง ไม่ ถึงด่านสุดท้าย
+            {
+                Debug.Log("BACK TO PREPARATIONROOM");
+
+                showResult.SetActive(true);
+                fightResult.text = "LOADING . . .";
+                Invoke("GoNextLevel",stateDelay);
+            }
         }
 
         //ถ้าผู้เล่นตาย
         if (player.getHealth() <= 0)
         {
-            stateManagement.ChooseState(0);
+            
         }
     }
 
-    private void EnemyDead()
+    private void GoNextLevel()
     {
-        enemyObj.SetActive(false);
-        enemy.ResetEnemyStat();
-        //นับถอยหลัง 3 วิ แล้วไปยัง state ถัดไป
-        // StartCoroutine(DelayThreeSec());
-
-        stateManagement.onArena = false;
-        stateManagement.GoNextState();
         enemySpawn = false;
-        this.gameObject.SetActive(false);
+        showResult.SetActive(false);
+        stateManagement.GoState(2);
     }
 
-    private IEnumerator DelayThreeSec()
+    private void FinishGame()
     {
-        yield return new WaitForSeconds(3);
-        stateManagement.onArena = false;
-        stateManagement.GoNextState();
+        showResult.SetActive(true);
+        fightResult.text = "VICTORY! :D";
+        Invoke("RestartGame",stateDelay);
+    }
 
-        enemySpawn = false;
-        this.gameObject.SetActive(false);
+    private void GameOVer()
+    {
+        showResult.SetActive(true);
+        fightResult.text = "GAME OVER :(";
+        Invoke("RestartGame",stateDelay);
+    }
+
+    private void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

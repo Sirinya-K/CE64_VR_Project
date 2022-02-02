@@ -7,25 +7,17 @@ public class PreparationRoom : MonoBehaviour
 {
     public StateManagement stateManagement;
     public Text stateNumber;
-
-    public GameObject playerObj;
     public Player player;
-
-    public SpawnManagement spawnManagement;
-    public GameObject startWaypoint;
-    public GameObject arenaWaypoint;
-
-    public ArenaEntrance arenaEntrance;
-
-    public GameObject arena;
-    
     public GameObject theRoof;
 
-    private bool playerSpawn;
+    private ArenaEntrance arenaEntrance;
 
     // Start is called before the first frame update
     void Start()
     {
+        stateManagement = FindObjectOfType<StateManagement>();
+        arenaEntrance = GetComponentInChildren<ArenaEntrance>();
+
         theRoof.SetActive(true);
     }
 
@@ -33,13 +25,7 @@ public class PreparationRoom : MonoBehaviour
     void Update()
     {
         //โชว์เลข state ปัจจุบัน
-        stateNumber.text = stateManagement.GetState().ToString();
-
-        if(!playerSpawn)
-        {
-            spawnManagement.spawn(playerObj, startWaypoint);
-            playerSpawn = true;
-        }
+        stateNumber.text = player.getLevel().ToString();
 
         //เมื่อผู้เล่นยืนหน้าประตู
         if(arenaEntrance.collision)
@@ -47,17 +33,10 @@ public class PreparationRoom : MonoBehaviour
             //เช็คว่าหยิบอาวุธหรือยัง
             if(player.theItem == "Weapon")
             {
-                //activate arena
-                arena.SetActive(true);
-                spawnManagement.spawn(playerObj, arenaWaypoint);
-
-                stateManagement.onPreparationRoom = false;
-                stateManagement.onArena = true;
-
-                playerSpawn = false;
                 arenaEntrance.collision = false;
 
-                this.gameObject.SetActive(false);
+                Debug.Log("GO TO ARENA");
+                stateManagement.GoState(3);
             }
         }
     }

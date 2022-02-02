@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public string theItem;
     [HideInInspector] public bool readey, win, fail;
 
+    private int playerLevel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,16 @@ public class Player : MonoBehaviour
         currentHp.text = currentHealth.ToString();
 
         currentStamina = maxStamina;
+    }
+
+    public void levelUp()
+    {
+        playerLevel++;
+    }
+
+    public int getLevel()
+    {
+        return playerLevel;
     }
 
     public void ResetPlayerStat()

@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PlayerGtabItem : MonoBehaviour
 {
-    public StateManagement stateManagement;
-
-    public GameObject preparationRoom;
-
     public Player player;
 
     private LayerMask grabbableLayer;
@@ -118,8 +114,8 @@ public class PlayerGtabItem : MonoBehaviour
         finger = "";
         fingerValue = 0f;
 
-        //ให้ parent เป็น ห้องเตรียมตัว เมื่อผู้เล่นปล่อย item แล้ว
-        theItem.transform.parent = preparationRoom.gameObject.transform;
+        //ให้ parent เป็น null เมื่อผู้เล่นปล่อย item แล้ว
+        theItem.transform.parent = null;
         player.GrabbedItem("NotWeapon");
     }
 
@@ -139,12 +135,12 @@ public class PlayerGtabItem : MonoBehaviour
             Release();
         }
 
-        //ปล่อยอาวุธกรณี player กลับหน้าเมนูหลัก
-        if(stateManagement.onMainMenu && theItem != null)
-        {
-            Release();
-            theItem.transform.position = theItemDefaultPosition;
-            theItem = null;
-        }
+        //ปล่อยอาวุธกรณี player กลับหน้าเมนูหลัก (ไม่ใช้แล้ว)
+        // if(stateManagement.onMainMenu && theItem != null)
+        // {
+        //     Release();
+        //     theItem.transform.position = theItemDefaultPosition;
+        //     theItem = null;
+        // }
     }
 }
