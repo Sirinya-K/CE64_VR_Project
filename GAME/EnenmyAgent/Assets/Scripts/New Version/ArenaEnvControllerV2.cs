@@ -22,19 +22,22 @@ public class ArenaEnvControllerV2 : MonoBehaviour
     // ! PLEASE RECHECK ALL CONDITION !!!
     ArenaSettings arenaSettings;
 
-    public EnemyAgent blueAgent;
-    public EnemyAgent purpleAgent;
+    public EnemyAgentV2 blueAgent;
+    public EnemyAgentV2 purpleAgent;
 
-    public List<EnemyAgent> AgentsList = new List<EnemyAgent>();
+    public List<EnemyAgentV2> AgentsList = new List<EnemyAgentV2>();
     List<Renderer> RenderersList = new List<Renderer>();
 
     Rigidbody blueAgentRb;
     Rigidbody purpleAgentRb;
 
-    Team1 currentTeam;
+    public Team1 currentTeam;
 
     private int resetTimer;
     public int MaxEnvironmentSteps;
+
+    public float blueScore;
+    public float purpleScore;
 
     float agentRot;
 
@@ -45,10 +48,11 @@ public class ArenaEnvControllerV2 : MonoBehaviour
 
         arenaSettings = FindObjectOfType<ArenaSettings>();
 
+        currentTeam = Team1.Default;
+
         ResetScene();
     }
-
-    void updateEnemySide(Team1 team)
+    public void UpdateEnemySide(Team1 team)
     {
         currentTeam = team;
     }
@@ -60,11 +64,13 @@ public class ArenaEnvControllerV2 : MonoBehaviour
                 // * Agent can hit enemy will +2 reward and enemy get -1 (cause we have priority on attack enemy)        
                 if (Team1.Blue == currentTeam)
                 {
+                    StartCoroutine(GoalScoredSwapGroundMaterial(arenaSettings.blueGoalMaterial, RenderersList, .5f));
                     blueAgent.AddReward(2);
                     purpleAgent.AddReward(-1);
                 }
                 else if (Team1.Purple == currentTeam)
                 {
+                    StartCoroutine(GoalScoredSwapGroundMaterial(arenaSettings.purpleGoalMaterial, RenderersList, .5f));
                     purpleAgent.AddReward(2);
                     blueAgent.AddReward(-1);
                 }
@@ -72,38 +78,42 @@ public class ArenaEnvControllerV2 : MonoBehaviour
                 break;
             case Event1.DontHitEnemy:
                 // * Agent attack but dont hit enemy will get -0.5 reward
-                if(Team1.Blue == currentTeam)
+                if (Team1.Blue == currentTeam)
                 {
                     blueAgent.AddReward(-.5f);
                 }
-                else if(Team1.Purple == currentTeam)
+                else if (Team1.Purple == currentTeam)
                 {
                     purpleAgent.AddReward(-.5f);
                 }
                 break;
             case Event1.CanBlock:
                 // * Agent can block attack using shield will get +1 reward
-                if(Team1.Blue == currentTeam)
+                if (Team1.Blue == currentTeam)
                 {
                     blueAgent.AddReward(1);
                 }
-                else if(Team1.Purple == currentTeam)
+                else if (Team1.Purple == currentTeam)
                 {
                     purpleAgent.AddReward(1);
                 }
                 break;
             case Event1.OutOfRange:
                 // * Agent have distance to each other more than ... will get -1 reward for both
-                blueAgent.AddReward(-1);
-                purpleAgent.AddReward(-1);
+                if (Vector3.Distance(blueAgentRb.transform.position, purpleAgentRb.transform.position) > 20f)
+                {
+                    blueAgent.AddReward(-1);
+                    purpleAgent.AddReward(-1);
+                    ResetScene();
+                }
                 break;
             case Event1.HitWall:
                 // * Agent ran and hit a wall will get -0.5 reward
-                if(Team1.Blue == currentTeam)
+                if (Team1.Blue == currentTeam)
                 {
                     blueAgent.AddReward(-.5f);
                 }
-                else if(Team1.Purple == currentTeam)
+                else if (Team1.Purple == currentTeam)
                 {
                     purpleAgent.AddReward(-.5f);
                 }
@@ -112,6 +122,7 @@ public class ArenaEnvControllerV2 : MonoBehaviour
     }
 
     // * Swap color to color of win team 
+    // ! CHANGE COLOR OF FLOOR STILL BUG!!
     IEnumerator GoalScoredSwapGroundMaterial(Material mat, List<Renderer> rendererList, float time)
     {
         foreach (var renderer in rendererList)
@@ -132,17 +143,23 @@ public class ArenaEnvControllerV2 : MonoBehaviour
         resetTimer += 1;
         if (resetTimer >= MaxEnvironmentSteps && MaxEnvironmentSteps > 0)
         {
-            blueAgent.AddReward(-1);
-            purpleAgent.AddReward(-1);
-            blueAgent.EpisodeInterrupted();
-            purpleAgent.EpisodeInterrupted();
+            if (blueAgent.GetCumulativeReward() > purpleAgent.GetCumulativeReward())
+            {
+                blueAgent.AddReward(2f);
+            }
+            if (blueAgent.GetCumulativeReward() < purpleAgent.GetCumulativeReward())
+            {
+                purpleAgent.AddReward(2f);
+            }
+            blueScore = blueAgent.GetCumulativeReward();
+            purpleScore = purpleAgent.GetCumulativeReward();
+            blueAgent.EndEpisode();
+            purpleAgent.EndEpisode();
             ResetScene();
         }
     }
-
     public void ResetScene()
     {
-        // Debug.Log("RESET SCENE");
         resetTimer = 0;
         currentTeam = Team1.Default; // reset last hitter
         foreach (var agent in AgentsList)

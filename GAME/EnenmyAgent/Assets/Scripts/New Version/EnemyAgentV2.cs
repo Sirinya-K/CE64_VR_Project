@@ -10,7 +10,7 @@ public class EnemyAgentV2 : Agent
 {
     public GameObject area;
     Rigidbody agentRB;
-    public Team teamId;
+    public Team1 teamId;
 
     // * Sword/opposite enemy Location for observations
     public GameObject sword;
@@ -20,18 +20,19 @@ public class EnemyAgentV2 : Agent
 
     // * Arena environment setting for controll response of agent each side
     ArenaSettings arenaSettings;
-    ArenaEnvController envController;
+    ArenaEnvControllerV2 envController;
 
     // * Animation var.
     private Animator anim;
     public bool isAttack { get; set; }
+    public bool tmpAttack { get; set; }
 
     // * Direction of agent
     float agentRot;
     EnvironmentParameters resetParams;
     void Start()
     {
-        envController = area.GetComponent<ArenaEnvController>();
+        envController = area.GetComponent<ArenaEnvControllerV2>();
     }
     public override void Initialize()
     {
@@ -44,7 +45,7 @@ public class EnemyAgentV2 : Agent
         anim = GetComponentInChildren<Animator>();
 
         // * For symmetry between agent 
-        if (teamId == Team.Blue)
+        if (teamId == Team1.Blue)
         {
             agentRot = -1;
         }
@@ -63,7 +64,7 @@ public class EnemyAgentV2 : Agent
         anim.SetFloat("Velocity X",velocityX);
 
         // * Event check distance between 2 agent (out of range?)
-        envController.ResolveEvent(Event.OutOfRange);
+        envController.ResolveEvent(Event1.OutOfRange);
     }
     void attack(int attackType)
     {
@@ -91,7 +92,8 @@ public class EnemyAgentV2 : Agent
         var attackAction = act[3];
         var blockAction = act[4];
 
-        // tmpAttack = anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|Sword_atk01");
+        // * For check attack animation is working?
+        tmpAttack = anim.GetCurrentAnimatorStateInfo(0).IsName("Attack_1")||anim.GetCurrentAnimatorStateInfo(0).IsName("Attack_2");
 
         if (dirToGoForwardAction == 1)
         {
@@ -140,20 +142,20 @@ public class EnemyAgentV2 : Agent
     }
     public override void CollectObservations(VectorSensor sensor)
     {
-        // // * Agent/Enemy rotation
-        // sensor.AddObservation(this.transform.rotation.y);
-        // sensor.AddObservation(enemy.transform.rotation.y);
-        // // * Agent/Enemy velocity
-        // sensor.AddObservation(agentRB.velocity);
-        // sensor.AddObservation(enemyRB.velocity);
-        // // * Sword Information
-        // Vector3 toSword = new Vector3((swordRB.transform.position.x - this.transform.position.x) * agentRot,
-        // (swordRB.transform.position.y - this.transform.position.y),
-        // (swordRB.transform.position.z - this.transform.position.z) * agentRot);
-        // sensor.AddObservation(toSword.normalized);
-        // sensor.AddObservation(swordRB.velocity.y);
-        // sensor.AddObservation(swordRB.velocity.x * agentRot);
-        // sensor.AddObservation(swordRB.velocity.z * agentRot);
+        // * Agent/Enemy rotation
+        sensor.AddObservation(this.transform.rotation.y);
+        sensor.AddObservation(enemy.transform.rotation.y);
+        // * Agent/Enemy velocity
+        sensor.AddObservation(agentRB.velocity);
+        sensor.AddObservation(enemyRB.velocity);
+        // * Sword Information
+        Vector3 toSword = new Vector3((swordRB.transform.position.x - this.transform.position.x) * agentRot,
+        (swordRB.transform.position.y - this.transform.position.y),
+        (swordRB.transform.position.z - this.transform.position.z) * agentRot);
+        sensor.AddObservation(toSword.normalized);
+        sensor.AddObservation(swordRB.velocity.y);
+        sensor.AddObservation(swordRB.velocity.x * agentRot);
+        sensor.AddObservation(swordRB.velocity.z * agentRot);
     }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
