@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public GameObject floatingDamageParent;
 
     public HealthBar healthBar;
-    private int maxHealth = 20; //Defualt: 1000
+    private int maxHealth = 5; //Defualt: 1000
     private int currentHealth;
 
     private string armState;

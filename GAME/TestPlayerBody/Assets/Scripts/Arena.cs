@@ -18,9 +18,13 @@ public class Arena : MonoBehaviour
     private bool enemySpawn;
 
     private int finalLevel = 4;
-    private float stateDelay = 2f;
+    private float stateDelay = 1.5f;
     private GameObject showResult;
     private Text fightResult;
+
+    private OrbManagement orbManagement;
+    private GameObject firstOrbObj;
+    private FirstOrb firstOrb;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +35,12 @@ public class Arena : MonoBehaviour
         showResult = GameObject.Find("ResultCanvas");
         showResult.SetActive(false);
         fightResult = showResult.GetComponentInChildren<Text>();
+
+        orbManagement = FindObjectOfType<OrbManagement>();
+
+        firstOrbObj = GameObject.Find("FirstOrb");
+        firstOrbObj.SetActive(false);
+        firstOrb = firstOrbObj.GetComponent<FirstOrb>();
     }
 
     // Update is called once per frame
@@ -49,10 +59,10 @@ public class Arena : MonoBehaviour
             player.levelUp();
             enemyObj.SetActive(false);
             enemy.ResetEnemyStat();
-            
+
             Debug.Log("WIN " + player.getLevel() + "/4");
 
-            if(player.getLevel() == finalLevel) //ถ้าถึงด่านสุดท้าย
+            if (player.getLevel() == finalLevel) //ถ้าถึงด่านสุดท้าย
             {
                 Debug.Log("VICTORY");
 
@@ -60,18 +70,31 @@ public class Arena : MonoBehaviour
             }
             else //ถ้ายัง ไม่ ถึงด่านสุดท้าย
             {
-                Debug.Log("BACK TO PREPARATIONROOM");
+                Debug.Log("Orb Appear");
 
-                showResult.SetActive(true);
-                fightResult.text = "LOADING . . .";
-                Invoke("GoNextLevel",stateDelay);
+                firstOrbObj.SetActive(true); // Active & Random 1st Orb
+                var firstRandom = Random.Range(0,2);
+                orbManagement.Show(firstRandom,"FirstOrb");
             }
         }
 
         //ถ้าผู้เล่นตาย
         if (player.getHealth() <= 0)
         {
-            
+
+        }
+
+        //ถ้าผู้เล่นเลือก Orb แล้ว
+        if (firstOrb.collision)
+        {
+            firstOrb.collision = false;
+            firstOrbObj.SetActive(false);
+
+            Debug.Log("Chose Orb");
+
+            showResult.SetActive(true);
+            fightResult.text = " ";
+            Invoke("GoNextLevel", stateDelay);
         }
     }
 
@@ -86,14 +109,14 @@ public class Arena : MonoBehaviour
     {
         showResult.SetActive(true);
         fightResult.text = "VICTORY! :D";
-        Invoke("RestartGame",stateDelay);
+        Invoke("RestartGame", stateDelay);
     }
 
     private void GameOVer()
     {
         showResult.SetActive(true);
         fightResult.text = "GAME OVER :(";
-        Invoke("RestartGame",stateDelay);
+        Invoke("RestartGame", stateDelay);
     }
 
     private void RestartGame()
