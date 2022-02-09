@@ -22,7 +22,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public string theItem;
     [HideInInspector] public bool readey, win, fail;
 
-    private int playerLevel;
+    private int playerLevel = 0;
+    private int theOrb = 99;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,18 @@ public class Player : MonoBehaviour
         currentHp.text = currentHealth.ToString();
 
         currentStamina = maxStamina;
+    }
+
+    // กระเป๋าใส่ orb ปัจจุบันที่ผู้เล่นเก็บ
+    public void Inventory(int orbNum)
+    {
+        theOrb = orbNum;
+    }
+
+    // return orb ปัจจุบันให้ arena ทำการ implement effect
+    public int GetTheOrb()
+    {
+        return theOrb;
     }
 
     public void levelUp()

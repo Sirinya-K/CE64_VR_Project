@@ -106,6 +106,16 @@ public class Enemy : MonoBehaviour
         return currentHealth;
     }
 
+    public int getMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(int newMax)
+    {
+        maxHealth = newMax;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
