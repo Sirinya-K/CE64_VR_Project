@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public GameObject floatingDamagePrefab;
     public GameObject floatingDamageParent;
 
-    public HealthBar healthBar;
+    private HealthBar healthBar;
     private int maxHealth = 5; //Defualt: 1000
     private int currentHealth;
 
@@ -18,9 +18,27 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Rigidbody enemyBody = GetComponent<Rigidbody>();
+        Rigidbody enemyBody = GetComponentInChildren<Rigidbody>();
         enemyBody.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
+        healthBar = GetComponentInChildren<HealthBar>();
+
+        currentHealth = maxHealth;
+    }
+
+    public int getCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public int getMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(int newMax)
+    {
+        maxHealth = newMax;
         currentHealth = maxHealth;
     }
 
@@ -64,11 +82,14 @@ public class Enemy : MonoBehaviour
         int damage = 0;
 
         // Calculate taken damage based on weapon force
-        if (force >= 0.03) damage = (int)(Random.Range(34, 50) * CheckCriticalHit());
-        else if (force >= 0.0001) damage = (int)(Random.Range(1, 5));
-        else damage = (int)(Random.Range(65, 100) * CheckCriticalHit());
+        // if (force >= 0.03) damage = (int)(Random.Range(34, 50) * CheckCriticalHit());
+        // else if (force >= 0.0001) damage = (int)(Random.Range(1, 5));
+        // else damage = (int)(Random.Range(65, 100) * CheckCriticalHit());
+
+        damage = (int)(Random.Range(34, 50) * CheckCriticalHit()); // Test
 
         // Debug.Log("force: " + force + ", damage: " + damage);
+        // Debug.Log("damage: " + damage);
 
         var parentTransform = floatingDamageParent.transform;
 
@@ -99,21 +120,8 @@ public class Enemy : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.UpdateHealth((float)currentHealth / (float)maxHealth);
-    }
 
-    public int getHealth()
-    {
-        return currentHealth;
-    }
-
-    public int getMaxHealth()
-    {
-        return maxHealth;
-    }
-
-    public void setMaxHealth(int newMax)
-    {
-        maxHealth = newMax;
+        Debug.Log("currentHealth: " + currentHealth);
     }
 
     // Update is called once per frame

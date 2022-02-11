@@ -46,6 +46,7 @@ public class StateManagement : MonoBehaviour
         else if(state == 3)
         {
             spawnManagement.spawn(player, arena.transform.Find("PlayerWaypoint").gameObject);
+            arena.GetComponent<Arena>().StartInitiate();
             state = 0;
         }
     }

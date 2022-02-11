@@ -17,7 +17,9 @@ public class Arena : MonoBehaviour
     private GameObject theEnemyObj;
     private Enemy theEnemyProperty;
 
-    private bool initiate, choseTheOrb;
+    private bool initiateState, fightingState;
+    
+    private bool choseTheOrb;
     private int finalLevel = 4;
     private float stateDelay = 1.5f;
     private GameObject showResult;
@@ -32,6 +34,8 @@ public class Arena : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        initiateState = false;
+
         stateManagement = FindObjectOfType<StateManagement>();
         // enemy = enemyObj.GetComponent<Enemy>();
 
@@ -60,119 +64,127 @@ public class Arena : MonoBehaviour
     void Update()
     {
         //เมื่อ active arena
-        if (!initiate)
+        if (initiateState)
         {
-            initiate = true;
+            initiateState = false;
 
             //crate enemy via EnemyManagement class
             var currentLevel = player.getLevel();
-            if(currentLevel == 0)
+            if (currentLevel == 0)
             {
-                var randomEnemy = Random.Range(0,2); // enemy ลำดับที่ 0 1
+                var randomEnemy = Random.Range(0, 2); // enemy ลำดับที่ 0 1
                 theEnemyObj = enemyManagement.CreateEnemy(currentLevel, randomEnemy);
             }
             else
             {
-                var randomEnemy = Random.Range(2,5); // enemy ลำดับที่ 2 3 4
+                // var randomEnemy = Random.Range(0, 2);
+                var randomEnemy = Random.Range(2, 5); // enemy ลำดับที่ 2 3 4
                 theEnemyObj = enemyManagement.CreateEnemy(currentLevel, randomEnemy);
             }
 
             //spawn the enemy
             theEnemyObj.SetActive(true);
             spawnManagement.spawn(theEnemyObj, enemyWaypoint);
+            theEnemyProperty = theEnemyObj.GetComponent<Enemy>();
 
             //implement the orb's effect
             currentOrbNum = player.GetTheOrb();
             orbManagement.ImplementEffect(currentOrbNum);
+
+            fightingState = true;
         }
 
-        //ถ้าศัตรูตาย
-        if (theEnemyProperty.getHealth() <= 0 && theEnemyObj.activeSelf)
+        if (fightingState)
         {
-            orbManagement.RemoveEffect(currentOrbNum);
-            player.levelUp();
-            theEnemyObj.SetActive(false);
-            theEnemyProperty.ResetEnemyStat();
-
-            Debug.Log("WIN " + player.getLevel() + "/4");
-
-            if (player.getLevel() == finalLevel) //ถ้าถึงด่านสุดท้าย
+            //ถ้าศัตรูตาย
+            if (theEnemyProperty.getCurrentHealth() <= 0)
             {
-                Debug.Log("VICTORY");
+                orbManagement.RemoveEffect(currentOrbNum);
+                player.levelUp();
+                theEnemyObj.SetActive(false);
+                theEnemyProperty.ResetEnemyStat();
 
-                FinishGame();
+                Debug.Log("WIN " + player.getLevel() + "/4");
+
+                if (player.getLevel() == finalLevel) //ถ้าถึงด่านสุดท้าย
+                {
+                    Debug.Log("VICTORY");
+
+                    FinishGame();
+                }
+                else //ถ้ายัง ไม่ ถึงด่านสุดท้าย
+                {
+                    //active orbs
+                    firstOrbObj.SetActive(true); // Active & Random 1st Orb
+                    firstRandomOrb = Random.Range(0, 3); // มีโอกาสสุ่มเจอ 0 1 2
+                    orbManagement.Show(firstRandomOrb, "FirstOrb");
+
+                    secondOrbObj.SetActive(true); // Active & Random 2nd Orb
+                    secondRandomOrb = Random.Range(3, 6);
+                    orbManagement.Show(secondRandomOrb, "SecondOrb");
+
+                    thirdOrbObj.SetActive(true); // Active & Random 3rd Orb
+                    thirdRandomOrb = Random.Range(6, 9);
+                    orbManagement.Show(thirdRandomOrb, "ThirdOrb");
+                }
             }
-            else //ถ้ายัง ไม่ ถึงด่านสุดท้าย
+
+            //ถ้าผู้เล่นตาย
+            if (player.getHealth() <= 0)
             {
-                //active orbs
-                firstOrbObj.SetActive(true); // Active & Random 1st Orb
-                firstRandomOrb = Random.Range(0,3); // มีโอกาสสุ่มเจอ 0 1 2
-                orbManagement.Show(firstRandomOrb,"FirstOrb");
 
-                secondOrbObj.SetActive(true); // Active & Random 2nd Orb
-                secondRandomOrb = Random.Range(3,6);
-                orbManagement.Show(secondRandomOrb,"SecondOrb");
-
-                thirdOrbObj.SetActive(true); // Active & Random 3rd Orb
-                thirdRandomOrb = Random.Range(6,9);
-                orbManagement.Show(thirdRandomOrb,"ThirdOrb");
             }
-        }
 
-        //ถ้าผู้เล่นตาย
-        if (player.getHealth() <= 0)
-        {
+            if (firstOrb.collision) //กรณีเลือก 1st Orb
+            {
+                firstOrb.collision = false;
+                choseTheOrb = true;
 
-        }
+                newOrbNum = firstRandomOrb;
 
-        if (firstOrb.collision) //กรณีเลือก 1st Orb
-        {
-            firstOrb.collision = false;
-            choseTheOrb = true;
+                Debug.Log("Chose 1st Orb: " + orbManagement.GetOrbName(firstRandomOrb));
+            }
+            else if (secondOrb.collision) //กรณีเลือก 2nd Orb
+            {
+                secondOrb.collision = false;
+                choseTheOrb = true;
 
-            newOrbNum = firstRandomOrb;
+                newOrbNum = secondRandomOrb;
 
-            Debug.Log("Chose 1st Orb: " + firstRandomOrb);
-        }
-        else if (secondOrb.collision) //กรณีเลือก 2nd Orb
-        {
-            secondOrb.collision = false;
-            choseTheOrb = true;
+                Debug.Log("Chose 2nd Orb: " + orbManagement.GetOrbName(secondRandomOrb));
+            }
+            else if (thirdOrb.collision) //กรณีเลือก 3rd Orb
+            {
+                thirdOrb.collision = false;
+                choseTheOrb = true;
 
-            newOrbNum = secondRandomOrb;
+                newOrbNum = thirdRandomOrb;
 
-            Debug.Log("Chose 2nd Orb: " + secondRandomOrb);
-        }
-        else if (thirdOrb.collision) //กรณีเลือก 3rd Orb
-        {
-            thirdOrb.collision = false;
-            choseTheOrb = true;
+                Debug.Log("Chose 3rd Orb: " + orbManagement.GetOrbName(thirdRandomOrb));
+            }
 
-            newOrbNum = thirdRandomOrb;
+            //ถ้าผู้เล่นเลือก Orb แล้ว
+            if (choseTheOrb)
+            {
+                choseTheOrb = false;
 
-            Debug.Log("Chose 3rd Orb: " + thirdRandomOrb);
-        }
-        
-        //ถ้าผู้เล่นเลือก Orb แล้ว
-        if(choseTheOrb)
-        {
-            choseTheOrb = false;
-            
-            player.Inventory(newOrbNum); //เก็บ Orb ที่เหลือเข้ากระเป๋าของผู้เล่น
+                player.Inventory(newOrbNum); //เก็บ Orb ที่เหลือเข้ากระเป๋าของผู้เล่น
 
-            firstOrbObj.SetActive(false);
-            secondOrbObj.SetActive(false);
-            thirdOrbObj.SetActive(false);
+                firstOrbObj.SetActive(false);
+                secondOrbObj.SetActive(false);
+                thirdOrbObj.SetActive(false);
 
-            showResult.SetActive(true);
-            fightResult.text = " ";
-            Invoke("GoNextLevel", stateDelay);
+                showResult.SetActive(true);
+                fightResult.text = " ";
+                Invoke("GoNextLevel", stateDelay);
+            }
         }
     }
 
     private void GoNextLevel()
     {
-        initiate = false;
+        // initiate = false;
+        fightingState = false;
         showResult.SetActive(false);
         stateManagement.GoState(2);
     }
@@ -194,5 +206,10 @@ public class Arena : MonoBehaviour
     private void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StartInitiate()
+    {
+        initiateState = true;
     }
 }

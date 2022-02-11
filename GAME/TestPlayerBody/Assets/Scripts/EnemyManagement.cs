@@ -15,6 +15,9 @@ public class EnemyManagement : MonoBehaviour
         for (int i = 0; i < totalEnemies; i++)
         {
             enemies[i] = GameObject.Find("Enemy"+i);
+            Debug.Log(enemies[i].name);
+
+            enemies[i].SetActive(false);
         }
     }
 
@@ -24,23 +27,23 @@ public class EnemyManagement : MonoBehaviour
 
         if (level == 0)
         {
-            theEnemyProperty.setMaxHealth(2000);
+            theEnemyProperty.setMaxHealth(100);
             
         }
         else if (level == 1)
         {
-            theEnemyProperty.setMaxHealth(4000);
+            theEnemyProperty.setMaxHealth(200);
         }
         else if (level == 2)
         {
-            theEnemyProperty.setMaxHealth(6000);
+            theEnemyProperty.setMaxHealth(300);
         }
         else if (level == 3)
         {
-            theEnemyProperty.setMaxHealth(8000);
+            theEnemyProperty.setMaxHealth(400);
         }
 
-        Debug.Log("Level: " + level + ", Create: " + enemies[num] + ", MaxHP: " + theEnemyProperty.getMaxHealth());
+        Debug.Log("Level: " + level + ", Create: " + enemies[num].name + ", MaxHP: " + theEnemyProperty.getMaxHealth());
 
         return enemies[num];
     }

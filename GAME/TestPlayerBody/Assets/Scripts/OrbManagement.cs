@@ -43,4 +43,9 @@ public class OrbManagement : MonoBehaviour
     {
 
     }
+
+    public string GetOrbName(int num)
+    {
+        return orbs[num,0];
+    }
 }
