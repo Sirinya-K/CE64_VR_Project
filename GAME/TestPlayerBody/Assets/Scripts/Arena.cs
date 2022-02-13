@@ -18,7 +18,7 @@ public class Arena : MonoBehaviour
     private Enemy theEnemyProperty;
 
     private bool initiateState, fightingState;
-    
+
     private bool choseTheOrb;
     private int finalLevel = 4;
     private float stateDelay = 1.5f;
@@ -30,6 +30,10 @@ public class Arena : MonoBehaviour
     private GameObject firstOrbObj, secondOrbObj, thirdOrbObj;
     private Orb firstOrb, secondOrb, thirdOrb;
     private int firstRandomOrb, secondRandomOrb, thirdRandomOrb, currentOrbNum, newOrbNum;
+
+    private int totalTrap = 3;
+    private GameObject trapOriginal;
+    private GameObject[] traps;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +62,22 @@ public class Arena : MonoBehaviour
         thirdOrbObj = GameObject.Find("ThirdOrb");
         thirdOrbObj.SetActive(false);
         thirdOrb = thirdOrbObj.GetComponent<Orb>();
+
+        //สร้าง Trap เตรียมไว้
+        trapOriginal = GameObject.Find("Trap");
+        traps = new GameObject[totalTrap];
+        for (int i = 0; i < totalTrap; i++)
+        {
+            traps[i] = Instantiate(trapOriginal, gameObject.transform, false);
+            traps[i].name = "Trap" + i.ToString();
+            // traps[i].SetActive(false);
+        }
+        trapOriginal.SetActive(false);
+
+        // newObject = new GameObject[3];
+        // newObject[0] = new GameObject("New Gameobject1");
+        // newObject[0].AddComponent<BoxCollider>();
+        // newObject[0].AddComponent<Trap>();
     }
 
     // Update is called once per frame

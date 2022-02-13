@@ -11,6 +11,7 @@ TagManager:
   - blueAgent
   - blueSword
   - walkableSurface
+  - PlayerBody
   layers:
   - Default
   - TransparentFX
