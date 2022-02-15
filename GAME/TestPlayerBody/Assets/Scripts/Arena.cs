@@ -81,7 +81,7 @@ public class Arena : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //เมื่อ active arena
         if (initiateState)
@@ -111,6 +111,12 @@ public class Arena : MonoBehaviour
             currentOrbNum = player.GetTheOrb();
             orbManagement.ImplementEffect(currentOrbNum);
 
+            //active traps
+            for (int i = 0; i < totalTrap; i++)
+            {
+                traps[i].GetComponent<Trap>().active();
+            }
+
             fightingState = true;
         }
 
@@ -119,6 +125,12 @@ public class Arena : MonoBehaviour
             //ถ้าศัตรูตาย
             if (theEnemyProperty.getCurrentHealth() <= 0)
             {
+                //inactive traps
+                for (int i = 0; i < totalTrap; i++)
+                {
+                    traps[i].GetComponent<Trap>().inactive();
+                }
+
                 orbManagement.RemoveEffect(currentOrbNum);
                 player.levelUp();
                 theEnemyObj.SetActive(false);

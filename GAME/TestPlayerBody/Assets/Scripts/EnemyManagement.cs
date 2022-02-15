@@ -27,7 +27,7 @@ public class EnemyManagement : MonoBehaviour
 
         if (level == 0)
         {
-            theEnemyProperty.setMaxHealth(1000);
+            theEnemyProperty.setMaxHealth(100);
             
         }
         else if (level == 1)

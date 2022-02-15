@@ -8,11 +8,14 @@ public class Trap : MonoBehaviour
     private GameObject trap;
     private BoxCollider box;
 
-    private float currentTime, timeStamp;
+    private float currentTime, timeStamp, countTime;
     private float x1 = 41.76f, x2 = 59.41f, y = 14.1f, z1 = -38.26f, z2 = -53.44f;
 
     private int trapDamage = 50;
     private int state = 0;
+    private bool onHit = true;
+
+    private bool activeState;
 
     // Start is called before the first frame update
     public void Start()
@@ -27,8 +30,10 @@ public class Trap : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void Update()
+    public void FixedUpdate()
     {
+        if(!activeState) return;
+
         currentTime += Time.deltaTime;
         // Debug.Log("current time: " + currentTime + ", timestamp: " + timeStamp);
 
@@ -56,12 +61,48 @@ public class Trap : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider other)
+    public void active()
+    {
+        activeState = true;
+    }
+
+    public void inactive()
+    {
+        warmLight.SetActive(false);
+        trap.SetActive(false);
+        box.enabled = false;
+        currentTime = 0f;
+        timeStamp = 0f;
+        state = 0;
+
+        activeState = false;
+    }
+
+    void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("PlayerBody")) return;
         
         Debug.Log(other.gameObject.name + " Coliision with " + gameObject.name);
 
-        FindObjectOfType<Player>().TakeDamage(trapDamage);
+        countTime = 0f;
+        onHit = true;
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (!other.gameObject.CompareTag("PlayerBody")) return;
+
+        countTime += Time.deltaTime;
+        
+        if(((int)countTime) == 0 && onHit)
+        {
+            FindObjectOfType<Player>().TakeDamage(trapDamage);
+            onHit = false;
+        }
+        else if(((int)countTime) == 2 && !onHit)
+        {
+            countTime = 0f;
+            onHit = true;
+        }
     }
 }
