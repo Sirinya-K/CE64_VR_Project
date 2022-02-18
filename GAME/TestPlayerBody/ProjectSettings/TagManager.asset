@@ -12,6 +12,9 @@ TagManager:
   - blueSword
   - walkableSurface
   - PlayerBody
+  - Enemy
+  - PlayerHand
+  - EnemyShield
   layers:
   - Default
   - TransparentFX

@@ -92,13 +92,12 @@ public class Arena : MonoBehaviour
             var currentLevel = player.getLevel();
             if (currentLevel == 0)
             {
-                var randomEnemy = Random.Range(0, 2); // enemy ลำดับที่ 0 1
+                var randomEnemy = Random.Range(0, 1); // (0, 2) สุ่ม enemy ลำดับที่ 0 1
                 theEnemyObj = enemyManagement.CreateEnemy(currentLevel, randomEnemy);
             }
             else
             {
-                // var randomEnemy = Random.Range(0, 2);
-                var randomEnemy = Random.Range(2, 5); // enemy ลำดับที่ 2 3 4
+                var randomEnemy = Random.Range(2, 5); // (2, 5) สุ่ม enemy ลำดับที่ 2 3 4
                 theEnemyObj = enemyManagement.CreateEnemy(currentLevel, randomEnemy);
             }
 

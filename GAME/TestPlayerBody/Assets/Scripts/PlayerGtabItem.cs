@@ -66,7 +66,7 @@ public class PlayerGtabItem : MonoBehaviour
                     itemBody.interpolation = RigidbodyInterpolation.Interpolate;
 
                     // Add CheckVelocity Script to the Item
-                    other.gameObject.AddComponent<CheckVelocity>();
+                    // other.gameObject.AddComponent<CheckVelocity>();
 
                     // Save Finger Value (เช็คว่าเป็นการจับแบบไหน (ฝ่ามือ,โป้ง)ชี้กลาง/(ฝ่ามือ,โป้ง)ชี้/(ฝ่ามือ,โป้ง)กลาง)
                     if (indexCollision.collisionStatus && middleCollision.collisionStatus)
@@ -92,9 +92,9 @@ public class PlayerGtabItem : MonoBehaviour
                     //เก็บข้อมูล object ที่ถือ และให้ item เป็นลูกของ player เพื่อให้ position ตามติด
                     theItem = other.gameObject;
                     theItemDefaultPosition = theItem.transform.position;
-                    theItem.transform.parent = this.transform;
+                    theItem.transform.parent = GameObject.FindGameObjectWithTag("PlayerHand").transform;
 
-                    if(theItem.tag == "Weapon") player.GrabbedItem("Weapon");
+                    if (theItem.tag == "Weapon") player.GrabbedItem("Weapon");
                     else player.GrabbedItem("NotWeapon");
                 }
             }
