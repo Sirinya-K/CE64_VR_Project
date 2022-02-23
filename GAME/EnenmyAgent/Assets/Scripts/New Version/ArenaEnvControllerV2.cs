@@ -10,11 +10,14 @@ public enum Team1
 }
 public enum Event1
 {
-    HitEnemy = 0,
-    DontHitEnemy = 1,
-    CanBlock = 2,
-    OutOfRange = 3,
-    HitWall = 4
+    HitBlueEnemy = 0,
+    HitPurpleEnemy = 1,
+    BlueDontHitEnemy = 2,
+    PurpleDontHitEnemy = 3,
+    CanBlock = 4,
+    OutOfRange = 5,
+    BlueHitWall = 6,
+    PurpleHitWall = 7
 }
 public class ArenaEnvControllerV2 : MonoBehaviour
 {
@@ -26,18 +29,28 @@ public class ArenaEnvControllerV2 : MonoBehaviour
     public EnemyAgentV2 purpleAgent;
 
     public List<EnemyAgentV2> AgentsList = new List<EnemyAgentV2>();
-    List<Renderer> RenderersList = new List<Renderer>();
+    public List<SwordControllerV2> SwordsList = new List<SwordControllerV2>();
 
     Rigidbody blueAgentRb;
     Rigidbody purpleAgentRb;
 
+    [HideInInspector]
     public Team1 currentTeam;
+    [HideInInspector]
+    public Team1 currentOppositeTeam;
 
-    private int resetTimer;
+    [HideInInspector]
+    public int resetTimer;
+
     public int MaxEnvironmentSteps;
 
+    [HideInInspector]
     public float blueScore;
+    [HideInInspector]
     public float purpleScore;
+
+    int countBlueHit = 0;
+    int countPurpleHit = 0;
 
     float agentRot;
 
@@ -56,46 +69,72 @@ public class ArenaEnvControllerV2 : MonoBehaviour
     {
         currentTeam = team;
     }
+    public void UpdateEnemyOpposite(Team1 team)
+    {
+        currentOppositeTeam = team;
+    }
     public void ResolveEvent(Event1 triggerEvent)
     {
         switch (triggerEvent)
         {
-            case Event1.HitEnemy:
+            case Event1.HitBlueEnemy:
                 // * Agent can hit enemy will +2 reward and enemy get -1 (cause we have priority on attack enemy)        
-                if (Team1.Blue == currentTeam)
+                Debug.Log("PURPLE HIT BUT DISTANCE NOT MATCH");
+                // ! DONT FORGET TO CHANGE POLICY
+                purpleAgent.AddReward(2f);
+                blueAgent.AddReward(-1f);
+                countPurpleHit++;
+                if (countPurpleHit == 5)
                 {
-                    StartCoroutine(GoalScoredSwapGroundMaterial(arenaSettings.blueGoalMaterial, RenderersList, .5f));
-                    blueAgent.AddReward(2);
-                    purpleAgent.AddReward(-1);
+                    Debug.Log("PURPLE WIN!");
+                    purpleAgent.AddReward(1f);
+                    countPurpleHit = 0;
+                    blueAgent.EndEpisode();
+                    purpleAgent.EndEpisode();
+
+                    ResetScene();
                 }
-                else if (Team1.Purple == currentTeam)
-                {
-                    StartCoroutine(GoalScoredSwapGroundMaterial(arenaSettings.purpleGoalMaterial, RenderersList, .5f));
-                    purpleAgent.AddReward(2);
-                    blueAgent.AddReward(-1);
-                }
-                ResetScene();
                 break;
-            case Event1.DontHitEnemy:
+            case Event1.HitPurpleEnemy:
+                // * Agent can hit enemy will +2 reward and enemy get -1 (cause we have priority on attack enemy)        
+                Debug.Log("BLUE HIT BUT DISTANCE NOT MATCH");
+                // ! DONT FORGET TO CHANGE POLICY
+                blueAgent.AddReward(2f);
+                purpleAgent.AddReward(-1f);
+
+                countBlueHit++;
+                if (countBlueHit == 5)
+                {
+                    Debug.Log("BLUE WIN!");
+                    blueAgent.AddReward(1f);
+                    countBlueHit = 0;
+                    blueAgent.EndEpisode();
+                    purpleAgent.EndEpisode();
+
+                    ResetScene();
+                }
+                break;
+            case Event1.BlueDontHitEnemy:
                 // * Agent attack but dont hit enemy will get -0.5 reward
-                if (Team1.Blue == currentTeam)
-                {
-                    blueAgent.AddReward(-.5f);
-                }
-                else if (Team1.Purple == currentTeam)
-                {
-                    purpleAgent.AddReward(-.5f);
-                }
+                Debug.Log("Blue Dont hit");
+                blueAgent.AddReward(-.5f);
+                break;
+            case Event1.PurpleDontHitEnemy:
+                // * Agent attack but dont hit enemy will get -0.5 reward
+                Debug.Log("Purple Dont hit");
+                purpleAgent.AddReward(-.5f);
                 break;
             case Event1.CanBlock:
                 // * Agent can block attack using shield will get +1 reward
-                if (Team1.Blue == currentTeam)
+                if (Team1.Blue == currentOppositeTeam)
                 {
-                    blueAgent.AddReward(1);
+                    Debug.Log("BLUE CAN BLOCK");
+                    blueAgent.AddReward(.5f);
                 }
-                else if (Team1.Purple == currentTeam)
+                else if (Team1.Purple == currentOppositeTeam)
                 {
-                    purpleAgent.AddReward(1);
+                    Debug.Log("PURPLE CAN BLOCK");
+                    purpleAgent.AddReward(.5f);
                 }
                 break;
             case Event1.OutOfRange:
@@ -107,54 +146,29 @@ public class ArenaEnvControllerV2 : MonoBehaviour
                     ResetScene();
                 }
                 break;
-            case Event1.HitWall:
+            case Event1.BlueHitWall:
                 // * Agent ran and hit a wall will get -0.5 reward
-                if (Team1.Blue == currentTeam)
-                {
-                    blueAgent.AddReward(-.5f);
-                }
-                else if (Team1.Purple == currentTeam)
-                {
-                    purpleAgent.AddReward(-.5f);
-                }
+                Debug.Log("BLUE HIT WALL");
+                blueAgent.AddReward(-.5f);
+                break;
+            case Event1.PurpleHitWall:
+                // * Agent ran and hit a wall will get -0.5 reward
+                Debug.Log("PURPLE HIT WALL");
+                purpleAgent.AddReward(-.5f);
                 break;
         }
-    }
-
-    // * Swap color to color of win team 
-    // ! CHANGE COLOR OF FLOOR STILL BUG!!
-    IEnumerator GoalScoredSwapGroundMaterial(Material mat, List<Renderer> rendererList, float time)
-    {
-        foreach (var renderer in rendererList)
-        {
-            renderer.material = mat;
-        }
-
-        yield return new WaitForSeconds(time); // wait for 2 sec
-
-        foreach (var renderer in rendererList)
-        {
-            renderer.material = arenaSettings.defaultMaterial;
-        }
-
     }
     void FixedUpdate()
     {
         resetTimer += 1;
+        blueAgent.AddReward(-.001f);
+        purpleAgent.AddReward(-.001f);
         if (resetTimer >= MaxEnvironmentSteps && MaxEnvironmentSteps > 0)
         {
-            if (blueAgent.GetCumulativeReward() > purpleAgent.GetCumulativeReward())
-            {
-                blueAgent.AddReward(2f);
-            }
-            if (blueAgent.GetCumulativeReward() < purpleAgent.GetCumulativeReward())
-            {
-                purpleAgent.AddReward(2f);
-            }
             blueScore = blueAgent.GetCumulativeReward();
             purpleScore = purpleAgent.GetCumulativeReward();
-            blueAgent.EndEpisode();
-            purpleAgent.EndEpisode();
+            blueAgent.EpisodeInterrupted();
+            purpleAgent.EpisodeInterrupted();
             ResetScene();
         }
     }
@@ -173,12 +187,16 @@ public class ArenaEnvControllerV2 : MonoBehaviour
                 agentRot = -1;
             }
             // randomise starting positions and rotations
-            var randomPosX = Random.Range(-1f, 1f);
-            var randomPosZ = Random.Range(2f * agentRot, 5f * agentRot);
-            var randomRot = Random.Range(-45f, 45f);
+            var randomPosX = Random.Range(-5f, 5f);
+            var randomPosZ = Random.Range(1f * agentRot, 3f * agentRot);
+            var randomRot = Random.Range(-90f, 90f);
             agent.transform.localPosition = new Vector3(randomPosX, 0, randomPosZ);
             agent.transform.eulerAngles = new Vector3(0, randomRot, 0);
             agent.GetComponent<Rigidbody>().velocity = default(Vector3);
+        }
+        foreach (var sword in SwordsList)
+        {
+            sword.transform.localPosition = new Vector3(0, 0, 0);
         }
     }
 }

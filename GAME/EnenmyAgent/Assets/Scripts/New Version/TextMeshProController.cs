@@ -27,6 +27,7 @@ public class TextMeshProController : MonoBehaviour
         {
             winText = "PURPLE";
         }
-        textMesh.text = "TEAM : " + winText;
+        textMesh.text = "Team : " + winText + "\nBlueScore : " + arenaEnvController.blueScore.ToString() + "\nPurpleScore :  " 
+        + arenaEnvController.purpleScore.ToString() + "\nSteps : " +arenaEnvController.resetTimer.ToString();
     }
 }
