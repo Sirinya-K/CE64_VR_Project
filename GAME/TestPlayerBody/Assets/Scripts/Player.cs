@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     public Text totalHp, currentHp;
 
-    [SerializeField] private int maxHealth = 500, maxStamina = 100, reduceStaminaPoint = 20;
+    [SerializeField] private int maxHealth = 500, maxStamina = 150;
     [SerializeField] private float increaseStaminaPoint = 0.02f;
     [HideInInspector] public int currentHealth;
     [HideInInspector] public float currentStamina;
@@ -70,12 +70,28 @@ public class Player : MonoBehaviour
 
     // Note: ควรทำ script PlayerArmController แยกออกมาเลย
     // Note: ควรเปลี่ยนชื่อเป็น PublishArmStateToMqtt
-    public void CheckArmState(string armState)
+    public void PublishArmStateToMqtt(string arm, string state)
     {
-        if (armState is "stop") mqtt.Publish("/ar/", "S");
-        else if (armState is "free") mqtt.Publish("/ar/", "F");
-        else if (armState is "in") mqtt.Publish("/ar/", "I");
+        if (arm is "Left")
+        {
+            if (state is "Stop") mqtt.Publish("/al/", "S");
+            else if (state is "Free") mqtt.Publish("/al/", "F");
+            else if (state is "In") mqtt.Publish("/al/", "I");
+        }
+        else if (arm is "Right")
+        {
+            if (state is "Stop") mqtt.Publish("/ar/", "S");
+            else if (state is "Free") mqtt.Publish("/ar/", "F");
+            else if (state is "In") mqtt.Publish("/ar/", "I");
+        }
     }
+
+    // public void CheckArmState(string armState)
+    // {
+    //     if (armState is "stop") mqtt.Publish("/ar/", "S");
+    //     else if (armState is "free") mqtt.Publish("/ar/", "F");
+    //     else if (armState is "in") mqtt.Publish("/ar/", "I");
+    // }
 
     public void TakeDamage(int damage)
     {
@@ -106,13 +122,21 @@ public class Player : MonoBehaviour
         healthBar.UpdateHealth((float)currentHealth / (float)maxHealth);
     }
 
-    public void CheckStamina()
+    public void ReduceStamina(int damage)
     {
-        if (currentStamina - reduceStaminaPoint <= 0) currentStamina = 0;
-        else currentStamina -= reduceStaminaPoint;
+        if (currentStamina - damage <= 0) currentStamina = 0;
+        else currentStamina -= damage;
 
         staminaBar.UpdateHealth((float)currentStamina / (float)maxStamina);
     }
+
+    // public void CheckStamina()
+    // {
+    //     if (currentStamina - reduceStaminaPoint <= 0) currentStamina = 0;
+    //     else currentStamina -= reduceStaminaPoint;
+
+    //     staminaBar.UpdateHealth((float)currentStamina / (float)maxStamina);
+    // }
 
     private void RegenerateStamina()
     {

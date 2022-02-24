@@ -13,7 +13,7 @@ public class CheckTrigger : MonoBehaviour
 
         // Debug.Log(gameObject.name);
 
-        if (gameObject.tag == "Shield")
+        if (gameObject.tag == "PlayerShield")
         {
             StopAllCoroutines();
             player.regenable = false;
@@ -23,7 +23,7 @@ public class CheckTrigger : MonoBehaviour
             else
             {
                 player.TakeDamage(0);
-                player.CheckStamina();
+                player.ReduceStamina(1);
             }
         }
         else player.TakeDamage((int)(Random.Range(34, 50)));
@@ -32,7 +32,8 @@ public class CheckTrigger : MonoBehaviour
         if (gameObject.tag == "Stoppable")
         {
             Debug.Log("in");
-            player.CheckArmState("in");
+            player.PublishArmStateToMqtt("Right","In");
+            // player.CheckArmState("in");
         }
     }
 
@@ -43,7 +44,8 @@ public class CheckTrigger : MonoBehaviour
         if (gameObject.tag == "Stoppable")
         {
             Debug.Log("free");
-            player.CheckArmState("free");
+            player.PublishArmStateToMqtt("Right","free");
+            // player.CheckArmState("free");
         }
     }
 }

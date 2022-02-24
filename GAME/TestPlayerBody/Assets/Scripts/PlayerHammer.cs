@@ -2,15 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHammer : Weapon
+public class PlayerHammer : PlayerWeapon
 {
     void Start()
     {
-        mqtt = FindObjectOfType<MqttProtocol>();
-
-        impactAtk = 70;
+        impactAtk = 60;
         slashAtk = 30;
-
-        lastPosition = transform.position;
     }
 }
