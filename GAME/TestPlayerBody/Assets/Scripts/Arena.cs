@@ -29,7 +29,7 @@ public class Arena : MonoBehaviour
     private OrbManagement orbManagement;
     private GameObject firstOrbObj, secondOrbObj, thirdOrbObj;
     private Orb firstOrb, secondOrb, thirdOrb;
-    private int firstRandomOrb, secondRandomOrb, thirdRandomOrb, currentOrbNum, newOrbNum;
+    private int firstRandomOrb, secondRandomOrb, thirdRandomOrb, currentOrbNum = 9, newOrbNum;
 
     private int totalTrap = 3;
     private GameObject trapOriginal;
@@ -107,7 +107,7 @@ public class Arena : MonoBehaviour
             theEnemyProperty = theEnemyObj.GetComponent<Enemy>();
 
             //implement the orb's effect
-            currentOrbNum = player.GetTheOrb();
+            currentOrbNum = player.GetCurrentOrb();
             orbManagement.ImplementEffect(currentOrbNum);
 
             //active traps
@@ -130,6 +130,7 @@ public class Arena : MonoBehaviour
                     traps[i].GetComponent<Trap>().inactive();
                 }
 
+                //remove the orb's effect
                 orbManagement.RemoveEffect(currentOrbNum);
                 player.levelUp();
                 theEnemyObj.SetActive(false);
@@ -161,7 +162,7 @@ public class Arena : MonoBehaviour
             }
 
             //ถ้าผู้เล่นตาย
-            if (player.getHealth() <= 0)
+            if (player.GetCurrentHp() <= 0)
             {
 
             }
@@ -173,7 +174,7 @@ public class Arena : MonoBehaviour
 
                 newOrbNum = firstRandomOrb;
 
-                Debug.Log("Chose 1st Orb: " + orbManagement.GetOrbName(firstRandomOrb));
+                Debug.Log("Chose 1st Orb: " + orbManagement.GetName(firstRandomOrb));
             }
             else if (secondOrb.collision) //กรณีเลือก 2nd Orb
             {
@@ -182,7 +183,7 @@ public class Arena : MonoBehaviour
 
                 newOrbNum = secondRandomOrb;
 
-                Debug.Log("Chose 2nd Orb: " + orbManagement.GetOrbName(secondRandomOrb));
+                Debug.Log("Chose 2nd Orb: " + orbManagement.GetName(secondRandomOrb));
             }
             else if (thirdOrb.collision) //กรณีเลือก 3rd Orb
             {
@@ -191,7 +192,7 @@ public class Arena : MonoBehaviour
 
                 newOrbNum = thirdRandomOrb;
 
-                Debug.Log("Chose 3rd Orb: " + orbManagement.GetOrbName(thirdRandomOrb));
+                Debug.Log("Chose 3rd Orb: " + orbManagement.GetName(thirdRandomOrb));
             }
 
             //ถ้าผู้เล่นเลือก Orb แล้ว
@@ -199,7 +200,8 @@ public class Arena : MonoBehaviour
             {
                 choseTheOrb = false;
 
-                player.Inventory(newOrbNum); //เก็บ Orb ที่เหลือเข้ากระเป๋าของผู้เล่น
+                player.SetCurrentOrb(newOrbNum); //player เก็บ Orb ที่เลือก
+                player.ShowCurrentOrb(); //แสดงผล orb ที่เลือกผ่าน UI
 
                 firstOrbObj.SetActive(false);
                 secondOrbObj.SetActive(false);

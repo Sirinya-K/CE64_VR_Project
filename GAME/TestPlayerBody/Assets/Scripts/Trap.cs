@@ -11,14 +11,14 @@ public class Trap : MonoBehaviour
     private float currentTime, timeStamp, countTime;
     private float x1 = 41.76f, x2 = 59.41f, y = 14.1f, z1 = -38.26f, z2 = -53.44f;
 
-    private int trapDamage = 50;
+    private int dmg = 50;
     private int state = 0;
     private bool onHit = true;
 
     private bool activeState;
 
     // Start is called before the first frame update
-    public void Start()
+    void Start()
     {
         warmLight = gameObject.transform.Find("WarningLight").gameObject;
         trap = gameObject.transform.Find("TrapModel").gameObject;
@@ -30,7 +30,7 @@ public class Trap : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void FixedUpdate()
+    void FixedUpdate()
     {
         if(!activeState) return;
 
@@ -78,6 +78,16 @@ public class Trap : MonoBehaviour
         activeState = false;
     }
 
+    public int GetDmg()
+    {
+        return dmg;
+    }
+
+    public void SetDmg(int newDmg)
+    {
+        dmg = newDmg;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("PlayerBody")) return;
@@ -96,7 +106,7 @@ public class Trap : MonoBehaviour
         
         if(((int)countTime) == 0 && onHit)
         {
-            FindObjectOfType<Player>().TakeDamage(trapDamage);
+            FindObjectOfType<Player>().TakeDamage(dmg);
             onHit = false;
         }
         else if(((int)countTime) == 2 && !onHit)

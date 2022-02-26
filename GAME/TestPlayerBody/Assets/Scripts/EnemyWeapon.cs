@@ -6,6 +6,7 @@ public class EnemyWeapon : MonoBehaviour
 {
     public MqttProtocol mqtt;
     public Player player;
+    public OrbManagement orb;
 
     protected int impactAtk;
     protected int slashAtk;
@@ -17,6 +18,7 @@ public class EnemyWeapon : MonoBehaviour
     {
         mqtt = FindObjectOfType<MqttProtocol>();
         player = FindObjectOfType<Player>();
+        orb = FindObjectOfType<OrbManagement>();
 
         Debug.Log(gameObject.name + "'s Awake");
     }
@@ -48,20 +50,58 @@ public class EnemyWeapon : MonoBehaviour
             {
                 var finalAtk = ((int)((impactAtk + slashAtk) * Random.Range(minAtkBias, maxAtkBias))); // (impack + slash) * bias
                 player.TakeDamage(finalAtk);
-                Debug.Log("Collision: " + other.gameObject.tag + ", Atk: " + finalAtk);
+                Debug.Log("Collision: " + other.gameObject.name + ", Atk: " + finalAtk);
             }
             else
             {
-                var finalAtk = ((int)(impactAtk * Random.Range(minAtkBias, maxAtkBias))); // impack * bias
-                player.ReduceStamina(finalAtk);
-                Debug.Log("Collision: " + other.gameObject.tag + ", Atk: " + finalAtk);
+                if (player.GetCurrentOrb() == 8) //กรณี orb ปัจจุบันของผู้เล่นเป็นอันที่ 8
+                {
+                    var r = Random.Range(0, 100);
+                    if (r < orb.GetEffectPercent(8))
+                    {
+                        var finalAtk = 0;
+                        player.ReduceStamina(finalAtk);
+                        Debug.Log("Collision: " + other.gameObject.name + ", Atk: " + finalAtk);
+                    }
+                    else
+                    {
+                        var finalAtk = ((int)(impactAtk * Random.Range(minAtkBias, maxAtkBias))); // impack * bias
+                        player.ReduceStamina(finalAtk);
+                        Debug.Log("Collision: " + other.gameObject.name + ", Atk: " + finalAtk);
+                    }
+                }
+                else
+                {
+                    var finalAtk = ((int)(impactAtk * Random.Range(minAtkBias, maxAtkBias))); // impack * bias
+                    player.ReduceStamina(finalAtk);
+                    Debug.Log("Collision: " + other.gameObject.name + ", Atk: " + finalAtk);
+                }
             }
         }
         else if (!onShield && other.gameObject.CompareTag("Player"))
         {
-            var finalAtk = ((int)((impactAtk + slashAtk) * Random.Range(minAtkBias, maxAtkBias))); // (impack + slash) * bias
-            player.TakeDamage(finalAtk);
-            Debug.Log("Collision: " + other.gameObject.tag + ", Atk: " + finalAtk);
+            if (player.GetCurrentOrb() == 8) //กรณี orb ปัจจุบันของผู้เล่นเป็นอันที่ 8
+            {
+                var r = Random.Range(0, 100);
+                if (r < orb.GetEffectPercent(8))
+                {
+                    var finalAtk = 0;
+                    player.ReduceStamina(finalAtk);
+                    Debug.Log("Collision: " + other.gameObject.name + ", Atk: " + finalAtk);
+                }
+                else
+                {
+                    var finalAtk = ((int)((impactAtk + slashAtk) * Random.Range(minAtkBias, maxAtkBias))); // (impack + slash) * bias
+                    player.TakeDamage(finalAtk);
+                    Debug.Log("Collision: " + other.gameObject.name + ", Atk: " + finalAtk);
+                }
+            }
+            else
+            {
+                var finalAtk = ((int)((impactAtk + slashAtk) * Random.Range(minAtkBias, maxAtkBias))); // (impack + slash) * bias
+                player.TakeDamage(finalAtk);
+                Debug.Log("Collision: " + other.gameObject.name + ", Atk: " + finalAtk);
+            }
         }
     }
 

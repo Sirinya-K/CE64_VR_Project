@@ -31,7 +31,7 @@ public class PreparationRoom : MonoBehaviour
         if(arenaEntrance.collision)
         {
             //เช็คว่าหยิบอาวุธหรือยัง
-            if(player.theItem == "Weapon")
+            if(player.GetCurrentWeapon().name == "PlayerSword" || player.GetCurrentWeapon().name == "PlayerHammer" || player.GetCurrentWeapon().name == "PlayerSpear")
             {
                 arenaEntrance.collision = false;
 

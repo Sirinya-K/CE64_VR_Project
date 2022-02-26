@@ -94,8 +94,10 @@ public class PlayerGtabItem : MonoBehaviour
                     theItemDefaultPosition = theItem.transform.position;
                     theItem.transform.parent = GameObject.FindGameObjectWithTag("PlayerHand").transform;
 
-                    if (theItem.tag == "Weapon") player.GrabbedItem("Weapon");
-                    else player.GrabbedItem("NotWeapon");
+                    player.SetCurrentWeapon(theItem);
+
+                    // if (theItem.tag == "Weapon") player.GrabbedItem("Weapon");
+                    // else player.GrabbedItem("NotWeapon");
                 }
             }
         }
@@ -116,7 +118,8 @@ public class PlayerGtabItem : MonoBehaviour
 
         //ให้ parent เป็น null เมื่อผู้เล่นปล่อย item แล้ว
         theItem.transform.parent = null;
-        player.GrabbedItem("NotWeapon");
+        
+        // player.GrabbedItem("NotWeapon");
     }
 
     // Update is called once per frame

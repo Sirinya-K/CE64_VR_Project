@@ -119,4 +119,44 @@ public class PlayerWeapon : MonoBehaviour
             return atk;
         }
     }
+
+    public int GetImpactAtk()
+    {
+        return impactAtk;
+    }
+
+    public void SetImpactAtk(int newAtk)
+    {
+        impactAtk = newAtk;
+    }
+
+    public int GetSlashAtk()
+    {
+        return slashAtk;
+    }
+
+    public void SetSlashAtk(int newAtk)
+    {
+        slashAtk = newAtk;
+    }
+
+    public int GetCriR()
+    {
+        return criR;
+    }
+
+    public void SetCriR(int newCriR)
+    {
+        criR = newCriR;
+    }
+
+    public int GetCriD()
+    {
+        return criD;
+    }
+
+    public void SetCriD(int newCriD)
+    {
+        criD = newCriD;
+    }
 }

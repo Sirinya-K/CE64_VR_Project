@@ -27,20 +27,20 @@ public class EnemyManagement : MonoBehaviour
 
         if (level == 0)
         {
-            theEnemyProperty.setMaxHealth(5000);
+            theEnemyProperty.setMaxHealth(100); // 5000
             
         }
         else if (level == 1)
         {
-            theEnemyProperty.setMaxHealth(2000);
+            theEnemyProperty.setMaxHealth(100);
         }
         else if (level == 2)
         {
-            theEnemyProperty.setMaxHealth(3000);
+            theEnemyProperty.setMaxHealth(100);
         }
         else if (level == 3)
         {
-            theEnemyProperty.setMaxHealth(4000);
+            theEnemyProperty.setMaxHealth(100);
         }
 
         Debug.Log("Level: " + level + ", Create: " + enemies[num].name + ", MaxHP: " + theEnemyProperty.getMaxHealth());

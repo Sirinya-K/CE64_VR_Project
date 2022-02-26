@@ -13,17 +13,22 @@ public class Player : MonoBehaviour
 
     public Text totalHp, currentHp;
 
+    public OrbManagement theOrb;
+    public Image currentOrbDisplay;
+
     [SerializeField] private int maxHealth = 500, maxStamina = 150;
     [SerializeField] private float increaseStaminaPoint = 0.02f;
     [HideInInspector] public int currentHealth;
     [HideInInspector] public float currentStamina;
     [HideInInspector] public bool regenable;
 
-    [HideInInspector] public string theItem;
+    // [HideInInspector] public string theItem;
     [HideInInspector] public bool readey, win, fail;
 
     private int playerLevel = 0;
-    private int theOrb = 99;
+
+    private GameObject currentWeapon;
+    private int currentOrb = 6;
 
     // Start is called before the first frame update
     void Start()
@@ -33,18 +38,65 @@ public class Player : MonoBehaviour
         currentHp.text = currentHealth.ToString();
 
         currentStamina = maxStamina;
+
+        ShowCurrentOrb();
     }
 
-    // กระเป๋าใส่ orb ปัจจุบันที่ผู้เล่นเก็บ
-    public void Inventory(int orbNum)
+    public int GetCurrentHp()
     {
-        theOrb = orbNum;
+        return currentHealth;
+    }
+
+    public void SetCurrentHp(int newHp)
+    {
+        currentHealth = newHp;
+    }
+
+    public int GetMaxHp()
+    {
+        return maxHealth;
+    }
+
+    public void SetMaxHp(int newHp)
+    {
+        maxHealth = newHp;
+    }
+
+    public int GetMaxStamina()
+    {
+        return maxStamina;
+    }
+
+    public void SetMaxStamina(int newStamina)
+    {
+        maxStamina = newStamina;
+    }
+
+    public GameObject GetCurrentWeapon()
+    {
+        return currentWeapon;
+    }
+
+    public void SetCurrentWeapon(GameObject obj)
+    {
+        currentWeapon = obj;
     }
 
     // return orb ปัจจุบันให้ arena ทำการ implement effect
-    public int GetTheOrb()
+    public int GetCurrentOrb()
     {
-        return theOrb;
+        return currentOrb;
+    }
+
+    // กระเป๋าใส่ orb ปัจจุบันที่ผู้เล่นเก็บ
+    public void SetCurrentOrb(int orbNum)
+    {
+        currentOrb = orbNum;
+    }
+
+    public void ShowCurrentOrb()
+    {
+        currentOrbDisplay.color = theOrb.GetColor(currentOrb);
     }
 
     public void levelUp()
@@ -63,10 +115,10 @@ public class Player : MonoBehaviour
         currentStamina = maxStamina;
     }
 
-    public void GrabbedItem(string grabbedItem)
-    {
-        theItem = grabbedItem;
-    }
+    // public void GrabbedItem(string grabbedItem)
+    // {
+    //     theItem = grabbedItem;
+    // }
 
     // Note: ควรทำ script PlayerArmController แยกออกมาเลย
     // Note: ควรเปลี่ยนชื่อเป็น PublishArmStateToMqtt
@@ -146,16 +198,10 @@ public class Player : MonoBehaviour
         staminaBar.UpdateHealth((float)currentStamina / (float)maxStamina);
     }
 
-    public int getHealth()
-    {
-        return currentHealth;
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
         RegenerateStamina();
-
         // Debug.Log(currentStamina);
     }
 
