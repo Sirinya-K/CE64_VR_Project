@@ -90,7 +90,7 @@ public class Trap : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag("PlayerBody")) return;
+        if (!other.gameObject.CompareTag("Player")) return;
         
         Debug.Log(other.gameObject.name + " Coliision with " + gameObject.name);
 
@@ -100,7 +100,7 @@ public class Trap : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (!other.gameObject.CompareTag("PlayerBody")) return;
+        if (!other.gameObject.CompareTag("Player")) return;
 
         countTime += Time.deltaTime;
         

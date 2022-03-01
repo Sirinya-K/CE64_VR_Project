@@ -35,6 +35,8 @@ public class Arena : MonoBehaviour
     private GameObject trapOriginal;
     private GameObject[] traps;
 
+    private GameObject playerCurrentWeapon;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -97,7 +99,7 @@ public class Arena : MonoBehaviour
             }
             else
             {
-                var randomEnemy = Random.Range(2, 5); // (2, 5) สุ่ม enemy ลำดับที่ 2 3 4
+                var randomEnemy = Random.Range(0, 1); // (2, 5) สุ่ม enemy ลำดับที่ 2 3 4
                 theEnemyObj = enemyManagement.CreateEnemy(currentLevel, randomEnemy);
             }
 
@@ -105,6 +107,9 @@ public class Arena : MonoBehaviour
             theEnemyObj.SetActive(true);
             spawnManagement.spawn(theEnemyObj, enemyWaypoint);
             theEnemyProperty = theEnemyObj.GetComponent<Enemy>();
+
+            //เก็บว่า player ถืออาวุธอะไรในด่านนี้
+            playerCurrentWeapon = player.GetCurrentWeapon();
 
             //implement the orb's effect
             currentOrbNum = player.GetCurrentOrb();
@@ -131,7 +136,10 @@ public class Arena : MonoBehaviour
                 }
 
                 //remove the orb's effect
+                if(orbManagement.canRemove == false) orbManagement.canRemove = true;
                 orbManagement.RemoveEffect(currentOrbNum);
+                orbManagement.canRemove = false;
+
                 player.levelUp();
                 theEnemyObj.SetActive(false);
                 theEnemyProperty.ResetEnemyStat();
@@ -152,11 +160,11 @@ public class Arena : MonoBehaviour
                     orbManagement.Show(firstRandomOrb, "FirstOrb");
 
                     secondOrbObj.SetActive(true); // Active & Random 2nd Orb
-                    secondRandomOrb = Random.Range(3, 6);
+                    secondRandomOrb = Random.Range(3, 6); // มีโอกาสสุ่มเจอ 3 4 5
                     orbManagement.Show(secondRandomOrb, "SecondOrb");
 
                     thirdOrbObj.SetActive(true); // Active & Random 3rd Orb
-                    thirdRandomOrb = Random.Range(6, 9);
+                    thirdRandomOrb = Random.Range(7, 8); // มีโอกาสสุ่มเจอ 6 7 8
                     orbManagement.Show(thirdRandomOrb, "ThirdOrb");
                 }
             }
@@ -209,6 +217,9 @@ public class Arena : MonoBehaviour
 
                 showResult.SetActive(true);
                 fightResult.text = " ";
+
+                playerCurrentWeapon = null;
+
                 Invoke("GoNextLevel", stateDelay);
             }
         }
@@ -244,5 +255,20 @@ public class Arena : MonoBehaviour
     public void StartInitiate()
     {
         initiateState = true;
+    }
+
+    public GameObject GetPlayerCurrentWeapon()
+    {
+        return playerCurrentWeapon;
+    }
+
+    public void SetPlayerCurrentWeapon(GameObject obj)
+    {
+        playerCurrentWeapon = obj;
+    }
+
+    public int GetTotalTrap()
+    {
+        return totalTrap;
     }
 }

@@ -28,16 +28,21 @@ public class PreparationRoom : MonoBehaviour
         stateNumber.text = player.getLevel().ToString();
 
         //เมื่อผู้เล่นยืนหน้าประตู
-        if(arenaEntrance.collision)
+        if (arenaEntrance.collision)
         {
             //เช็คว่าหยิบอาวุธหรือยัง
-            if(player.GetCurrentWeapon().name == "PlayerSword" || player.GetCurrentWeapon().name == "PlayerHammer" || player.GetCurrentWeapon().name == "PlayerSpear")
+            if (player.GetCurrentWeapon() != null)
             {
-                arenaEntrance.collision = false;
+                if (player.GetCurrentWeapon().name == "PlayerSword" || player.GetCurrentWeapon().name == "PlayerHammer" || player.GetCurrentWeapon().name == "PlayerSpear")
+                {
+                    arenaEntrance.collision = false;
 
-                Debug.Log("GO TO ARENA");
-                stateManagement.GoState(3);
+                    Debug.Log("GO TO ARENA");
+                    stateManagement.GoState(3);
+                }
             }
+
+
         }
     }
 }

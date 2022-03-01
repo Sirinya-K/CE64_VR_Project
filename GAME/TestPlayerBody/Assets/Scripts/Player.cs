@@ -15,9 +15,10 @@ public class Player : MonoBehaviour
 
     public OrbManagement theOrb;
     public Image currentOrbDisplay;
+    public Text currentOrbDisplayName;
 
-    [SerializeField] private int maxHealth = 500, maxStamina = 150;
-    [SerializeField] private float increaseStaminaPoint = 0.02f;
+    private int maxHealth = 500, maxStamina = 150;
+    private float increaseStaminaPoint = 0.02f;
     [HideInInspector] public int currentHealth;
     [HideInInspector] public float currentStamina;
     [HideInInspector] public bool regenable;
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour
     private int playerLevel = 0;
 
     private GameObject currentWeapon;
-    private int currentOrb = 6;
+    private int currentOrb = 9;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,17 @@ public class Player : MonoBehaviour
         ShowCurrentOrb();
     }
 
+    private void UpdateCurrentHp()
+    {
+        currentHp.text = currentHealth.ToString();
+        healthBar.UpdateHealth((float)currentHealth / (float)maxHealth);
+    }
+
+    private void UpdateMaxHp()
+    {
+        totalHp.text = "/" + maxHealth.ToString();
+    }
+
     public int GetCurrentHp()
     {
         return currentHealth;
@@ -49,7 +61,9 @@ public class Player : MonoBehaviour
 
     public void SetCurrentHp(int newHp)
     {
+        if (newHp > maxHealth) newHp = maxHealth;
         currentHealth = newHp;
+        UpdateCurrentHp();
     }
 
     public int GetMaxHp()
@@ -60,6 +74,7 @@ public class Player : MonoBehaviour
     public void SetMaxHp(int newHp)
     {
         maxHealth = newHp;
+        UpdateMaxHp();
     }
 
     public int GetMaxStamina()
@@ -97,6 +112,7 @@ public class Player : MonoBehaviour
     public void ShowCurrentOrb()
     {
         currentOrbDisplay.color = theOrb.GetColor(currentOrb);
+        currentOrbDisplayName.text = theOrb.GetName(currentOrb);
     }
 
     public void levelUp()
@@ -170,8 +186,7 @@ public class Player : MonoBehaviour
         if (currentHealth - damage <= 0) currentHealth = 0;
         else currentHealth -= damage;
 
-        currentHp.text = currentHealth.ToString();
-        healthBar.UpdateHealth((float)currentHealth / (float)maxHealth);
+        UpdateCurrentHp();
     }
 
     public void ReduceStamina(int damage)

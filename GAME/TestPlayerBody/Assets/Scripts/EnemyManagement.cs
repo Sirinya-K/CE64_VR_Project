@@ -15,7 +15,7 @@ public class EnemyManagement : MonoBehaviour
         for (int i = 0; i < totalEnemies; i++)
         {
             enemies[i] = GameObject.Find("Enemy"+i);
-            Debug.Log(enemies[i].name);
+            // Debug.Log(enemies[i].name);
 
             enemies[i].SetActive(false);
         }

@@ -53,7 +53,7 @@ public class PlayerGtabItem : MonoBehaviour
                 // Check that Index or Middle collision with the item
                 if ((indexCollision.collisionStatus == true && hand.RIndexValue >= 0.15) || (middleCollision.collisionStatus == true && hand.RMiddleValue >= 0.15))
                 {
-                    Debug.Log("Grab");
+                    // Debug.Log("Grab");
 
                     // Create Fixed Joint between the Item and Hand
                     itemJoint = other.gameObject.AddComponent<FixedJoint>();
@@ -118,7 +118,8 @@ public class PlayerGtabItem : MonoBehaviour
 
         //ให้ parent เป็น null เมื่อผู้เล่นปล่อย item แล้ว
         theItem.transform.parent = null;
-        
+        player.SetCurrentWeapon(null);
+
         // player.GrabbedItem("NotWeapon");
     }
 

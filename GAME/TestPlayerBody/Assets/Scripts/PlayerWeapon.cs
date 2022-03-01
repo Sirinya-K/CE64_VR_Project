@@ -24,7 +24,7 @@ public class PlayerWeapon : MonoBehaviour
 
         lastPosition = transform.position;
 
-        Debug.Log(gameObject.name + "'s Awake");
+        // Debug.Log(gameObject.name + "'s Awake");
     }
 
     // Start is called before the first frame update

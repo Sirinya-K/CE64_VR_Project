@@ -5,31 +5,33 @@ using UnityEngine.UI;
 
 public class OrbManagement : MonoBehaviour
 {
-    public Material green;
-    public Material blue;
-    public Material red;
-    public Material defaultColor;
+    public Material greenOut;
+    public Material greenIn;
+    public Material blueOut;
+    public Material blueIn;
+    public Material redOut;
+    public Material redIn;
 
     public Player player;
     public PlayerWeapon playerWeapon;
-    public Enemy enemy;
-    public Trap trap;
+    public Arena arena;
     public ArenaSettings arenaSettings;
 
-    private string[,] orbs = new string[,] { { "ฟื้นฟูพลังชีวิต 20%", "Green", "20", "0" }, { "เพิ่มพลังชีวิตสูงสุดขึ้น 15%", "Green", "15", "2" }, { "เพิ่มพลังกายสูงสุดขึ้น 10%", "Green", "10", "2" },
-                                            { "เพิ่มพลังโจมตี 10% ใน 15 วินาทีแรก", "Blue", "10", "1" }, { "เพิ่มอัตราคริ 5%", "Blue", "5", "2" }, { "เพิ่มความเสียหายเมื่อติดคริ 10%", "Blue", "10", "2" },
-                                            { "ลดความเร็วการเคลื่อนที่ของศัตรูลง 10%", "Red", "10", "1" }, { "ลดความเสียหายของกับดักลง 20%", "Red", "20", "1" }, { "เมื่อพลังกายของผู้เล่นมากกว่า 0 จะมีโอกาส 15% ที่ศัตรูจะโจมตีพลาด", "Red", "15%", "1" }, 
+    public bool canRemove;
+
+    private string[,] orbs = new string[,] { { "Increase 20% HP regeneration", "Green", "20", "0" }, { "Increases player Max HP 15%", "Green", "15", "2" }, { "Increases player Max Stamina 10%", "Green", "10", "2" },
+                                            { "Increases player ATK 10% in first 15 sec", "Blue", "10", "1" }, { "Increases player Cri Rate 9%", "Blue", "9", "2" }, { "Increases player Cri Damage 12%", "Blue", "12", "2" },
+                                            { "Decreases enemy Speed 10%", "Red", "10", "1" }, { "Reduce Damage from traps 20%", "Red", "20", "1" }, { "When player Stamina is more than 0, There's a 15% chance of dodging Attack from enemy", "Red", "15", "1" },
                                             { " ", " ", " ", " " } };
 
     private int defaultImpactAtk = 0, defaultSlashAtk = 0, defaultTrapDmg = 0; // 3 3 7
     private float defaultEnemySpeed = 0; // 6
-    
+
     void Start()
     {
         player = FindObjectOfType<Player>();
         playerWeapon = FindObjectOfType<PlayerWeapon>();
-        enemy = FindObjectOfType<Enemy>();
-        trap = FindObjectOfType<Trap>();
+        arena = FindObjectOfType<Arena>();
         arenaSettings = FindObjectOfType<ArenaSettings>();
     }
 
@@ -40,15 +42,21 @@ public class OrbManagement : MonoBehaviour
 
         if (orbs[num, 1] == "Green")
         {
-            theOrb.GetComponent<MeshRenderer>().material = green;
+            theOrb.GetComponent<MeshRenderer>().material = greenOut;
+            var inner = theOrb.transform.Find("InnerSphere");
+            inner.GetComponent<MeshRenderer>().material = greenIn;
         }
         else if (orbs[num, 1] == "Blue")
         {
-            theOrb.GetComponent<MeshRenderer>().material = blue;
+            theOrb.GetComponent<MeshRenderer>().material = blueOut;
+            var inner = theOrb.transform.Find("InnerSphere");
+            inner.GetComponent<MeshRenderer>().material = blueIn;
         }
         else if (orbs[num, 1] == "Red")
         {
-            theOrb.GetComponent<MeshRenderer>().material = red;
+            theOrb.GetComponent<MeshRenderer>().material = redOut;
+            var inner = theOrb.transform.Find("InnerSphere");
+            inner.GetComponent<MeshRenderer>().material = redIn;
         }
 
         theOrbDesc.text = orbs[num, 0];
@@ -56,9 +64,7 @@ public class OrbManagement : MonoBehaviour
 
     public void ImplementEffect(int num)
     {
-        if(num == 9) return;
-
-        Debug.Log((float)GetEffectPercent(num));
+        if (num == 9) return;
 
         var effectPercemt = (float)GetEffectPercent(num); //ex. 20
         var effectValue = effectPercemt / 100f; //ex. 0.2
@@ -68,51 +74,68 @@ public class OrbManagement : MonoBehaviour
             var current = player.GetCurrentHp();
             var max = player.GetMaxHp();
             player.SetCurrentHp(((int)(current + (max * effectValue))));
+            Debug.Log("[OrbManagement] " + "Implement: " + num + ", CurrentHp: " + player.GetCurrentHp());
         }
         if (num == 1) //เพิ่มพลังชีวิตสูงสุดขึ้น 15%
         {
             var max = player.GetMaxHp();
             player.SetMaxHp(((int)(max + (max * effectValue))));
+            Debug.Log("[OrbManagement] " + "Implement: " + num + ", MaxHp: " + player.GetMaxHp());
         }
         if (num == 2) //เพิ่มพลังกายสูงสุดขึ้น 10%
         {
             var max = player.GetMaxStamina();
             player.SetMaxStamina(((int)(max + (max * effectValue))));
+            Debug.Log("[OrbManagement] " + "Implement: " + num + ", MaxStamina: " + player.GetMaxStamina());
         }
-        if (num == 3) //เพิ่มพลังโจมตี 10%
+        if (num == 3) //เพิ่มพลังโจมตี 10% ใน 15 วิแรก
         {
-            var impactAtk = playerWeapon.GetImpactAtk();
-            var slashAtk = playerWeapon.GetSlashAtk();
+            // var currentWeapon = player.GetCurrentWeapon().GetComponent<PlayerWeapon>();
+            var currentWeapon = arena.GetPlayerCurrentWeapon().GetComponent<PlayerWeapon>();
+
+            var impactAtk = currentWeapon.GetImpactAtk();
+            var slashAtk = currentWeapon.GetSlashAtk();
             defaultImpactAtk = impactAtk;
             defaultSlashAtk = slashAtk;
-            playerWeapon.SetImpactAtk(((int)(impactAtk + (impactAtk * effectValue))));
-            playerWeapon.SetSlashAtk(((int)(slashAtk + (slashAtk * effectValue))));
+            currentWeapon.SetImpactAtk(((int)(impactAtk + (impactAtk * effectValue))));
+            currentWeapon.SetSlashAtk(((int)(slashAtk + (slashAtk * effectValue))));
+            Debug.Log("[OrbManagement] " + currentWeapon.name + " Implement: " + num + ", Impact: " + currentWeapon.GetImpactAtk() + ", Slash: " + currentWeapon.GetSlashAtk());
 
-            Invoke("RemoveEffect(num)", 15);
+            StartCoroutine(WaitThenCanRemove(num, 15));
         }
-        if(num == 4) //เพิ่มอัตราคริ 5%
+        if (num == 4) //เพิ่มอัตราคริ 5%
         {
             var criR = playerWeapon.GetCriR();
-            playerWeapon.SetCriR(((int)(criR + (criR * effectValue))));
+            var percent = GetEffectPercent(num);
+            playerWeapon.SetCriR(criR + percent);
+            Debug.Log("[OrbManagement] " + "Implement: " + num + ", CriR: " + playerWeapon.GetCriR());
         }
-        if(num == 5) //เพิ่มความเสียหายเมื่อติดคริ 10%
+        if (num == 5) //เพิ่มความเสียหายเมื่อติดคริ 10%
         {
             var criD = playerWeapon.GetCriD();
-            playerWeapon.SetCriD(((int)(criD + (criD * effectValue))));
+            var percent = GetEffectPercent(num);
+            playerWeapon.SetCriD(criD + percent);
+            Debug.Log("[OrbManagement] " + "Implement: " + num + ", CriD: " + playerWeapon.GetCriD());
         }
-        if(num == 6) //ลดความเร็วการเคลื่อนที่ของศัตรูลง 10%
+        if (num == 6) //ลดความเร็วการเคลื่อนที่ของศัตรูลง 10%
         {
             var speed = arenaSettings.agentRunSpeed;
             defaultEnemySpeed = speed;
-            arenaSettings.agentRunSpeed -= speed * effectValue;
+            arenaSettings.agentRunSpeed = arenaSettings.agentRunSpeed - (speed * effectValue);
+            Debug.Log("[OrbManagement] " + "Implement: " + num + ", EnemySpeed: " + arenaSettings.agentRunSpeed);
         }
-        if(num == 7) //ลดความเสียหายของกับดักลง 20%
+        if (num == 7) //ลดความเสียหายของกับดักลง 20%
         {
-            var dmg = trap.GetDmg();
-            defaultTrapDmg = dmg;
-            trap.SetDmg(((int)(dmg + (dmg * effectValue))));
+            for (int i = 0; i < arena.GetTotalTrap(); i++)
+            {
+                var theTrap = GameObject.Find("Trap" + i).GetComponent<Trap>();
+                var dmg = theTrap.GetDmg();
+                defaultTrapDmg = dmg;
+                theTrap.SetDmg(((int)(dmg - (dmg * effectValue))));
+                Debug.Log("[OrbManagement] " + "Implement: " + num + ", TrapDmg: " + theTrap.GetDmg());
+            }
         }
-        if(num == 8) //เมื่อพลังกายของผู้เล่นมากกว่า 0 จะมีโอกาส 15% ที่ศัตรูจะโจมตีพลาด
+        if (num == 8) //เมื่อพลังกายของผู้เล่นมากกว่า 0 จะมีโอกาส 15% ที่ศัตรูจะโจมตีพลาด
         {
             //Implement ใน EnemyWeapon
         }
@@ -120,19 +143,36 @@ public class OrbManagement : MonoBehaviour
 
     public void RemoveEffect(int num) // 3 6 7 8
     {
-        if (num == 3) //เพิ่มพลังโจมตี 10%
+        if (num == 3 && canRemove) //เพิ่มพลังโจมตี 10%
         {
-            playerWeapon.SetImpactAtk(defaultImpactAtk);
-            playerWeapon.SetSlashAtk(defaultSlashAtk);
+            // var currentWeapon = player.GetCurrentWeapon().GetComponent<PlayerWeapon>();
+            var currentWeapon = arena.GetPlayerCurrentWeapon().GetComponent<PlayerWeapon>();
+
+            currentWeapon.SetImpactAtk(defaultImpactAtk);
+            currentWeapon.SetSlashAtk(defaultSlashAtk);
+            Debug.Log("[OrbManagement] " + currentWeapon.name + " Remove: " + num + ", Impact: " + currentWeapon.GetImpactAtk() + ", Slash: " + currentWeapon.GetSlashAtk());
         }
-        if(num == 6) //ลดความเร็วการเคลื่อนที่ของศัตรูลง 10%
+        if (num == 6) //ลดความเร็วการเคลื่อนที่ของศัตรูลง 10%
         {
             arenaSettings.agentRunSpeed = defaultEnemySpeed;
+            Debug.Log("[OrbManagement] " + "Remove: " + num + ", EnemySpeed: " + arenaSettings.agentRunSpeed);
         }
-        if(num == 7) //ลดความเสียหายของกับดักลง 20%
+        if (num == 7) //ลดความเสียหายของกับดักลง 20%
         {
-            trap.SetDmg(defaultTrapDmg);
+            for (int i = 0; i < arena.GetTotalTrap(); i++)
+            {
+                var theTrap = GameObject.Find("Trap" + i).GetComponent<Trap>();
+                theTrap.SetDmg(defaultTrapDmg);
+                Debug.Log("[OrbManagement] " + "Remove: " + num + ", TrapDmg: " + theTrap.GetDmg());
+            }
         }
+    }
+
+    IEnumerator WaitThenCanRemove(int num, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        canRemove = true;
+        RemoveEffect(num);
     }
 
     public string GetName(int num)
@@ -144,19 +184,19 @@ public class OrbManagement : MonoBehaviour
     {
         if (orbs[num, 1] == "Green")
         {
-            return new Color32(121,224,133,255);
+            return new Color32(121, 224, 133, 255);
         }
         else if (orbs[num, 1] == "Blue")
         {
-            return new Color32(160,208,225,255);
+            return new Color32(160, 208, 225, 255);
         }
         else if (orbs[num, 1] == "Red")
         {
-            return new Color32(253,149,137,255);
+            return new Color32(253, 149, 137, 255);
         }
         else
         {
-            return new Color32(255,255,255,255); 
+            return new Color32(255, 255, 255, 255);
         }
     }
 

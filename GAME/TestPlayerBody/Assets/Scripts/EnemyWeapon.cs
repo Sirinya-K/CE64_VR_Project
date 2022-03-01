@@ -20,7 +20,7 @@ public class EnemyWeapon : MonoBehaviour
         player = FindObjectOfType<Player>();
         orb = FindObjectOfType<OrbManagement>();
 
-        Debug.Log(gameObject.name + "'s Awake");
+        // Debug.Log(gameObject.name + "'s Awake");
     }
 
     // Start is called before the first frame update
@@ -57,6 +57,7 @@ public class EnemyWeapon : MonoBehaviour
                 if (player.GetCurrentOrb() == 8) //กรณี orb ปัจจุบันของผู้เล่นเป็นอันที่ 8
                 {
                     var r = Random.Range(0, 100);
+                    Debug.Log("[OrbManagement] " + " Random: " + r);
                     if (r < orb.GetEffectPercent(8))
                     {
                         var finalAtk = 0;
@@ -83,10 +84,11 @@ public class EnemyWeapon : MonoBehaviour
             if (player.GetCurrentOrb() == 8) //กรณี orb ปัจจุบันของผู้เล่นเป็นอันที่ 8
             {
                 var r = Random.Range(0, 100);
+                Debug.Log("[OrbManagement] " + " Random: " + r);
                 if (r < orb.GetEffectPercent(8))
                 {
                     var finalAtk = 0;
-                    player.ReduceStamina(finalAtk);
+                    player.TakeDamage(finalAtk);
                     Debug.Log("Collision: " + other.gameObject.name + ", Atk: " + finalAtk);
                 }
                 else

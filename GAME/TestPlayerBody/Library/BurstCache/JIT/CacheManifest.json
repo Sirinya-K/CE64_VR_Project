@@ -3,7 +3,7 @@
   "Assemblies": [
     {
       "FullName": "Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-02-26T12:52:38.9861478Z"
+      "LastWriteTime": "2022-02-27T11:08:02.2964071Z"
     },
     {
       "FullName": "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -15,7 +15,7 @@
     },
     {
       "FullName": "Unity.Animation.Rigging, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-02-26T12:52:43.0017644Z"
+      "LastWriteTime": "2022-02-27T11:08:04.3617167Z"
     },
     {
       "FullName": "mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -27,11 +27,11 @@
     },
     {
       "FullName": "Unity.Barracuda, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-02-26T12:52:45.1517407Z"
+      "LastWriteTime": "2022-02-27T11:08:08.4572301Z"
     },
     {
       "FullName": "Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-02-26T12:52:42.929749Z"
+      "LastWriteTime": "2022-02-27T11:08:06.8508686Z"
     }
   ],
   "Functions": [
@@ -302,6 +302,18 @@
         4,
         1,
         7
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<Unity.Barracuda.BurstCPUOps/BroadcastDivJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 13433243922868730427,
+      "ModuleHash": "351a990fd45b5a0cc4e23302f931e904",
+      "LinkName": "286E63D34A138303",
+      "AssemblyDependencyIndices": [
+        5,
+        6,
+        4,
+        1
       ]
     }
   ]
