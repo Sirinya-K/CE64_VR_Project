@@ -160,11 +160,11 @@ public class Arena : MonoBehaviour
                     orbManagement.Show(firstRandomOrb, "FirstOrb");
 
                     secondOrbObj.SetActive(true); // Active & Random 2nd Orb
-                    secondRandomOrb = Random.Range(3, 6); // มีโอกาสสุ่มเจอ 3 4 5
+                    secondRandomOrb = Random.Range(3, 4); // มีโอกาสสุ่มเจอ 3 4 5
                     orbManagement.Show(secondRandomOrb, "SecondOrb");
 
                     thirdOrbObj.SetActive(true); // Active & Random 3rd Orb
-                    thirdRandomOrb = Random.Range(7, 8); // มีโอกาสสุ่มเจอ 6 7 8
+                    thirdRandomOrb = Random.Range(6, 9); // มีโอกาสสุ่มเจอ 6 7 8
                     orbManagement.Show(thirdRandomOrb, "ThirdOrb");
                 }
             }
