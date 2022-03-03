@@ -79,12 +79,12 @@ public class ArenaEnvControllerV2 : MonoBehaviour
         {
             case Event1.HitBlueEnemy:
                 // * Agent can hit enemy will +2 reward and enemy get -1 (cause we have priority on attack enemy)        
-                Debug.Log("PURPLE HIT BUT DISTANCE NOT MATCH");
+                Debug.Log("PURPLE HIT");
                 // ! DONT FORGET TO CHANGE POLICY
-                purpleAgent.AddReward(2f);
+                purpleAgent.AddReward(1f);
                 blueAgent.AddReward(-1f);
                 countPurpleHit++;
-                if (countPurpleHit == 5)
+                if (countPurpleHit == 1)
                 {
                     Debug.Log("PURPLE WIN!");
                     purpleAgent.AddReward(1f);
@@ -97,13 +97,13 @@ public class ArenaEnvControllerV2 : MonoBehaviour
                 break;
             case Event1.HitPurpleEnemy:
                 // * Agent can hit enemy will +2 reward and enemy get -1 (cause we have priority on attack enemy)        
-                Debug.Log("BLUE HIT BUT DISTANCE NOT MATCH");
+                Debug.Log("BLUE HIT");
                 // ! DONT FORGET TO CHANGE POLICY
-                blueAgent.AddReward(2f);
+                blueAgent.AddReward(1f);
                 purpleAgent.AddReward(-1f);
 
                 countBlueHit++;
-                if (countBlueHit == 5)
+                if (countBlueHit == 1)
                 {
                     Debug.Log("BLUE WIN!");
                     blueAgent.AddReward(1f);
@@ -139,7 +139,7 @@ public class ArenaEnvControllerV2 : MonoBehaviour
                 break;
             case Event1.OutOfRange:
                 // * Agent have distance to each other more than ... will get -1 reward for both
-                if (Vector3.Distance(blueAgentRb.transform.position, purpleAgentRb.transform.position) > 20f)
+                if (Vector3.Distance(blueAgentRb.transform.position, purpleAgentRb.transform.position) > 15f)
                 {
                     blueAgent.AddReward(-1);
                     purpleAgent.AddReward(-1);
@@ -188,7 +188,7 @@ public class ArenaEnvControllerV2 : MonoBehaviour
             }
             // randomise starting positions and rotations
             var randomPosX = Random.Range(-5f, 5f);
-            var randomPosZ = Random.Range(1f * agentRot, 3f * agentRot);
+            var randomPosZ = Random.Range(3f * -agentRot, 6f * -agentRot);
             var randomRot = Random.Range(-90f, 90f);
             agent.transform.localPosition = new Vector3(randomPosX, 0, randomPosZ);
             agent.transform.eulerAngles = new Vector3(0, randomRot, 0);

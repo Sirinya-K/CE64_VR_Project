@@ -1,5 +1,5 @@
 behaviors:
-  AttackBehavior:
+  default:
     trainer_type: ppo
     hyperparameters:
       batch_size: 2048

@@ -1,0 +1,65 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 52066751,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-52066751.onnx",
+                "reward": -0.13682663599650066,
+                "creation_time": 1646248666.1026998,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-52066751.pt"
+                ]
+            },
+            {
+                "steps": 52499995,
+                "file_path": "results\\Fight_NewObservation_FixFight\\AttackBehavior\\AttackBehavior-52499995.onnx",
+                "reward": 0.1199200415611267,
+                "creation_time": 1646251188.237977,
+                "auxillary_file_paths": [
+                    "results\\Fight_NewObservation_FixFight\\AttackBehavior\\AttackBehavior-52499995.pt"
+                ]
+            },
+            {
+                "steps": 52712265,
+                "file_path": "results\\Fight_NewObservation_FixFight\\AttackBehavior\\AttackBehavior-52712265.onnx",
+                "reward": 0.05694072327371371,
+                "creation_time": 1646251534.6658068,
+                "auxillary_file_paths": [
+                    "results\\Fight_NewObservation_FixFight\\AttackBehavior\\AttackBehavior-52712265.pt"
+                ]
+            },
+            {
+                "steps": 52999951,
+                "file_path": "results\\Fight_newobservation_fixfight\\AttackBehavior\\AttackBehavior-52999951.onnx",
+                "reward": -0.2733210561290064,
+                "creation_time": 1646252388.1941652,
+                "auxillary_file_paths": [
+                    "results\\Fight_newobservation_fixfight\\AttackBehavior\\AttackBehavior-52999951.pt"
+                ]
+            },
+            {
+                "steps": 53458199,
+                "file_path": "results\\Fight_newobservation_fixfight\\AttackBehavior\\AttackBehavior-53458199.onnx",
+                "reward": -0.2090624508758386,
+                "creation_time": 1646253198.0408962,
+                "auxillary_file_paths": [
+                    "results\\Fight_newobservation_fixfight\\AttackBehavior\\AttackBehavior-53458199.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 53458199,
+            "file_path": "results\\Fight_newobservation_fixfight\\AttackBehavior.onnx",
+            "reward": -0.2090624508758386,
+            "creation_time": 1646253198.0408962,
+            "auxillary_file_paths": [
+                "results\\Fight_newobservation_fixfight\\AttackBehavior\\AttackBehavior-53458199.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}
