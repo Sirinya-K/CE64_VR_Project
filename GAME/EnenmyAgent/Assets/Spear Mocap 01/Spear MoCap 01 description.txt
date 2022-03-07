@@ -1,0 +1,21 @@
+Spear MoCap 01
+
+This package features a collection of 18 fbx animations for a bipedal humanoid character wielding a spear with two hands. 
+
+Spear Attack 1: Forward stab.
+
+Spear Attack 2: Swiping attack.
+
+Spear Attack 3: Overhead stab.
+
+Spear Execution: Gut impalement.
+
+Spear Idle: Standard idle animation while wielding a spear.
+
+Spear Run: Running forward with spear.
+
+Spear Turns: Turning left and right at 90 and 180 degrees.
+
+Spear Unsheathing and Sheathing: Drawing spear and putting it away.
+
+If you have any questions feel free to contact us at support@morromotion.com

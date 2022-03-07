@@ -1,0 +1,56 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 5999748,
+                "file_path": "results\\Attack_V2_01\\AttackBehavior\\AttackBehavior-5999748.onnx",
+                "reward": -11.0,
+                "creation_time": 1644871244.583858,
+                "auxillary_file_paths": [
+                    "results\\Attack_V2_01\\AttackBehavior\\AttackBehavior-5999748.pt"
+                ]
+            },
+            {
+                "steps": 6499772,
+                "file_path": "results\\Attack_V2_01\\AttackBehavior\\AttackBehavior-6499772.onnx",
+                "reward": -11.0,
+                "creation_time": 1644872031.5382388,
+                "auxillary_file_paths": [
+                    "results\\Attack_V2_01\\AttackBehavior\\AttackBehavior-6499772.pt"
+                ]
+            },
+            {
+                "steps": 6999778,
+                "file_path": "results\\Attack_V2_01\\AttackBehavior\\AttackBehavior-6999778.onnx",
+                "reward": -11.0,
+                "creation_time": 1644872822.5901713,
+                "auxillary_file_paths": [
+                    "results\\Attack_V2_01\\AttackBehavior\\AttackBehavior-6999778.pt"
+                ]
+            },
+            {
+                "steps": 7499952,
+                "file_path": "results\\Attack_V2_01\\AttackBehavior\\AttackBehavior-7499952.onnx",
+                "reward": -11.0,
+                "creation_time": 1644873613.3359334,
+                "auxillary_file_paths": [
+                    "results\\Attack_V2_01\\AttackBehavior\\AttackBehavior-7499952.pt"
+                ]
+            },
+            {
+                "steps": 7999760,
+                "file_path": "results\\Attack_V2_01\\AttackBehavior\\AttackBehavior-7999760.onnx",
+                "reward": -11.0,
+                "creation_time": 1644874401.4160964,
+                "auxillary_file_paths": [
+                    "results\\Attack_V2_01\\AttackBehavior\\AttackBehavior-7999760.pt"
+                ]
+            }
+        ]
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}
