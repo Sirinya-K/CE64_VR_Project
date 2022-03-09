@@ -10,7 +10,7 @@ public class StateManagement : MonoBehaviour
     public GameObject player;
     public SpawnManagement spawnManagement;
 
-    private int state = 1;
+    private int state = 1, playerState;
 
     // Start is called before the first frame update
     void Start()
@@ -34,12 +34,14 @@ public class StateManagement : MonoBehaviour
         else if(state == 1)
         {
             spawnManagement.spawn(player, mainMenu.transform.Find("PlayerWaypoint").gameObject);
+            playerState = 1;
             state = 0;
         }
         //State: PP
         else if(state == 2)
         {
             spawnManagement.spawn(player, preparationRoom.transform.Find("PlayerWaypoint").gameObject);
+            playerState = 2;
             state = 0;
         }
         //State: A
@@ -47,7 +49,15 @@ public class StateManagement : MonoBehaviour
         {
             spawnManagement.spawn(player, arena.transform.Find("PlayerWaypoint").gameObject);
             arena.GetComponent<Arena>().StartInitiate();
+            FindObjectOfType<Player>().SetOriginalStat(); //เก็บพวกค่าเลือดของผู้เล่น เผื่อกรณีผู้เล่นกดปุ่มกลับห้องเตรียมตัว
+            playerState = 3;
             state = 0;
+        }
+        //State: A --> PP
+        else if(state == 9)
+        {
+            FindObjectOfType<Player>().ReturnOriginalStat(); //คืนพวกค่าเลือดของผู้เล่น เมื้อผู้เล่นกดปุ่มกลับห้องเตรียมตัว
+            state = 2;
         }
     }
 
@@ -61,6 +71,6 @@ public class StateManagement : MonoBehaviour
     }
     public int GetState()
     {
-        return state;
+        return playerState;
     }
 }

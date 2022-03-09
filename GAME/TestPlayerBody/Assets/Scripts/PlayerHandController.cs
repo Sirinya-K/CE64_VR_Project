@@ -12,15 +12,11 @@ public class PlayerHandController : MonoBehaviour
     private float divisor = 20f;
     private string mqttTempData = "";
 
-    public PauseMenu pauseMenu;
-
     // Start is called before the first frame update
     void Start()
     {
         mqtt = GameObject.FindObjectOfType<MqttProtocol>();
         animator = GetComponent<Animator>();
-
-        pauseMenu = FindObjectOfType<PauseMenu>();
     }
 
     public void PublishHandToMqtt(string fingerState, string finger)
@@ -106,10 +102,5 @@ public class PlayerHandController : MonoBehaviour
         }
 
         AnimateHand();
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            pauseMenu.Pause();
-        }
     }
 }

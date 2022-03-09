@@ -3,7 +3,7 @@
   "Assemblies": [
     {
       "FullName": "Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-02-27T11:08:02.2964071Z"
+      "LastWriteTime": "2022-03-04T19:51:41.4877786Z"
     },
     {
       "FullName": "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -15,7 +15,7 @@
     },
     {
       "FullName": "Unity.Animation.Rigging, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-02-27T11:08:04.3617167Z"
+      "LastWriteTime": "2022-03-04T19:51:44.7466526Z"
     },
     {
       "FullName": "mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -27,11 +27,11 @@
     },
     {
       "FullName": "Unity.Barracuda, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-02-27T11:08:08.4572301Z"
+      "LastWriteTime": "2022-03-04T19:51:50.9623192Z"
     },
     {
       "FullName": "Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-02-27T11:08:06.8508686Z"
+      "LastWriteTime": "2022-03-04T19:51:43.8428887Z"
     }
   ],
   "Functions": [
@@ -52,6 +52,19 @@
       "LinkName": "801E9A000BB37B05",
       "AssemblyDependencyIndices": [
         0,
+        1
+      ]
+    },
+    {
+      "FullName": "System.Void UnityEngine.Animations.ProcessAnimationJobStruct`1<UnityEngine.Animations.Rigging.RigSyncSceneToStreamJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 8794384452606821980,
+      "ModuleHash": "0a9a64613a62bd61177acb0147ef582e",
+      "LinkName": "BC91ACAA17E251EE",
+      "AssemblyDependencyIndices": [
+        2,
+        3,
+        4,
+        5,
         1
       ]
     },
@@ -82,23 +95,22 @@
       ]
     },
     {
-      "FullName": "System.Void UnityEngine.Animations.ProcessAnimationJobStruct`1<UnityEngine.Animations.Rigging.RigSyncSceneToStreamJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
-      "ModuleOptionsHash": 8794384452606821980,
-      "ModuleHash": "0a9a64613a62bd61177acb0147ef582e",
-      "LinkName": "BC91ACAA17E251EE",
-      "AssemblyDependencyIndices": [
-        2,
-        3,
-        4,
-        5,
-        1
-      ]
-    },
-    {
       "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<Unity.Barracuda.BurstCPUOps/ElementwiseDivJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
       "ModuleOptionsHash": 13433243922868730427,
       "ModuleHash": "03938ea9b712c30bd2b0c961dcfd2f57",
       "LinkName": "9BEDBF035B3630A9",
+      "AssemblyDependencyIndices": [
+        5,
+        6,
+        4,
+        1
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<Unity.Barracuda.BurstCPUOps/ElementwiseAddJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 13433243922868730427,
+      "ModuleHash": "d832e100efb846b5aa6c44b7effc897e",
+      "LinkName": "73D837D44C9129F8",
       "AssemblyDependencyIndices": [
         5,
         6,
@@ -117,18 +129,6 @@
         4,
         1,
         7
-      ]
-    },
-    {
-      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<Unity.Barracuda.BurstCPUOps/ElementwiseAddJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
-      "ModuleOptionsHash": 13433243922868730427,
-      "ModuleHash": "d832e100efb846b5aa6c44b7effc897e",
-      "LinkName": "73D837D44C9129F8",
-      "AssemblyDependencyIndices": [
-        5,
-        6,
-        4,
-        1
       ]
     },
     {
@@ -302,18 +302,6 @@
         4,
         1,
         7
-      ]
-    },
-    {
-      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<Unity.Barracuda.BurstCPUOps/BroadcastDivJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
-      "ModuleOptionsHash": 13433243922868730427,
-      "ModuleHash": "351a990fd45b5a0cc4e23302f931e904",
-      "LinkName": "286E63D34A138303",
-      "AssemblyDependencyIndices": [
-        5,
-        6,
-        4,
-        1
       ]
     }
   ]

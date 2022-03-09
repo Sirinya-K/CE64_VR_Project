@@ -9,14 +9,14 @@ public class Enemy : MonoBehaviour
     public GameObject floatingDamagePrefab;
     public GameObject floatingDamageParent;
 
-    private HealthBar healthBar;
+    public HealthBar healthBar;
     private int maxHealth = 5; //Defualt: 1000
     private int currentHealth;
 
     private string armState;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Rigidbody enemyBody = GetComponentInChildren<Rigidbody>();
         enemyBody.collisionDetectionMode = CollisionDetectionMode.Continuous;
@@ -26,26 +26,32 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public int getCurrentHealth()
+    private void UpdateCurrentHp()
+    {
+        healthBar.UpdateHealth((float)currentHealth / (float)maxHealth);
+    }
+
+    public int GetCurrentHp()
     {
         return currentHealth;
     }
 
-    public int getMaxHealth()
+    public int GetMaxHp()
     {
         return maxHealth;
     }
 
-    public void setMaxHealth(int newMax)
+    public void SetMaxHp(int newMax)
     {
         maxHealth = newMax;
         currentHealth = maxHealth;
+        UpdateCurrentHp();
     }
 
     public void ResetEnemyStat()
     {
         currentHealth = maxHealth;
-        healthBar.UpdateHealth((float)currentHealth / (float)maxHealth);
+        UpdateCurrentHp();
     }
 
     public void TakeDamage(int damage)
@@ -129,7 +135,7 @@ public class Enemy : MonoBehaviour
     private void CheckHealth(int damage)
     {
         currentHealth -= damage;
-        healthBar.UpdateHealth((float)currentHealth / (float)maxHealth);
+        UpdateCurrentHp();
 
         // Debug.Log("currentHealth: " + currentHealth);
     }

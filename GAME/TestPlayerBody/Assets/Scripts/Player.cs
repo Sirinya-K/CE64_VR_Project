@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     private GameObject currentWeapon;
     private int currentOrb = 9;
 
+    private int originalMaxHp, originalCurrentHp, originalMaxStamina;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -128,6 +130,21 @@ public class Player : MonoBehaviour
     public void ResetPlayerStat()
     {
         currentHealth = maxHealth;
+        currentStamina = maxStamina;
+    }
+
+    public void SetOriginalStat()
+    {
+        originalMaxHp = GetMaxHp();
+        originalCurrentHp = GetCurrentHp();
+        originalMaxStamina = GetMaxStamina();
+    }
+
+    public void ReturnOriginalStat()
+    {
+        SetMaxHp(originalMaxHp);
+        SetCurrentHp(originalCurrentHp);
+        SetMaxStamina(originalMaxStamina);
         currentStamina = maxStamina;
     }
 

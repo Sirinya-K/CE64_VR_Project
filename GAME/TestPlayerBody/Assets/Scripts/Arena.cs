@@ -127,7 +127,7 @@ public class Arena : MonoBehaviour
         if (fightingState)
         {
             //ถ้าศัตรูตาย
-            if (theEnemyProperty.getCurrentHealth() <= 0)
+            if (theEnemyProperty.GetCurrentHp() <= 0)
             {
                 //inactive traps
                 for (int i = 0; i < totalTrap; i++)

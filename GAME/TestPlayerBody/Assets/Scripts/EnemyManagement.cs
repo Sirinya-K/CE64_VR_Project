@@ -27,23 +27,22 @@ public class EnemyManagement : MonoBehaviour
 
         if (level == 0)
         {
-            theEnemyProperty.setMaxHealth(100); // 5000
-            
+            theEnemyProperty.SetMaxHp(150); // 5000
         }
         else if (level == 1)
         {
-            theEnemyProperty.setMaxHealth(100);
+            theEnemyProperty.SetMaxHp(150);
         }
         else if (level == 2)
         {
-            theEnemyProperty.setMaxHealth(100);
+            theEnemyProperty.SetMaxHp(150);
         }
         else if (level == 3)
         {
-            theEnemyProperty.setMaxHealth(100);
+            theEnemyProperty.SetMaxHp(150);
         }
 
-        Debug.Log("Level: " + level + ", Create: " + enemies[num].name + ", MaxHP: " + theEnemyProperty.getMaxHealth());
+        Debug.Log("Level: " + level + ", Create: " + enemies[num].name + ", MaxHP: " + theEnemyProperty.GetMaxHp());
 
         return enemies[num];
     }
