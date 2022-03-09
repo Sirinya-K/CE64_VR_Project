@@ -303,6 +303,18 @@
         1,
         7
       ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<Unity.Barracuda.BurstCPUOps/BroadcastDivJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 13433243922868730427,
+      "ModuleHash": "351a990fd45b5a0cc4e23302f931e904",
+      "LinkName": "286E63D34A138303",
+      "AssemblyDependencyIndices": [
+        5,
+        6,
+        4,
+        1
+      ]
     }
   ]
 }

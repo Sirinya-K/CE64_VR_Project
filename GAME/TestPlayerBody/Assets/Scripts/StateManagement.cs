@@ -10,7 +10,9 @@ public class StateManagement : MonoBehaviour
     public GameObject player;
     public SpawnManagement spawnManagement;
 
-    private int state = 1, playerState;
+    public GameObject arenaTest;
+
+    private int state = 1, playerState; //Default: state = 1
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,8 @@ public class StateManagement : MonoBehaviour
         arena = GameObject.Find("Arena");
         player = GameObject.Find("VR Rig");
         spawnManagement = FindObjectOfType<SpawnManagement>();
+
+        arenaTest = GameObject.Find("ArenaScene (TEST)");
     }
 
     // Update is called once per frame
@@ -58,6 +62,12 @@ public class StateManagement : MonoBehaviour
         {
             FindObjectOfType<Player>().ReturnOriginalStat(); //คืนพวกค่าเลือดของผู้เล่น เมื้อผู้เล่นกดปุ่มกลับห้องเตรียมตัว
             state = 2;
+        }
+        //State: Test with AI Enemy
+        else if(state == 99)
+        {
+            spawnManagement.spawn(player, arenaTest.transform.Find("PlayerWaypoint").gameObject);
+            state = 0;
         }
     }
 

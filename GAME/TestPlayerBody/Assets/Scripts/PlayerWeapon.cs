@@ -46,7 +46,7 @@ public class PlayerWeapon : MonoBehaviour
 
         // if (!other.gameObject.CompareTag("Enemy")) return; //ตรวจสอบว่าที่ตีโดนใช่ enemy มั้ย
 
-        Debug.Log("Sword Speed: " + speed);
+        // Debug.Log("Sword Speed: " + speed);
 
         var finalImpactAtk = ((int)(impactAtk * speed * speedBias));
         var finalSlashAtk = ((int)(slashAtk * speed * speedBias));

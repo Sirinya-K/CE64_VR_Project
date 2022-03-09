@@ -23,6 +23,8 @@ public class ArmMenu : MonoBehaviour
         {
             if (back.targetObj.CompareTag("Player") || back.targetObj.CompareTag("Weapon"))
             {
+                Debug.Log("Collision Back Button");
+
                 stateManagement.GoState(9);
 
                 back.collision = false;
@@ -34,6 +36,8 @@ public class ArmMenu : MonoBehaviour
         {
             if (exit.targetObj.CompareTag("Player") || exit.targetObj.CompareTag("Weapon"))
             {
+                Debug.Log("Collision Exit Button");
+
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
                 exit.collision = false;
