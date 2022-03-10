@@ -8,6 +8,7 @@ public class PlayerHandController : MonoBehaviour
     private Animator animator;
 
     public float RIndexValue, RMiddleValue, RThumbValue;
+    public float LThumbValue, LIndexValue, LMiddleValue, LRingValue, LPinkyValue;
 
     private float divisor = 20f;
     private string mqttTempData = "";
@@ -66,6 +67,7 @@ public class PlayerHandController : MonoBehaviour
 
     void ControlHandByKeyboard()
     {
+        // Right
         if (Input.GetKeyDown(KeyCode.Q))
         {
             RIndexValue -= 0.1f;
@@ -78,13 +80,39 @@ public class PlayerHandController : MonoBehaviour
             RMiddleValue += 0.1f;
             RThumbValue += 0.1f;
         }
+
+        // Left
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            LThumbValue -= 0.1f;
+            LIndexValue -= 0.1f;
+            LMiddleValue -= 0.1f;
+            LRingValue -= 0.1f;
+            LPinkyValue -= 0.1f;
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            LThumbValue += 0.1f;
+            LIndexValue += 0.1f;
+            LMiddleValue += 0.1f;
+            LRingValue += 0.1f;
+            LPinkyValue += 0.1f;
+        }
     }
 
     void AnimateHand()
     {
-        animator.SetFloat("Index", RIndexValue);
-        animator.SetFloat("Middle", RMiddleValue);
-        animator.SetFloat("Thumb", RThumbValue);
+        // Right
+        animator.SetFloat("R_Index", RIndexValue);
+        animator.SetFloat("R_Middle", RMiddleValue);
+        animator.SetFloat("R_Thumb", RThumbValue);
+
+        // Left
+        animator.SetFloat("L_Thumb", LThumbValue);
+        animator.SetFloat("L_Index", LIndexValue);
+        animator.SetFloat("L_Middle", LMiddleValue);
+        animator.SetFloat("L_Ring", LRingValue);
+        animator.SetFloat("L_Pinky", LPinkyValue);
     }
 
     // Update is called once per frame
