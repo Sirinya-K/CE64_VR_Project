@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerGtabItem : MonoBehaviour
 {
-    public Player player;
+    public GameObject index, middle, ring, pinky;
+
+    private Player player;
 
     private LayerMask grabbableLayer;
 
@@ -12,19 +14,13 @@ public class PlayerGtabItem : MonoBehaviour
 
     private FixedJoint itemJoint;
 
-    [SerializeField]
-    private GameObject indexCollider;
-
-    [SerializeField]
-    private GameObject middleCollider;
-
-    private FingerCollision indexCollision, middleCollision;
+    private FingerCollision indexCollision, middleCollision, ringCollision, pinkyCollision;
 
     private PlayerHandController hand;
 
-    private string finger = "";
-    private float fingerValue = 0f;
-    private float diff = 0.1f;
+    // private string finger = "";
+    // private float fingerValue = 0f;
+    // private float diff = 0.1f;
 
     private GameObject theItem; //คือ item ที่ player กำลังถือ
     private Vector3 theItemDefaultPosition; //position ดั้งเดิมของ theItem
@@ -34,12 +30,16 @@ public class PlayerGtabItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>();
+
         grabbableLayer = LayerMask.NameToLayer("Grabbable");
 
         connectedBody = GetComponent<Rigidbody>();
 
-        indexCollision = indexCollider.GetComponent<FingerCollision>();
-        middleCollision = middleCollider.GetComponent<FingerCollision>();
+        indexCollision = index.GetComponent<FingerCollision>();
+        middleCollision = middle.GetComponent<FingerCollision>();
+        ringCollision = ring.GetComponent<FingerCollision>();
+        pinkyCollision = pinky.GetComponent<FingerCollision>();
 
         hand = GameObject.FindObjectOfType<PlayerHandController>();
     }
@@ -48,13 +48,11 @@ public class PlayerGtabItem : MonoBehaviour
     {
         if (other.gameObject.layer == grabbableLayer)
         {
-            if (other.gameObject.GetComponent<FixedJoint>() == null)
+            if (theItem == null) //if (other.gameObject.GetComponent<FixedJoint>() == null)
             {
                 // Check that Index or Middle collision with the item
-                if ((indexCollision.collisionStatus == true && hand.RIndexValue >= 0.15) || (middleCollision.collisionStatus == true && hand.RMiddleValue >= 0.15))
+                if ((indexCollision.collisionStatus == true && hand.RIndexValue >= 0.15) || (middleCollision.collisionStatus == true && hand.RMiddleValue >= 0.15) || (ringCollision.collisionStatus == true && hand.RRingValue >= 0.15) || (pinkyCollision.collisionStatus == true && hand.RPinkyValue >= 0.15))
                 {
-                    // Debug.Log("Grab");
-
                     // Create Fixed Joint between the Item and Hand
                     itemJoint = other.gameObject.AddComponent<FixedJoint>();
                     itemJoint.connectedBody = connectedBody;
@@ -69,21 +67,21 @@ public class PlayerGtabItem : MonoBehaviour
                     // other.gameObject.AddComponent<CheckVelocity>();
 
                     // Save Finger Value (เช็คว่าเป็นการจับแบบไหน (ฝ่ามือ,โป้ง)ชี้กลาง/(ฝ่ามือ,โป้ง)ชี้/(ฝ่ามือ,โป้ง)กลาง)
-                    if (indexCollision.collisionStatus && middleCollision.collisionStatus)
-                    {
-                        finger = "both";
-                        fingerValue = hand.RMiddleValue;
-                    }
-                    else if (indexCollision.collisionStatus)
-                    {
-                        finger = "index";
-                        fingerValue = hand.RIndexValue;
-                    }
-                    else if (middleCollision.collisionStatus)
-                    {
-                        finger = "middle";
-                        fingerValue = hand.RMiddleValue;
-                    }
+                    // if (indexCollision.collisionStatus && middleCollision.collisionStatus)
+                    // {
+                    //     finger = "both";
+                    //     fingerValue = hand.RMiddleValue;
+                    // }
+                    // else if (indexCollision.collisionStatus)
+                    // {
+                    //     finger = "index";
+                    //     fingerValue = hand.RIndexValue;
+                    // }
+                    // else if (middleCollision.collisionStatus)
+                    // {
+                    //     finger = "middle";
+                    //     fingerValue = hand.RMiddleValue;
+                    // }
 
                     // Set Trigger on the Item
                     // itemColliders = other.gameObject.GetComponentsInChildren<Collider>();
@@ -96,6 +94,8 @@ public class PlayerGtabItem : MonoBehaviour
 
                     player.SetCurrentWeapon(theItem);
 
+                    Debug.Log("Grab" + theItem.name);
+
                     // if (theItem.tag == "Weapon") player.GrabbedItem("Weapon");
                     // else player.GrabbedItem("NotWeapon");
                 }
@@ -105,7 +105,7 @@ public class PlayerGtabItem : MonoBehaviour
 
     private void Release()
     {
-        Debug.Log("Release");
+        Debug.Log("Release" + theItem.name);
 
         Destroy(itemJoint);
         // itemBody.useGravity = true;
@@ -113,12 +113,14 @@ public class PlayerGtabItem : MonoBehaviour
 
         // foreach (Collider c in itemColliders) c.isTrigger = false;
 
-        finger = "";
-        fingerValue = 0f;
+        // finger = "";
+        // fingerValue = 0f;
 
         //ให้ parent เป็น null เมื่อผู้เล่นปล่อย item แล้ว
         theItem.transform.parent = null;
         player.SetCurrentWeapon(null);
+
+        theItem = null;
 
         // player.GrabbedItem("NotWeapon");
     }
@@ -126,15 +128,20 @@ public class PlayerGtabItem : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (finger == "index" && (fingerValue - hand.RIndexValue >= diff))
-        {
-            Release();
-        }
-        else if (finger == "middle" && (fingerValue - hand.RMiddleValue >= diff))
-        {
-            Release();
-        }
-        else if (finger == "both" && (fingerValue - hand.RIndexValue >= diff && fingerValue - hand.RMiddleValue >= diff))
+        // if (finger == "index" && (fingerValue - hand.RIndexValue >= diff))
+        // {
+        //     Release();
+        // }
+        // else if (finger == "middle" && (fingerValue - hand.RMiddleValue >= diff))
+        // {
+        //     Release();
+        // }
+        // else if (finger == "both" && (fingerValue - hand.RIndexValue >= diff && fingerValue - hand.RMiddleValue >= diff))
+        // {
+        //     Release();
+        // }
+
+        if (theItem != null && (indexCollision.collisionStatus == false && hand.RIndexValue <= 0.15) && (middleCollision.collisionStatus == false && hand.RMiddleValue <= 0.15) && (ringCollision.collisionStatus == false && hand.RRingValue <= 0.15) && (pinkyCollision.collisionStatus == false && hand.RPinkyValue <= 0.15))
         {
             Release();
         }

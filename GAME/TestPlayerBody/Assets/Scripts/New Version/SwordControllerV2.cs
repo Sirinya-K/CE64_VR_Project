@@ -83,7 +83,7 @@ public class SwordControllerV2 : MonoBehaviour
         // }
         if (teamId == Team1.Blue && enemy.tmpAttack)
         {
-            if (collision.gameObject.CompareTag("purpleAgent"))
+            if (collision.gameObject.CompareTag("Player")) //Default: purpleAgent
             {
                 isAttack = true;
             }

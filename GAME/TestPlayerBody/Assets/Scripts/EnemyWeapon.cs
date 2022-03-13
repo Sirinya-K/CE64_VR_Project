@@ -40,7 +40,7 @@ public class EnemyWeapon : MonoBehaviour
     {
         if (!onPlayer && other.gameObject.CompareTag("PlayerShield"))
         {
-            // player.PublishArmStateToMqtt("Left", "Stop");
+            player.PublishArmStateToMqtt("Left", "Stop");
 
             StopAllCoroutines();
             player.regenable = false;
@@ -122,7 +122,7 @@ public class EnemyWeapon : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        // player.PublishArmStateToMqtt("Left", "Free");
+        player.PublishArmStateToMqtt("Left", "Free");
 
         if (other.gameObject.CompareTag("PlayerShield"))
         {

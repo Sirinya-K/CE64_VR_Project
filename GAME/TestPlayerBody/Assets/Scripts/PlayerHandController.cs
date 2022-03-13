@@ -7,7 +7,7 @@ public class PlayerHandController : MonoBehaviour
     private MqttProtocol mqtt;
     private Animator animator;
 
-    public float RIndexValue, RMiddleValue, RThumbValue;
+    public float RThumbValue, RIndexValue, RMiddleValue, RRingValue, RPinkyValue;
     public float LThumbValue, LIndexValue, LMiddleValue, LRingValue, LPinkyValue;
 
     private float divisor = 20f;
@@ -36,6 +36,14 @@ public class PlayerHandController : MonoBehaviour
             {
                 mqtt.Publish("/hr/", "m" + RMiddleValue * divisor);
             }
+            else if (finger == "R_Ring")
+            {
+                mqtt.Publish("/hr/", "r" + RRingValue * divisor);
+            }
+            else if (finger == "R_Pinky")
+            {
+                mqtt.Publish("/hr/", "p" + RPinkyValue * divisor);
+            }
         }
         else if (fingerState == "free")
         {
@@ -51,17 +59,39 @@ public class PlayerHandController : MonoBehaviour
             {
                 mqtt.Publish("/hr/", "m" + divisor);
             }
+            else if (finger == "R_Ring")
+            {
+                mqtt.Publish("/hr/", "r" + divisor);
+            }
+            else if (finger == "R_Pinky")
+            {
+                mqtt.Publish("/hr/", "p" + divisor);
+            }
         }
     }
 
     void ControlHandByMqtt()
     {
         string[] handSide = mqtt.data.Split(':');
+
+        // Right
         if (handSide[0] == "hr")
         {
+            RThumbValue = float.Parse(handSide[1].Split(' ')[0]) / divisor;
             RIndexValue = float.Parse(handSide[1].Split(' ')[1]) / divisor;
             RMiddleValue = float.Parse(handSide[1].Split(' ')[2]) / divisor;
-            RThumbValue = float.Parse(handSide[1].Split(' ')[0]) / divisor;
+            RRingValue = float.Parse(handSide[1].Split(' ')[3]) / divisor;
+            RPinkyValue = float.Parse(handSide[1].Split(' ')[4]) / divisor;
+        }
+
+        // Left
+        if (handSide[0] == "hl")
+        {
+            LThumbValue = float.Parse(handSide[1].Split(' ')[0]) / divisor;
+            LIndexValue = float.Parse(handSide[1].Split(' ')[1]) / divisor;
+            LMiddleValue = float.Parse(handSide[1].Split(' ')[2]) / divisor;
+            LRingValue = float.Parse(handSide[1].Split(' ')[3]) / divisor;
+            LPinkyValue = float.Parse(handSide[1].Split(' ')[4]) / divisor;
         }
     }
 
@@ -70,15 +100,19 @@ public class PlayerHandController : MonoBehaviour
         // Right
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            RThumbValue -= 0.1f;
             RIndexValue -= 0.1f;
             RMiddleValue -= 0.1f;
-            RThumbValue -= 0.1f;
+            RRingValue -= 0.1f;
+            RPinkyValue -= 0.1f;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
+            RThumbValue += 0.1f;
             RIndexValue += 0.1f;
             RMiddleValue += 0.1f;
-            RThumbValue += 0.1f;
+            RRingValue += 0.1f;
+            RPinkyValue += 0.1f;
         }
 
         // Left
@@ -103,9 +137,11 @@ public class PlayerHandController : MonoBehaviour
     void AnimateHand()
     {
         // Right
+        animator.SetFloat("R_Thumb", RThumbValue);
         animator.SetFloat("R_Index", RIndexValue);
         animator.SetFloat("R_Middle", RMiddleValue);
-        animator.SetFloat("R_Thumb", RThumbValue);
+        animator.SetFloat("R_Ring", RRingValue);
+        animator.SetFloat("R_Pinky", RPinkyValue);
 
         // Left
         animator.SetFloat("L_Thumb", LThumbValue);

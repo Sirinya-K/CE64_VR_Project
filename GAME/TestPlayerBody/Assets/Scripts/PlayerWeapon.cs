@@ -42,7 +42,7 @@ public class PlayerWeapon : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // player.PublishArmStateToMqtt("Right","Stop");
+        player.PublishArmStateToMqtt("Right","Stop");
 
         // if (!other.gameObject.CompareTag("Enemy")) return; //ตรวจสอบว่าที่ตีโดนใช่ enemy มั้ย
 
@@ -81,7 +81,7 @@ public class PlayerWeapon : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        // player.PublishArmStateToMqtt("Right","Free");
+        player.PublishArmStateToMqtt("Right","Free");
 
         if (other.gameObject.CompareTag("EnemyShield"))
         {

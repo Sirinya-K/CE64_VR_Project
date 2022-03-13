@@ -17,22 +17,22 @@ public class FingerCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        // Debug.Log(gameObject.name + ": Enter");
-        collisionStatus = true;
-
         if (other.gameObject.layer == grabbableLayer)
         {
+            // Debug.Log(gameObject.name + " + " + other.gameObject.name + " --> Enter");
+            collisionStatus = true;
+
             hand.PublishHandToMqtt("stop", gameObject.name);
         }
     }
 
     private void OnCollisionExit(Collision other)
     {
-        // Debug.Log(gameObject.name + ": Exit");
-        collisionStatus = false;
-
         if (other.gameObject.layer == grabbableLayer)
         {
+            // Debug.Log(gameObject.name + " + " + other.gameObject.name + " --> Exit");
+            collisionStatus = false;
+
             hand.PublishHandToMqtt("free", gameObject.name);
         }
     }

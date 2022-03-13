@@ -49,8 +49,8 @@ public class ArenaEnvControllerV2 : MonoBehaviour
     [HideInInspector]
     public float purpleScore;
 
-    int countBlueHit = 0;
-    int countPurpleHit = 0;
+    // int countBlueHit = 0;
+    // int countPurpleHit = 0;
 
     float agentRot;
 
@@ -63,7 +63,7 @@ public class ArenaEnvControllerV2 : MonoBehaviour
 
         currentTeam = Team1.Default;
 
-        ResetScene();
+        // ResetScene();
     }
     public void UpdateEnemySide(Team1 team)
     {
@@ -83,17 +83,18 @@ public class ArenaEnvControllerV2 : MonoBehaviour
                 // ! DONT FORGET TO CHANGE POLICY
                 purpleAgent.AddReward(2f);
                 blueAgent.AddReward(-1f);
-                countPurpleHit++;
-                if (countPurpleHit == 5)
-                {
-                    Debug.Log("PURPLE WIN!");
-                    purpleAgent.AddReward(1f);
-                    countPurpleHit = 0;
-                    blueAgent.EndEpisode();
-                    purpleAgent.EndEpisode();
 
-                    ResetScene();
-                }
+                // countPurpleHit++;
+                // if (countPurpleHit == 5)
+                // {
+                //     Debug.Log("PURPLE WIN!");
+                //     purpleAgent.AddReward(1f);
+                //     countPurpleHit = 0;
+                //     blueAgent.EndEpisode();
+                //     purpleAgent.EndEpisode();
+
+                //     // ResetScene();
+                // }
                 break;
             case Event1.HitPurpleEnemy:
                 // * Agent can hit enemy will +2 reward and enemy get -1 (cause we have priority on attack enemy)        
@@ -102,17 +103,17 @@ public class ArenaEnvControllerV2 : MonoBehaviour
                 blueAgent.AddReward(2f);
                 purpleAgent.AddReward(-1f);
 
-                countBlueHit++;
-                if (countBlueHit == 5)
-                {
-                    Debug.Log("BLUE WIN!");
-                    blueAgent.AddReward(1f);
-                    countBlueHit = 0;
-                    blueAgent.EndEpisode();
-                    purpleAgent.EndEpisode();
+                // countBlueHit++;
+                // if (countBlueHit == 5)
+                // {
+                //     Debug.Log("BLUE WIN!");
+                //     blueAgent.AddReward(1f);
+                //     countBlueHit = 0;
+                //     blueAgent.EndEpisode();
+                //     purpleAgent.EndEpisode();
 
-                    ResetScene();
-                }
+                //     // ResetScene();
+                // }
                 break;
             case Event1.BlueDontHitEnemy:
                 // * Agent attack but dont hit enemy will get -0.5 reward
@@ -143,7 +144,7 @@ public class ArenaEnvControllerV2 : MonoBehaviour
                 {
                     blueAgent.AddReward(-1);
                     purpleAgent.AddReward(-1);
-                    ResetScene();
+                    // ResetScene();
                 }
                 break;
             case Event1.BlueHitWall:
@@ -160,17 +161,17 @@ public class ArenaEnvControllerV2 : MonoBehaviour
     }
     void FixedUpdate()
     {
-        resetTimer += 1;
-        blueAgent.AddReward(-.001f);
-        purpleAgent.AddReward(-.001f);
-        if (resetTimer >= MaxEnvironmentSteps && MaxEnvironmentSteps > 0)
-        {
-            blueScore = blueAgent.GetCumulativeReward();
-            purpleScore = purpleAgent.GetCumulativeReward();
-            blueAgent.EpisodeInterrupted();
-            purpleAgent.EpisodeInterrupted();
-            ResetScene();
-        }
+        // resetTimer += 1;
+        // blueAgent.AddReward(-.001f);
+        // purpleAgent.AddReward(-.001f);
+        // if (resetTimer >= MaxEnvironmentSteps && MaxEnvironmentSteps > 0)
+        // {
+        //     blueScore = blueAgent.GetCumulativeReward();
+        //     purpleScore = purpleAgent.GetCumulativeReward();
+        //     blueAgent.EpisodeInterrupted();
+        //     purpleAgent.EpisodeInterrupted();
+        //     // ResetScene();
+        // }
     }
     public void ResetScene()
     {
