@@ -30,6 +30,7 @@ public class Arena : MonoBehaviour
     private GameObject firstOrbObj, secondOrbObj, thirdOrbObj;
     private Orb firstOrb, secondOrb, thirdOrb;
     private int firstRandomOrb, secondRandomOrb, thirdRandomOrb, currentOrbNum = 9, newOrbNum;
+    private GameObject chest;
 
     private int totalTrap = 3;
     private GameObject trapOriginal;
@@ -64,6 +65,9 @@ public class Arena : MonoBehaviour
         thirdOrbObj = GameObject.Find("ThirdOrb");
         thirdOrbObj.SetActive(false);
         thirdOrb = thirdOrbObj.GetComponent<Orb>();
+
+        chest = GameObject.Find("Chest");
+        chest.SetActive(false);
 
         //สร้าง Trap เตรียมไว้
         trapOriginal = GameObject.Find("Trap");
@@ -154,6 +158,9 @@ public class Arena : MonoBehaviour
                 }
                 else //ถ้ายัง ไม่ ถึงด่านสุดท้าย
                 {
+                    //active chest
+                    chest.SetActive(true);
+
                     //active orbs
                     firstOrbObj.SetActive(true); // Active & Random 1st Orb
                     firstRandomOrb = Random.Range(0, 3); // มีโอกาสสุ่มเจอ 0 1 2
@@ -211,9 +218,13 @@ public class Arena : MonoBehaviour
                 player.SetCurrentOrb(newOrbNum); //player เก็บ Orb ที่เลือก
                 player.ShowCurrentOrb(); //แสดงผล orb ที่เลือกผ่าน UI
 
+                //inactive orbs
                 firstOrbObj.SetActive(false);
                 secondOrbObj.SetActive(false);
                 thirdOrbObj.SetActive(false);
+
+                //inactive chest
+                chest.SetActive(false);
 
                 showResult.SetActive(true);
                 fightResult.text = " ";
