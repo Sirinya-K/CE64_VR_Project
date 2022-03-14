@@ -94,10 +94,7 @@ public class PlayerGtabItem : MonoBehaviour
 
                     player.SetCurrentWeapon(theItem);
 
-                    Debug.Log("Grab" + theItem.name);
-
-                    // if (theItem.tag == "Weapon") player.GrabbedItem("Weapon");
-                    // else player.GrabbedItem("NotWeapon");
+                    Debug.Log("Grab " + theItem.name);
                 }
             }
         }
@@ -105,13 +102,11 @@ public class PlayerGtabItem : MonoBehaviour
 
     private void Release()
     {
-        Debug.Log("Release" + theItem.name);
+        Debug.Log("Release " + theItem.name);
 
         Destroy(itemJoint);
-        // itemBody.useGravity = true;
+        if(theItem.gameObject.tag != "Weapon") itemBody.useGravity = true;
         itemBody = null;
-
-        // foreach (Collider c in itemColliders) c.isTrigger = false;
 
         // finger = "";
         // fingerValue = 0f;
@@ -121,8 +116,6 @@ public class PlayerGtabItem : MonoBehaviour
         player.SetCurrentWeapon(null);
 
         theItem = null;
-
-        // player.GrabbedItem("NotWeapon");
     }
 
     // Update is called once per frame
@@ -141,7 +134,7 @@ public class PlayerGtabItem : MonoBehaviour
         //     Release();
         // }
 
-        if (theItem != null && (indexCollision.collisionStatus == false && hand.RIndexValue <= 0.15) && (middleCollision.collisionStatus == false && hand.RMiddleValue <= 0.15) && (ringCollision.collisionStatus == false && hand.RRingValue <= 0.15) && (pinkyCollision.collisionStatus == false && hand.RPinkyValue <= 0.15))
+        if (theItem != null && (indexCollision.collisionStatus == false || hand.RIndexValue < 0.15) && (middleCollision.collisionStatus == false || hand.RMiddleValue < 0.15) && (ringCollision.collisionStatus == false || hand.RRingValue < 0.15) && (pinkyCollision.collisionStatus == false || hand.RPinkyValue < 0.15))
         {
             Release();
         }

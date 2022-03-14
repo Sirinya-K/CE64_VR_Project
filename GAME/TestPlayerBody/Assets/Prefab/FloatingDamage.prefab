@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6635440332376312401}
   - component: {fileID: 6635440332376312404}
   - component: {fileID: -9101824848336945211}
+  - component: {fileID: 4012178679318588186}
   m_Layer: 0
   m_Name: FloatingDamage
   m_TagString: Untagged
@@ -131,3 +132,16 @@ MonoBehaviour:
   destroyTime: 0.5
   offset: {x: 0, y: 0, z: 4.05}
   randomizeIntensity: {x: 0.5, y: 0, z: 0}
+--- !u!114 &4012178679318588186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6635440332376312400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c83e7692846214a86c87fba1deb46f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theCamera: {fileID: 0}

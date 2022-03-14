@@ -21,7 +21,7 @@ public class ArmMenu : MonoBehaviour
         // เมื่อ player กดปุ่ม Back Button
         if (back.collision && stateManagement.GetState() == 3)
         {
-            if (back.targetObj.CompareTag("Player") || back.targetObj.CompareTag("Weapon"))
+            if (back.targetObj.CompareTag("LeftFinger"))
             {
                 Debug.Log("Collision Back Button");
 
@@ -34,7 +34,7 @@ public class ArmMenu : MonoBehaviour
         // เมื่อ player กดปุ่ม Exit Button
         if (exit.collision && stateManagement.GetState() != 1)
         {
-            if (exit.targetObj.CompareTag("Player") || exit.targetObj.CompareTag("Weapon"))
+            if (exit.targetObj.CompareTag("LeftFinger"))
             {
                 Debug.Log("Collision Exit Button");
 

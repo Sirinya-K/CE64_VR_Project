@@ -15,6 +15,12 @@ TagManager:
   - PlayerHand
   - EnemyShield
   - PlayerShield
+  - blueShield
+  - purpleShield
+  - purpleSword
+  - wall
+  - purpleAgent
+  - LeftFinger
   layers:
   - Default
   - TransparentFX

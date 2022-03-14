@@ -148,11 +148,6 @@ public class Player : MonoBehaviour
         currentStamina = maxStamina;
     }
 
-    // public void GrabbedItem(string grabbedItem)
-    // {
-    //     theItem = grabbedItem;
-    // }
-
     // Note: ควรทำ script PlayerArmController แยกออกมาเลย
     // Note: ควรเปลี่ยนชื่อเป็น PublishArmStateToMqtt
     public void PublishArmStateToMqtt(string arm, string state)
