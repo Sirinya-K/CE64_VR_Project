@@ -12,7 +12,7 @@ public class StateManagement : MonoBehaviour
 
     public GameObject arenaTest;
 
-    private int state = 2, playerState; //Default: state = 1
+    private int state = 1, playerState; //Default: state = 1
 
     // Start is called before the first frame update
     void Start()
