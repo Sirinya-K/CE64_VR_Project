@@ -29,7 +29,8 @@ public class ArenaEnvControllerV2 : MonoBehaviour
     public EnemyAgentV2 purpleAgent;
 
     public List<EnemyAgentV2> AgentsList = new List<EnemyAgentV2>();
-    public List<SwordControllerV2> SwordsList = new List<SwordControllerV2>();
+    public List<SwordandShieldControllerV2> SwordsList = new List<SwordandShieldControllerV2>();
+    public List<ShieldController> ShieldList = new List<ShieldController>();
 
     Rigidbody blueAgentRb;
     Rigidbody purpleAgentRb;
@@ -129,12 +130,12 @@ public class ArenaEnvControllerV2 : MonoBehaviour
                 if (Team1.Blue == currentOppositeTeam)
                 {
                     Debug.Log("BLUE CAN BLOCK");
-                    blueAgent.AddReward(.5f);
+                    blueAgent.AddReward(1f);
                 }
                 else if (Team1.Purple == currentOppositeTeam)
                 {
                     Debug.Log("PURPLE CAN BLOCK");
-                    purpleAgent.AddReward(.5f);
+                    purpleAgent.AddReward(1f);
                 }
                 break;
             case Event1.OutOfRange:
@@ -196,7 +197,14 @@ public class ArenaEnvControllerV2 : MonoBehaviour
         }
         foreach (var sword in SwordsList)
         {
-            sword.transform.localPosition = new Vector3(0, 0, 0);
+            // ! For sword position
+            // *sword.transform.localPosition = new Vector3(0, 0, 0);
+            // ! For Hammer position
+            sword.transform.localPosition = new Vector3(-0.075f,0.02f,0);
+        }
+        foreach (var shield in ShieldList)
+        {
+            shield.transform.localPosition = new Vector3(0.085f,0.004f,0.112f);
         }
     }
 }

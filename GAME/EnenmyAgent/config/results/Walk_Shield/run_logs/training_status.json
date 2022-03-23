@@ -1,0 +1,65 @@
+{
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    },
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 78499984,
+                "file_path": "results\\walk_Shield\\AttackBehavior\\AttackBehavior-78499984.onnx",
+                "reward": 0.3609467455621302,
+                "creation_time": 1647995265.9882405,
+                "auxillary_file_paths": [
+                    "results\\walk_Shield\\AttackBehavior\\AttackBehavior-78499984.pt"
+                ]
+            },
+            {
+                "steps": 78999959,
+                "file_path": "results\\walk_Shield\\AttackBehavior\\AttackBehavior-78999959.onnx",
+                "reward": 0.38847583643122674,
+                "creation_time": 1647996046.4385736,
+                "auxillary_file_paths": [
+                    "results\\walk_Shield\\AttackBehavior\\AttackBehavior-78999959.pt"
+                ]
+            },
+            {
+                "steps": 79499646,
+                "file_path": "results\\walk_Shield\\AttackBehavior\\AttackBehavior-79499646.onnx",
+                "reward": 0.24561403508771928,
+                "creation_time": 1647996833.8636427,
+                "auxillary_file_paths": [
+                    "results\\walk_Shield\\AttackBehavior\\AttackBehavior-79499646.pt"
+                ]
+            },
+            {
+                "steps": 79999953,
+                "file_path": "results\\walk_Shield\\AttackBehavior\\AttackBehavior-79999953.onnx",
+                "reward": 0.3006993006993007,
+                "creation_time": 1647997612.3052454,
+                "auxillary_file_paths": [
+                    "results\\walk_Shield\\AttackBehavior\\AttackBehavior-79999953.pt"
+                ]
+            },
+            {
+                "steps": 80000012,
+                "file_path": "results\\walk_Shield\\AttackBehavior\\AttackBehavior-80000012.onnx",
+                "reward": 0.2916666666666667,
+                "creation_time": 1647997612.4820013,
+                "auxillary_file_paths": [
+                    "results\\walk_Shield\\AttackBehavior\\AttackBehavior-80000012.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 80000012,
+            "file_path": "results\\walk_Shield\\AttackBehavior.onnx",
+            "reward": 0.2916666666666667,
+            "creation_time": 1647997612.4820013,
+            "auxillary_file_paths": [
+                "results\\walk_Shield\\AttackBehavior\\AttackBehavior-80000012.pt"
+            ]
+        }
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 78499995,
+                "file_path": "results\\HammerAttack_decreasReward\\AttackBehavior\\AttackBehavior-78499995.onnx",
+                "reward": -0.002023065193540099,
+                "creation_time": 1648035404.7244265,
+                "auxillary_file_paths": [
+                    "results\\HammerAttack_decreasReward\\AttackBehavior\\AttackBehavior-78499995.pt"
+                ]
+            },
+            {
+                "steps": 78999991,
+                "file_path": "results\\HammerAttack_decreasReward\\AttackBehavior\\AttackBehavior-78999991.onnx",
+                "reward": -0.10026772102052696,
+                "creation_time": 1648036187.1971567,
+                "auxillary_file_paths": [
+                    "results\\HammerAttack_decreasReward\\AttackBehavior\\AttackBehavior-78999991.pt"
+                ]
+            },
+            {
+                "steps": 79499988,
+                "file_path": "results\\HammerAttack_decreasReward\\AttackBehavior\\AttackBehavior-79499988.onnx",
+                "reward": -0.028714215471631006,
+                "creation_time": 1648036975.0762315,
+                "auxillary_file_paths": [
+                    "results\\HammerAttack_decreasReward\\AttackBehavior\\AttackBehavior-79499988.pt"
+                ]
+            },
+            {
+                "steps": 79999934,
+                "file_path": "results\\HammerAttack_decreasReward\\AttackBehavior\\AttackBehavior-79999934.onnx",
+                "reward": 0.05501375949546082,
+                "creation_time": 1648037759.4464989,
+                "auxillary_file_paths": [
+                    "results\\HammerAttack_decreasReward\\AttackBehavior\\AttackBehavior-79999934.pt"
+                ]
+            },
+            {
+                "steps": 80000066,
+                "file_path": "results\\HammerAttack_decreasReward\\AttackBehavior\\AttackBehavior-80000066.onnx",
+                "reward": 0.05658114278638685,
+                "creation_time": 1648037759.637987,
+                "auxillary_file_paths": [
+                    "results\\HammerAttack_decreasReward\\AttackBehavior\\AttackBehavior-80000066.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 80000066,
+            "file_path": "results\\HammerAttack_decreasReward\\AttackBehavior.onnx",
+            "reward": 0.05658114278638685,
+            "creation_time": 1648037759.637987,
+            "auxillary_file_paths": [
+                "results\\HammerAttack_decreasReward\\AttackBehavior\\AttackBehavior-80000066.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}
