@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class Arena : MonoBehaviour
 {
     public StateManagement stateManagement;
+    public TimeCounter timeCounter;
+    public ScoreManager scoreManager;
 
     public GameObject playerObj;
     public Player player;
@@ -44,6 +46,8 @@ public class Arena : MonoBehaviour
         initiateState = false;
 
         stateManagement = FindObjectOfType<StateManagement>();
+        timeCounter = FindObjectOfType<TimeCounter>();
+        scoreManager = FindObjectOfType<ScoreManager>();
         // enemy = enemyObj.GetComponent<Enemy>();
 
         showResult = GameObject.Find("ResultCanvas");
@@ -154,6 +158,7 @@ public class Arena : MonoBehaviour
                 {
                     Debug.Log("VICTORY");
 
+                    RecordTime();
                     FinishGame();
                 }
                 else //ถ้ายัง ไม่ ถึงด่านสุดท้าย
@@ -234,6 +239,16 @@ public class Arena : MonoBehaviour
                 Invoke("GoNextLevel", stateDelay);
             }
         }
+    }
+
+    private void RecordTime()
+    {
+        string timeSpent = timeCounter.GetTimeSpent();
+        float second = timeCounter.GetSecond();
+        Debug.Log("timeSpent: " + timeSpent);
+        Debug.Log("second: " + second);
+        scoreManager.AddScore(new Score("3/23/2022 18:30", timeSpent, second));
+        scoreManager.SaveScore();
     }
 
     private void GoNextLevel()

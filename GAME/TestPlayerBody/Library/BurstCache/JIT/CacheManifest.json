@@ -315,6 +315,18 @@
         4,
         1
       ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<Unity.Barracuda.BurstCPUOps/TransposeJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 13433243922868730427,
+      "ModuleHash": "05f23aaac67c624b04708d3b8d4bceb5",
+      "LinkName": "F714E461648B8A08",
+      "AssemblyDependencyIndices": [
+        5,
+        6,
+        4,
+        1
+      ]
     }
   ]
 }
