@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 public class Arena : MonoBehaviour
 {
     public StateManagement stateManagement;
-    public TimeCounter timeCounter;
-    public ScoreManager scoreManager;
 
     public GameObject playerObj;
     public Player player;
@@ -46,9 +44,6 @@ public class Arena : MonoBehaviour
         initiateState = false;
 
         stateManagement = FindObjectOfType<StateManagement>();
-        timeCounter = FindObjectOfType<TimeCounter>();
-        scoreManager = FindObjectOfType<ScoreManager>();
-        // enemy = enemyObj.GetComponent<Enemy>();
 
         showResult = GameObject.Find("ResultCanvas");
         showResult.SetActive(false);
@@ -111,6 +106,13 @@ public class Arena : MonoBehaviour
                 theEnemyObj = enemyManagement.CreateEnemy(currentLevel, randomEnemy);
             }
 
+            //inactive orbs
+            firstOrbObj.SetActive(false);
+            secondOrbObj.SetActive(false);
+            thirdOrbObj.SetActive(false);
+            //inactive chest
+            chest.SetActive(false);
+
             //spawn the enemy
             theEnemyObj.SetActive(true);
             spawnManagement.spawn(theEnemyObj, enemyWaypoint);
@@ -144,7 +146,7 @@ public class Arena : MonoBehaviour
                 }
 
                 //remove the orb's effect
-                if(orbManagement.canRemove == false) orbManagement.canRemove = true;
+                if (orbManagement.canRemove == false) orbManagement.canRemove = true;
                 orbManagement.RemoveEffect(currentOrbNum);
                 orbManagement.canRemove = false;
 
@@ -158,7 +160,7 @@ public class Arena : MonoBehaviour
                 {
                     Debug.Log("VICTORY");
 
-                    RecordTime();
+                    player.RecordTime();
                     FinishGame();
                 }
                 else //ถ้ายัง ไม่ ถึงด่านสุดท้าย
@@ -218,6 +220,9 @@ public class Arena : MonoBehaviour
             //ถ้าผู้เล่นเลือก Orb แล้ว
             if (choseTheOrb)
             {
+                // endtime
+                FindObjectOfType<TimeCounter>().EndTimerWin();
+
                 choseTheOrb = false;
 
                 player.SetCurrentOrb(newOrbNum); //player เก็บ Orb ที่เลือก
@@ -227,7 +232,6 @@ public class Arena : MonoBehaviour
                 firstOrbObj.SetActive(false);
                 secondOrbObj.SetActive(false);
                 thirdOrbObj.SetActive(false);
-
                 //inactive chest
                 chest.SetActive(false);
 
@@ -239,16 +243,6 @@ public class Arena : MonoBehaviour
                 Invoke("GoNextLevel", stateDelay);
             }
         }
-    }
-
-    private void RecordTime()
-    {
-        string timeSpent = timeCounter.GetTimeSpent();
-        float second = timeCounter.GetSecond();
-        Debug.Log("timeSpent: " + timeSpent);
-        Debug.Log("second: " + second);
-        scoreManager.AddScore(new Score("3/23/2022 18:30", timeSpent, second));
-        scoreManager.SaveScore();
     }
 
     private void GoNextLevel()

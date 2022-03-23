@@ -7325,8 +7325,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.8, y: -0.1}
-  m_SizeDelta: {x: 113.2, y: 30}
+  m_AnchoredPosition: {x: -17.5, y: -0.1}
+  m_SizeDelta: {x: 130, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &292000089
 MonoBehaviour:
@@ -9729,8 +9729,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.8, y: -0.1}
-  m_SizeDelta: {x: 113.2, y: 30}
+  m_AnchoredPosition: {x: -17.5, y: -0.1}
+  m_SizeDelta: {x: 130, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &440673144
 MonoBehaviour:
@@ -14399,8 +14399,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.8, y: -0.1}
-  m_SizeDelta: {x: 113.2, y: 30}
+  m_AnchoredPosition: {x: -17.5, y: -0.1}
+  m_SizeDelta: {x: 130, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &783943865
 MonoBehaviour:
@@ -20351,6 +20351,8 @@ MonoBehaviour:
   theOrb: {fileID: 145663673}
   currentOrbDisplay: {fileID: 1995471078}
   currentOrbDisplayName: {fileID: 236087433}
+  timeCounter: {fileID: 0}
+  scoreManager: {fileID: 0}
   currentHealth: 0
   currentStamina: 0
   regenable: 0
@@ -25349,8 +25351,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.8, y: -0.1}
-  m_SizeDelta: {x: 113.2, y: 30}
+  m_AnchoredPosition: {x: -17.5, y: -0.1}
+  m_SizeDelta: {x: 130, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1427657180
 MonoBehaviour:
@@ -29104,8 +29106,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.8, y: -0.1}
-  m_SizeDelta: {x: 113.2, y: 30}
+  m_AnchoredPosition: {x: -17.5, y: -0.1}
+  m_SizeDelta: {x: 130, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1727785468
 MonoBehaviour:
@@ -31545,8 +31547,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateManagement: {fileID: 866460834}
-  timeCounter: {fileID: 0}
-  scoreManager: {fileID: 0}
   playerObj: {fileID: 583629549}
   player: {fileID: 1144901525}
   spawnManagement: {fileID: 5924024007037559152}
@@ -34425,7 +34425,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0E08\u0E33\u0E19\u0E27\u0E19\u0E14\u0E48\u0E32\u0E19\u0E17\u0E35\u0E48\u0E40\u0E04\u0E25\u0E35\u0E22\u0E23\u0E4C\u0E41\u0E25\u0E49\u0E27:"
+  m_Text: 'Cleared Stage:'
 --- !u!222 &2078927322
 CanvasRenderer:
   m_ObjectHideFlags: 0

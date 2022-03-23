@@ -101,7 +101,8 @@ public class OrbManagement : MonoBehaviour
             currentWeapon.SetSlashAtk(((int)(slashAtk + (slashAtk * effectValue))));
             Debug.Log("[OrbManagement] " + currentWeapon.name + " Implement: " + num + ", Impact: " + currentWeapon.GetImpactAtk() + ", Slash: " + currentWeapon.GetSlashAtk());
 
-            StartCoroutine(WaitThenCanRemove(num, 15));
+            var currentLevel = player.getLevel();
+            StartCoroutine(WaitThenCanRemove(num, 15, currentLevel));
         }
         if (num == 4) //เพิ่มอัตราคริ 5%
         {
@@ -168,11 +169,15 @@ public class OrbManagement : MonoBehaviour
         }
     }
 
-    IEnumerator WaitThenCanRemove(int num, float delay)
+    IEnumerator WaitThenCanRemove(int num, float delay, int level)
     {
         yield return new WaitForSeconds(delay);
-        canRemove = true;
-        RemoveEffect(num);
+        if(level == player.getLevel()) //เช็คว่าตอนนี้ player ยังอยู่ใน stage เดิมที่ใช้ orb อยู่หรือเปล่า
+        {
+            canRemove = true;
+            RemoveEffect(num);
+        }
+        
     }
 
     public string GetName(int num)

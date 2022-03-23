@@ -16,7 +16,6 @@ public class StateManagement : MonoBehaviour
 
     private int state = 1, playerState; //Default: state = 1
 
-    // Start is called before the first frame update
     void Start()
     {
         mainMenu = GameObject.Find("MainMenuRoom");
@@ -30,7 +29,6 @@ public class StateManagement : MonoBehaviour
         arenaTest = GameObject.Find("ArenaScene (TEST)");
     }
 
-    // Update is called once per frame
     void Update()
     {
         //State: Idle
@@ -52,7 +50,7 @@ public class StateManagement : MonoBehaviour
         {
             player.PublishArmStateToMqtt("Left", "Free");
             player.PublishArmStateToMqtt("Right","Free");
-            timeCounter.EndTimer();
+            // timeCounter.EndTimer();
             spawnManagement.spawn(playerObj, preparationRoom.transform.Find("PlayerWaypoint").gameObject);
             playerState = 2;
             state = 0;
@@ -60,16 +58,17 @@ public class StateManagement : MonoBehaviour
         //State: A
         else if(state == 3)
         {
+            FindObjectOfType<Player>().SetOriginalStat(); //เก็บพวกค่าเลือดของผู้เล่น เผื่อกรณีผู้เล่นกดปุ่มกลับห้องเตรียมตัว
             timeCounter.BeginTimer();
             spawnManagement.spawn(playerObj, arena.transform.Find("PlayerWaypoint").gameObject);
             arena.GetComponent<Arena>().StartInitiate();
-            FindObjectOfType<Player>().SetOriginalStat(); //เก็บพวกค่าเลือดของผู้เล่น เผื่อกรณีผู้เล่นกดปุ่มกลับห้องเตรียมตัว
             playerState = 3;
             state = 0;
         }
         //State: A --> PP
         else if(state == 9)
         {
+            timeCounter.EndTimer();
             FindObjectOfType<Player>().ReturnOriginalStat(); //คืนพวกค่าเลือดของผู้เล่น เมื้อผู้เล่นกดปุ่มกลับห้องเตรียมตัว
             state = 2;
         }

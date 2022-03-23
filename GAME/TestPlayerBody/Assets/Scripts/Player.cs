@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     public Image currentOrbDisplay;
     public Text currentOrbDisplayName;
 
+    public TimeCounter timeCounter;
+    public ScoreManager scoreManager;
+
     private int maxHealth = 500, maxStamina = 150;
     private float increaseStaminaPoint = 0.02f;
     [HideInInspector] public int currentHealth;
@@ -31,7 +34,8 @@ public class Player : MonoBehaviour
     private GameObject currentWeapon;
     private int currentOrb = 9;
 
-    private int originalMaxHp, originalCurrentHp, originalMaxStamina;
+    private int originalMaxHp, originalCurrentHp, originalMaxStamina, originalLevel;
+    private float originalTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +47,9 @@ public class Player : MonoBehaviour
         currentStamina = maxStamina;
 
         ShowCurrentOrb();
+
+        timeCounter = FindObjectOfType<TimeCounter>();
+        scoreManager = FindObjectOfType<ScoreManager>();
     }
 
     private void UpdateCurrentHp()
@@ -77,6 +84,7 @@ public class Player : MonoBehaviour
     {
         maxHealth = newHp;
         UpdateMaxHp();
+        UpdateCurrentHp();
     }
 
     public int GetMaxStamina()
@@ -133,11 +141,24 @@ public class Player : MonoBehaviour
         currentStamina = maxStamina;
     }
 
+    public void RecordTime()
+    {
+        string date = System.DateTime.UtcNow.ToLocalTime().ToString("dd-MM-yyyy  HH:mm");
+        string timeSpent = timeCounter.GetTimeSpent();
+        float second = timeCounter.GetSecond();
+        Debug.Log("timeSpent: " + timeSpent);
+        Debug.Log("second: " + second);
+        scoreManager.AddScore(new Score(date, timeSpent, second));
+        scoreManager.SaveScore();
+    }
+
     public void SetOriginalStat()
     {
         originalMaxHp = GetMaxHp();
         originalCurrentHp = GetCurrentHp();
         originalMaxStamina = GetMaxStamina();
+        originalLevel = getLevel();
+        originalTimer = timeCounter.GetSecond();
     }
 
     public void ReturnOriginalStat()
@@ -146,6 +167,8 @@ public class Player : MonoBehaviour
         SetCurrentHp(originalCurrentHp);
         SetMaxStamina(originalMaxStamina);
         currentStamina = maxStamina;
+        playerLevel = originalLevel;
+        timeCounter.SetSecond(originalTimer);
     }
 
     // Note: ควรทำ script PlayerArmController แยกออกมาเลย
