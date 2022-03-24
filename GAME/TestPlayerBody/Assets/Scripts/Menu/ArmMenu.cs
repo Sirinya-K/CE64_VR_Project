@@ -9,10 +9,14 @@ public class ArmMenu : MonoBehaviour
     public BackToPreparationRoomButton back;
     public StateManagement stateManagement;
 
+    private float delay;
+
     // Start is called before the first frame update
     void Start()
     {
         stateManagement = FindObjectOfType<StateManagement>();
+
+        delay = 0.2f;
     }
 
     // Update is called once per frame
@@ -23,11 +27,9 @@ public class ArmMenu : MonoBehaviour
         {
             if (back.targetObj.CompareTag("LeftFinger"))
             {
-                Debug.Log("Collision Back Button");
-
-                stateManagement.GoState(9);
-
                 back.collision = false;
+
+                Invoke("Back", delay);
             }
         }
 
@@ -36,12 +38,22 @@ public class ArmMenu : MonoBehaviour
         {
             if (exit.targetObj.CompareTag("LeftFinger"))
             {
-                Debug.Log("Collision Exit Button");
-
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
                 exit.collision = false;
+
+                Invoke("Exit", delay);
             }
         }
+    }
+
+    private void Back()
+    {
+        Debug.Log("[Back To Preparation Room]");
+        stateManagement.GoState(9);
+    }
+
+    private void Exit()
+    {
+        Debug.Log("[Exit To Main Menu]");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
