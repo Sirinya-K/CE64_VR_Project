@@ -17,6 +17,7 @@ public class SwordControllerV2 : MonoBehaviour
 
     bool isAttack = false;
     bool isActionAttack = false;
+    bool isHit = false;
     public bool isBlock = false;
 
     void Start()
@@ -28,15 +29,12 @@ public class SwordControllerV2 : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (enemy.tmpAttack)
+        if (enemy.tmpAttack && !isHit)
         {
             isActionAttack = true;
-        }
-        if (!enemy.tmpAttack && isActionAttack)
-        {
-            isActionAttack = false;
             if (isAttack)
             {
+                isHit = true;
                 if (teamId == Team1.Blue)
                 {
                     envController.ResolveEvent(Event1.HitPurpleEnemy);
@@ -47,7 +45,12 @@ public class SwordControllerV2 : MonoBehaviour
                 }
                 isAttack = false;
             }
-            else
+        }
+        // ! animation has end and it do animation and dont hit
+        if (!enemy.tmpAttack && isActionAttack)
+        {
+            isActionAttack = false;
+            if (!isAttack && !isHit)
             {
                 if (teamId == Team1.Blue)
                 {
@@ -59,6 +62,7 @@ public class SwordControllerV2 : MonoBehaviour
                 }
             }
         }
+        if (!enemy.tmpAttack && isHit) isHit = false;
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -83,7 +87,7 @@ public class SwordControllerV2 : MonoBehaviour
         // }
         if (teamId == Team1.Blue && enemy.tmpAttack)
         {
-            if (collision.gameObject.CompareTag("Player")) //Default: purpleAgent
+            if (collision.gameObject.CompareTag("purpleAgent")) //purpleAgent --> Player
             {
                 isAttack = true;
             }
