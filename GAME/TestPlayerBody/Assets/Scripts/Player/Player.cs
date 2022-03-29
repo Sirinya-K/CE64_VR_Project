@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
 
     private int playerLevel = 0;
 
-    private GameObject currentWeapon;
+    private GameObject currentShield, currentWeapon;
     private int currentOrb = 9;
 
     private int originalMaxHp, originalCurrentHp, originalMaxStamina, originalLevel;
@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
 
         timeCounter = FindObjectOfType<TimeCounter>();
         scoreManager = FindObjectOfType<ScoreManager>();
+
+        currentShield = GameObject.FindGameObjectWithTag("PlayerShield");
     }
 
     private void UpdateCurrentHp()
@@ -97,6 +99,13 @@ public class Player : MonoBehaviour
         maxStamina = newStamina;
     }
 
+    // Shield
+    public GameObject GetCurrentShield()
+    {
+        return currentShield;
+    }
+
+    // Current Weapon
     public GameObject GetCurrentWeapon()
     {
         return currentWeapon;

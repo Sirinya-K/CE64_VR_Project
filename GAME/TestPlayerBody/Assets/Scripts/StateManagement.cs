@@ -20,13 +20,13 @@ public class StateManagement : MonoBehaviour
     {
         mainMenu = GameObject.Find("MainMenuRoom");
         preparationRoom = GameObject.Find("PreparationRoom");
-        arena = GameObject.Find("Arena");
+        arena = GameObject.Find("ArenaV3");
         playerObj = GameObject.Find("VR Rig");
         spawnManagement = FindObjectOfType<SpawnManagement>();
         timeCounter = FindObjectOfType<TimeCounter>();
         player = FindObjectOfType<Player>();
 
-        arenaTest = GameObject.Find("ArenaScene (TEST)");
+        arenaTest = GameObject.Find("ArenaV3");
     }
 
     void Update()

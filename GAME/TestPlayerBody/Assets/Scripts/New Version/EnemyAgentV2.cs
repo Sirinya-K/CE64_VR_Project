@@ -34,16 +34,22 @@ public class EnemyAgentV2 : Agent
     // * Direction of agent
     float agentRot;
     EnvironmentParameters resetParams;
-    void Start()
+
+    private Arena arena;
+
+    void Awake()
     {
         envController = area.GetComponent<ArenaEnvControllerV2>();
+
+        arena = FindObjectOfType<Arena>();
     }
+
     public override void Initialize()
     {
         arenaSettings = FindObjectOfType<ArenaSettings>();
 
         agentRB = GetComponent<Rigidbody>();
-        weaponRB = weapon.GetComponent<Rigidbody>();
+        // weaponRB = weapon.GetComponent<Rigidbody>();
         enemyRB = enemy.GetComponent<Rigidbody>();
         if (enemyType == EnemyType.WithShield) shieldRB = shield.GetComponent<Rigidbody>();
 
@@ -154,6 +160,9 @@ public class EnemyAgentV2 : Agent
     }
     public override void CollectObservations(VectorSensor sensor)
     {
+        weapon = arena.GetPlayerCurrentWeapon();
+        weaponRB = weapon.GetComponent<Rigidbody>();
+
         // * Agent/Enemy rotation
         sensor.AddObservation(this.transform.localRotation.eulerAngles.y / 360.0f);
         sensor.AddObservation(enemy.transform.localRotation.eulerAngles.y / 360.0f);
