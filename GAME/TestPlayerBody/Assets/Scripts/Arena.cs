@@ -97,7 +97,6 @@ public class Arena : MonoBehaviour
             var currentLevel = player.getLevel();
             if (currentLevel == 0)
             {
-                Debug.Log("[      Enter      ] 4");
                 var randomEnemy = Random.Range(0, 1); // (0, 2) สุ่ม enemy ลำดับที่ 0 1
                 theEnemyObj = enemyManagement.CreateEnemy(currentLevel, randomEnemy);
             }
