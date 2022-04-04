@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public MqttProtocol mqtt;
-
     public GameObject floatingDamagePrefab;
     public GameObject floatingDamageParent;
 

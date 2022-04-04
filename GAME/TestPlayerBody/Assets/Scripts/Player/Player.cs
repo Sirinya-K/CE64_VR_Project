@@ -150,14 +150,14 @@ public class Player : MonoBehaviour
         currentStamina = maxStamina;
     }
 
-    public void RecordTime()
+    public void RecordTime(string playerName)
     {
         string date = System.DateTime.UtcNow.ToLocalTime().ToString("dd-MM-yyyy  HH:mm");
         string timeSpent = timeCounter.GetTimeSpent();
         float second = timeCounter.GetSecond();
         Debug.Log("timeSpent: " + timeSpent);
         Debug.Log("second: " + second);
-        scoreManager.AddScore(new Score(date, timeSpent, second));
+        scoreManager.AddScore(new Score(playerName, date, timeSpent, second));
         scoreManager.SaveScore();
     }
 

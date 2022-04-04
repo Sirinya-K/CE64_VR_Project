@@ -20,7 +20,7 @@ public class Arena : MonoBehaviour
     private bool initiateState, fightingState;
 
     private bool choseTheOrb;
-    private int finalLevel = 4;
+    private int finalLevel = 1;
     private float stateDelay = 1.5f;
     private GameObject showResult;
     private Text fightResult;
@@ -37,6 +37,8 @@ public class Arena : MonoBehaviour
     private GameObject[] traps;
 
     private GameObject playerCurrentWeapon;
+
+    public GameObject Keyboard;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +80,9 @@ public class Arena : MonoBehaviour
             // traps[i].SetActive(false);
         }
         trapOriginal.SetActive(false);
+
+        // Inactive Keyboard
+        Keyboard.SetActive(false);
 
         // newObject = new GameObject[3];
         // newObject[0] = new GameObject("New Gameobject1");
@@ -160,8 +165,13 @@ public class Arena : MonoBehaviour
                 {
                     Debug.Log("VICTORY");
 
-                    player.RecordTime();
-                    FinishGame();
+                    // endtime
+                    FindObjectOfType<TimeCounter>().EndTimerWin();
+
+                    // Active Keyboard
+                    Keyboard.SetActive(true);
+
+                    // FinishGame();
                 }
                 else //ถ้ายัง ไม่ ถึงด่านสุดท้าย
                 {
@@ -253,10 +263,18 @@ public class Arena : MonoBehaviour
         stateManagement.GoState(2);
     }
 
-    private void FinishGame()
+    public void FinishGame()
     {
-        showResult.SetActive(true);
-        fightResult.text = "VICTORY! :D";
+        // showResult.SetActive(true);
+        // fightResult.text = "VICTORY! :D";
+        // Invoke("RestartGame", stateDelay);
+
+        string playerName = Keyboard.GetComponentInChildren<Keyboard>().GetChar();
+        player.RecordTime(playerName);
+
+        // Inactive Keyboard
+        Keyboard.SetActive(false);
+
         Invoke("RestartGame", stateDelay);
     }
 

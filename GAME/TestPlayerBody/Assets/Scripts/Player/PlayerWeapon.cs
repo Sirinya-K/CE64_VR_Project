@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
 {
-    public MqttProtocol mqtt;
     public Player player;
 
     protected int impactAtk;
@@ -19,7 +18,6 @@ public class PlayerWeapon : MonoBehaviour
     
     void Awake()
     {
-        mqtt = FindObjectOfType<MqttProtocol>();
         player = FindObjectOfType<Player>();
 
         lastPosition = transform.position;

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyWeapon : MonoBehaviour
 {
-    public MqttProtocol mqtt;
     public Player player;
     public OrbManagement orb;
 
@@ -16,7 +15,6 @@ public class EnemyWeapon : MonoBehaviour
 
     void Awake()
     {
-        mqtt = FindObjectOfType<MqttProtocol>();
         player = FindObjectOfType<Player>();
         orb = FindObjectOfType<OrbManagement>();
 

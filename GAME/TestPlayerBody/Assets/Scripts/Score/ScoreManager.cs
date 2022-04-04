@@ -52,6 +52,8 @@ public class ScoreManager : MonoBehaviour
             dateUi.GetComponent<Text>().text = scoresArray[i].date;
             var timeSpent = scoreUi.transform.Find("TimeSpent").gameObject;
             timeSpent.GetComponent<Text>().text = scoresArray[i].timeSpent;
+            var name = scoreUi.transform.Find("Name").gameObject;
+            name.GetComponent<Text>().text = scoresArray[i].name;
         }
     }
 
@@ -104,12 +106,14 @@ public class ScoreData
 [Serializable]
 public class Score
 {
+    public string name;
     public string date;
     public string timeSpent;
     public float second;
 
-    public Score(string date, string timeSpent, float second)
+    public Score(string name, string date, string timeSpent, float second)
     {
+        this.name = name;
         this.date = date;
         this.timeSpent = timeSpent;
         this.second = second;

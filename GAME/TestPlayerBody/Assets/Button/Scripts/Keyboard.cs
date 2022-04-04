@@ -15,6 +15,14 @@ public class Keyboard : MonoBehaviour
         caps = false;
     }
 
+    public string GetChar()
+    {
+        string input = inputField.text;
+        Debug.Log(input);
+
+        return input;
+    }
+
     public void InsertChar(string c)
     {
         inputField.text += c;
