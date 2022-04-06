@@ -1,0 +1,56 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 499989,
+                "file_path": "results\\Walk_Sword_1\\AttackBehavior\\AttackBehavior-499989.onnx",
+                "reward": -0.04429881340004058,
+                "creation_time": 1649075786.589101,
+                "auxillary_file_paths": [
+                    "results\\Walk_Sword_1\\AttackBehavior\\AttackBehavior-499989.pt"
+                ]
+            },
+            {
+                "steps": 999992,
+                "file_path": "results\\Walk_Sword_1\\AttackBehavior\\AttackBehavior-999992.onnx",
+                "reward": 0.19888089153556118,
+                "creation_time": 1649077470.8038642,
+                "auxillary_file_paths": [
+                    "results\\Walk_Sword_1\\AttackBehavior\\AttackBehavior-999992.pt"
+                ]
+            },
+            {
+                "steps": 1499994,
+                "file_path": "results\\Walk_Sword_1\\AttackBehavior\\AttackBehavior-1499994.onnx",
+                "reward": 0.23439435136150305,
+                "creation_time": 1649079189.2796042,
+                "auxillary_file_paths": [
+                    "results\\Walk_Sword_1\\AttackBehavior\\AttackBehavior-1499994.pt"
+                ]
+            },
+            {
+                "steps": 1541828,
+                "file_path": "results\\Walk_Sword_1\\AttackBehavior\\AttackBehavior-1541828.onnx",
+                "reward": 0.21876342963146908,
+                "creation_time": 1649079336.7405999,
+                "auxillary_file_paths": [
+                    "results\\Walk_Sword_1\\AttackBehavior\\AttackBehavior-1541828.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1541828,
+            "file_path": "results\\Walk_Sword_1\\AttackBehavior.onnx",
+            "reward": 0.21876342963146908,
+            "creation_time": 1649079336.7405999,
+            "auxillary_file_paths": [
+                "results\\Walk_Sword_1\\AttackBehavior\\AttackBehavior-1541828.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}

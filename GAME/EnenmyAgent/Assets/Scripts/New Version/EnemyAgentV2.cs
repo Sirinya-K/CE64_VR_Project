@@ -173,15 +173,15 @@ public class EnemyAgentV2 : Agent
         (weaponRB.transform.position.z - this.transform.position.z));
         sensor.AddObservation(toweapon.normalized);
         sensor.AddObservation(toweapon.magnitude);
-        if (enemyType == EnemyType.WithShield)
-        {
-            // * Shield Information
-            Vector3 toShield = new Vector3((shieldRB.transform.position.x - this.transform.position.x),
-            (shieldRB.transform.position.y - this.transform.position.y),
-            (shieldRB.transform.position.z - this.transform.position.z));
-            sensor.AddObservation(toShield.normalized);
-            sensor.AddObservation(toShield.magnitude);
-        }
+        // if (enemyType == EnemyType.WithShield)
+        // {
+        //     // * Shield Information
+        //     Vector3 toShield = new Vector3((shieldRB.transform.position.x - this.transform.position.x),
+        //     (shieldRB.transform.position.y - this.transform.position.y),
+        //     (shieldRB.transform.position.z - this.transform.position.z));
+        //     sensor.AddObservation(toShield.normalized);
+        //     sensor.AddObservation(toShield.magnitude);
+        // }
     }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -226,7 +226,7 @@ public class EnemyAgentV2 : Agent
             // acttackAction_2
             discreteActionsOut[3] = 2;
         }
-        if(enemyType == EnemyType.WithShield) discreteActionsOut[4] = Input.GetKey(KeyCode.Space) ? 1 : 0;
+        // if(enemyType == EnemyType.WithShield) discreteActionsOut[4] = Input.GetKey(KeyCode.Space) ? 1 : 0;
     }
     void OnCollisionEnter(Collision collision)
     {
