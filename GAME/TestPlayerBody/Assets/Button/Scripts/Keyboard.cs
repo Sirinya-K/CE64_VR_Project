@@ -25,7 +25,10 @@ public class Keyboard : MonoBehaviour
 
     public void InsertChar(string c)
     {
-        inputField.text += c;
+        if(inputField.text.Length < 10)
+        {
+            inputField.text += c;
+        }
     }
 
     public void DeleteChar()

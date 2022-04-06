@@ -6,6 +6,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ContinuousMovement : MonoBehaviour
 {
+    public AudioSource footStepSound;
+
     public MqttProtocol mqtt;
 
     // public XRNode inputSource;
@@ -25,11 +27,17 @@ public class ContinuousMovement : MonoBehaviour
 
     private float fallingSpeed;
 
+    private Vector3 lastPosition;
+
+    private bool moving = false;
+
     // Start is called before the first frame update
     void Start()
     {
         character = GetComponent<CharacterController>();
         rig = GetComponent<XRRig>();
+
+        lastPosition = transform.position;
     }
     // Update is called once per frame
     // void Update()
@@ -110,11 +118,13 @@ public class ContinuousMovement : MonoBehaviour
 
         if ("hl" == mqtt.data.Split(':')[0])
         {
+            moving = true;
             mqttCurrentData = mqtt.data.Split('+')[1];
             ControlMovementByMqtt(mqttCurrentData);
         }
         if (Input.anyKey)
         {
+            moving = true;
             ControlMovementByKeyboard();
         }
 
@@ -123,5 +133,18 @@ public class ContinuousMovement : MonoBehaviour
 
         fallingSpeed = -10;
         character.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
+
+        // [Foot Step Sound]
+        if (lastPosition != transform.position && footStepSound.isPlaying == false && moving == true)
+        {
+            Debug.Log("Moving");
+            footStepSound.Play();
+        }
+        else if (lastPosition == transform.position && footStepSound.isPlaying == true)
+        {
+            Debug.Log("Not Moving");
+            footStepSound.Stop();
+        }
+        lastPosition = transform.position;
     }
 }
