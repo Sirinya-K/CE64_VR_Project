@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
 {
+    public AudioSource stabSound;
+    public AudioSource swingSound;
+
     public Player player;
 
     protected int impactAtk;
@@ -19,6 +22,9 @@ public class PlayerWeapon : MonoBehaviour
     void Awake()
     {
         player = FindObjectOfType<Player>();
+
+        stabSound = GameObject.Find("Stab").GetComponent<AudioSource>();
+        swingSound = GameObject.Find("Swing").GetComponent<AudioSource>();
 
         lastPosition = transform.position;
 
@@ -36,6 +42,13 @@ public class PlayerWeapon : MonoBehaviour
     void FixedUpdate()
     {
         CalculateSpeed();
+
+        Debug.Log("Player's Weapon: " + speed);
+
+        if(speed >= 2f && (onEnemy == false || onShield == false))
+        {
+            swingSound.Play();
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -55,12 +68,14 @@ public class PlayerWeapon : MonoBehaviour
             var finalAtk = finalImpactAtk;
             other.gameObject.GetComponentInParent<Enemy>().TakeDamage(finalAtk);
             Debug.Log("Collision: " + other.gameObject.tag + ", Atk: " + finalAtk);
+            stabSound.Play();
         }
         else if (!onShield && other.gameObject.CompareTag("Enemy"))
         {
             var finalAtk = finalImpactAtk + finalSlashAtk;
             other.gameObject.GetComponentInParent<Enemy>().TakeDamage(finalAtk);
             Debug.Log("Collision: " + other.gameObject.tag + ", Atk: " + finalAtk);
+            stabSound.Play();
         }
     }
 
