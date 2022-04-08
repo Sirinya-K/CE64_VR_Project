@@ -29,7 +29,7 @@ public class ContinuousMovement : MonoBehaviour
 
     private Vector3 lastPosition;
 
-    private bool moving = false;
+    public bool moving = false;
 
     // Start is called before the first frame update
     void Start()
@@ -140,8 +140,9 @@ public class ContinuousMovement : MonoBehaviour
             Debug.Log("Moving");
             footStepSound.Play();
         }
-        else if (lastPosition == transform.position && footStepSound.isPlaying == true)
+        else if (lastPosition == transform.position && (footStepSound.isPlaying == true || (footStepSound.isPlaying == false && moving == true)))
         {
+            moving = false;
             Debug.Log("Not Moving");
             footStepSound.Stop();
         }

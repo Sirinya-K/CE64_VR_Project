@@ -8,7 +8,7 @@ public class ShieldController : MonoBehaviour
     private ArenaEnvControllerV2 envController;
     public SwordandShieldControllerV2 swordController;
     private EnemyAgentV2 enemy;
-    bool isActionBlock = false;
+    // bool isActionBlock = false;
     // Start is called before the first frame update
     void Start()
     {

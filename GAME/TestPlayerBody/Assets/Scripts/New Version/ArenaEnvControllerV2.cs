@@ -69,7 +69,7 @@ public class ArenaEnvControllerV2 : MonoBehaviour
 
         currentTeam = Team1.Default;
 
-        //ResetScene();
+        ResetScene();
     }
     public void UpdateEnemySide(Team1 team)
     {
@@ -98,7 +98,7 @@ public class ArenaEnvControllerV2 : MonoBehaviour
                     blueAgent.EndEpisode();
                     purpleAgent.EndEpisode();
 
-                    // ResetScene();
+                    ResetScene();
                 }
                 break;
             case Event1.HitPurpleEnemy:
@@ -117,7 +117,7 @@ public class ArenaEnvControllerV2 : MonoBehaviour
                     blueAgent.EndEpisode();
                     purpleAgent.EndEpisode();
 
-                    // ResetScene();
+                    ResetScene();
                 }
                 break;
             case Event1.BlueDontHitEnemy:
@@ -149,7 +149,7 @@ public class ArenaEnvControllerV2 : MonoBehaviour
                 {
                     blueAgent.AddReward(-1);
                     purpleAgent.AddReward(-1);
-                    // ResetScene();
+                    ResetScene();
                 }
                 break;
             case Event1.BlueHitWall:
@@ -166,35 +166,46 @@ public class ArenaEnvControllerV2 : MonoBehaviour
     }
     void FixedUpdate()
     {
-        // resetTimer += 1;
-        // blueAgent.AddReward(-.001f);
-        // purpleAgent.AddReward(-.001f);
-        // if (resetTimer >= MaxEnvironmentSteps && MaxEnvironmentSteps > 0)
-        // {
-        //     blueScore = blueAgent.GetCumulativeReward();
-        //     purpleScore = purpleAgent.GetCumulativeReward();
-        //     blueAgent.EpisodeInterrupted();
-        //     purpleAgent.EpisodeInterrupted();
-        //     ResetScene();
-        // }
+        resetTimer += 1;
+        blueAgent.AddReward(-.001f);
+        purpleAgent.AddReward(-.001f);
+        if (resetTimer >= MaxEnvironmentSteps && MaxEnvironmentSteps > 0)
+        {
+            blueScore = blueAgent.GetCumulativeReward();
+            purpleScore = purpleAgent.GetCumulativeReward();
+            blueAgent.EpisodeInterrupted();
+            purpleAgent.EpisodeInterrupted();
+            ResetScene();
+        }
     }
     public void ResetScene()
     {
         resetTimer = 0;
         currentTeam = Team1.Default; // reset last hitter
+        var rot = 0;
         foreach (var agent in AgentsList)
         {
+            if (agent.CompareTag("blueAgent"))
+            {
+                var rand = Random.Range(0, 2);
+                if (rand == 0) rot = 1;
+                else if (rand == 1) rot = -1;
+            }
             if (agent.CompareTag("purpleAgent"))
             {
-                agentRot = 1;
+                if (rot == 1)
+                {
+                    rot = -1;
+                }
+                else if (rot == -1)
+                {
+                    rot = 1;
+                }
             }
-            else if (agent.CompareTag("blueAgent"))
-            {
-                agentRot = -1;
-            }
+            agentRot = rot;
             // randomise starting positions and rotations
             var randomPosX = Random.Range(-5f, 5f);
-            var randomPosZ = Random.Range(3f * -agentRot, 6f * -agentRot);
+            var randomPosZ = Random.Range(1f * -agentRot, 9f * -agentRot);
             var randomRot = Random.Range(-90f, 90f);
             agent.transform.localPosition = new Vector3(randomPosX, 0, randomPosZ);
             agent.transform.eulerAngles = new Vector3(0, randomRot, 0);
@@ -203,13 +214,13 @@ public class ArenaEnvControllerV2 : MonoBehaviour
         foreach (var weapon in weaponsList)
         {
             // ! For weapon position
-            // *weapon.transform.localPosition = new Vector3(0, 0, 0);
+            weapon.transform.localPosition = new Vector3(0,0,0);
             // ! For Hammer position
-            weapon.transform.localPosition = new Vector3(-0.075f,0.02f,0);
+            // weapon.transform.localPosition = new Vector3(-0.075f, 0.02f, 0);
         }
         foreach (var shield in ShieldList)
         {
-            shield.transform.localPosition = new Vector3(0.085f,0.004f,0.112f);
+            shield.transform.localPosition = new Vector3(0.085f, 0.004f, 0.112f);
         }
     }
 }

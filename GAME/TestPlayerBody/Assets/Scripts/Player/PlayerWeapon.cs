@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerWeapon : MonoBehaviour
 {
     public AudioSource stabSound;
-    public AudioSource swingSound;
+    public AudioSource swingSoftSound;
+    public AudioSource swingHardSound;
 
     public Player player;
+    public ContinuousMovement cMovement;
 
     protected int impactAtk;
     protected int slashAtk;
@@ -17,14 +19,16 @@ public class PlayerWeapon : MonoBehaviour
     protected float speedBias = 0.2f;
     protected Vector3 lastPosition;
 
-    private bool onShield = false, onEnemy = false;
-    
+    private bool onShield = false, onEnemy = false, enableSoft = false, enableHard = false;
+
     void Awake()
     {
         player = FindObjectOfType<Player>();
+        cMovement = FindObjectOfType<ContinuousMovement>();
 
         stabSound = GameObject.Find("Stab").GetComponent<AudioSource>();
-        swingSound = GameObject.Find("Swing").GetComponent<AudioSource>();
+        swingSoftSound = GameObject.Find("Swing (Soft)").GetComponent<AudioSource>();
+        swingHardSound = GameObject.Find("Swing (Hard)").GetComponent<AudioSource>();
 
         lastPosition = transform.position;
 
@@ -43,19 +47,33 @@ public class PlayerWeapon : MonoBehaviour
     {
         CalculateSpeed();
 
-        Debug.Log("Player's Weapon: " + speed);
+        // [Swing Sound]
+        Debug.Log(gameObject.name + " | Player's Weapon: " + speed);
 
-        if(speed >= 2f && (onEnemy == false || onShield == false))
+        if (((speed >= 5.5f && cMovement.moving) || (speed >= 3f && !cMovement.moving)) && (onEnemy == false && onShield == false) && enableSoft == true)
         {
-            swingSound.Play();
+            swingHardSound.Play();
+            enableSoft = false;
+            enableHard = false;
+        }
+        else if (((speed >= 4f && cMovement.moving) || (speed >= 1.5f && !cMovement.moving)) && (onEnemy == false && onShield == false) && enableHard == true)
+        {
+            swingSoftSound.Play();
+            enableHard = false;
+        }
+        // else if (speed > 0f && ((speed < 1.8f && cMovement.moving) || (speed <= 0.4f && !cMovement.moving)) && enableSound == false)
+        else if (speed > 0f && ((speed < 1.8f && cMovement.moving) || (speed <= 0.4f && !cMovement.moving)))
+        {
+            if (enableSoft == false)
+                enableSoft = true;
+            if (enableHard == false)
+                enableHard = true;
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        player.PublishArmStateToMqtt("Right","Stop");
-
-        // if (!other.gameObject.CompareTag("Enemy")) return; //ตรวจสอบว่าที่ตีโดนใช่ enemy มั้ย
+        // player.PublishArmStateToMqtt("Right","Stop");
 
         // Debug.Log("Sword Speed: " + speed);
 
@@ -94,7 +112,7 @@ public class PlayerWeapon : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        player.PublishArmStateToMqtt("Right","Free");
+        // player.PublishArmStateToMqtt("Right","Free");
 
         if (other.gameObject.CompareTag("EnemyShield"))
         {

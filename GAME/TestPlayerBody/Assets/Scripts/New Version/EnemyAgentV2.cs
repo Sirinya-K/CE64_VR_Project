@@ -23,7 +23,7 @@ public class EnemyAgentV2 : Agent
 
     // * Arena environment setting for controll response of agent each side
     ArenaSettings arenaSettings;
-    ArenaEnvControllerV2 envController;
+    // ArenaEnvControllerV2 envController;
 
     // * Animation var.
     private Animator anim;
@@ -39,7 +39,7 @@ public class EnemyAgentV2 : Agent
 
     void Awake()
     {
-        envController = area.GetComponent<ArenaEnvControllerV2>();
+        // envController = area.GetComponent<ArenaEnvControllerV2>();
 
         arena = FindObjectOfType<Arena>();
     }
@@ -75,7 +75,7 @@ public class EnemyAgentV2 : Agent
         anim.SetFloat("Velocity X", velocityX * agentRot);
 
         // * Event check distance between 2 agent (out of range?)
-        envController.ResolveEvent(Event1.OutOfRange);
+        // envController.ResolveEvent(Event1.OutOfRange);
     }
     void attack(int attackType)
     {
@@ -191,6 +191,8 @@ public class EnemyAgentV2 : Agent
             sensor.AddObservation(toShield.normalized);
             sensor.AddObservation(toShield.magnitude);
         }
+
+        Debug.Log(toweapon.normalized);
     }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -243,11 +245,11 @@ public class EnemyAgentV2 : Agent
         {
             if (teamId == Team1.Blue)
             {
-                envController.ResolveEvent(Event1.BlueHitWall);
+                // envController.ResolveEvent(Event1.BlueHitWall);
             }
             if (teamId == Team1.Purple)
             {
-                envController.ResolveEvent(Event1.PurpleHitWall);
+                // envController.ResolveEvent(Event1.PurpleHitWall);
             }
         }
     }

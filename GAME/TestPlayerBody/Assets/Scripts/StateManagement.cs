@@ -39,8 +39,8 @@ public class StateManagement : MonoBehaviour
         //State: MM
         else if(state == 1)
         {
-            player.PublishArmStateToMqtt("Left", "Free");
-            player.PublishArmStateToMqtt("Right","Free");
+            // player.PublishArmStateToMqtt("Left", "Free");
+            // player.PublishArmStateToMqtt("Right","Free");
             spawnManagement.spawn(playerObj, mainMenu.transform.Find("PlayerWaypoint").gameObject);
             playerState = 1;
             state = 0;
@@ -48,8 +48,8 @@ public class StateManagement : MonoBehaviour
         //State: PP
         else if(state == 2)
         {
-            player.PublishArmStateToMqtt("Left", "Free");
-            player.PublishArmStateToMqtt("Right","Free");
+            // player.PublishArmStateToMqtt("Left", "Free");
+            // player.PublishArmStateToMqtt("Right","Free");
             // timeCounter.EndTimer();
             spawnManagement.spawn(playerObj, preparationRoom.transform.Find("PlayerWaypoint").gameObject);
             playerState = 2;
