@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StateManagement : MonoBehaviour
 {
@@ -31,6 +32,12 @@ public class StateManagement : MonoBehaviour
 
     void Update()
     {
+        // Manually Restart Game
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            state = 1;
+        }
+
         //State: Idle
         if(state == 0)
         {

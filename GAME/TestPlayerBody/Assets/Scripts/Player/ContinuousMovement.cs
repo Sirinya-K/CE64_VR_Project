@@ -21,8 +21,6 @@ public class ContinuousMovement : MonoBehaviour
 
     private Vector3 direction;
 
-    private string mqttCurrentData = "";
-
     private Quaternion headYaw;
 
     private float fallingSpeed;
@@ -116,11 +114,17 @@ public class ContinuousMovement : MonoBehaviour
         headYaw = Quaternion.Euler(0, rig.cameraGameObject.transform.eulerAngles.y, 0);
         // Vector3 direction = headYaw * new Vector3(inputAxis.x, 0, inputAxis.y);
 
+        // hl:0+6 6
         if ("hl" == mqtt.data.Split(':')[0])
         {
-            moving = true;
-            mqttCurrentData = mqtt.data.Split('+')[1];
-            ControlMovementByMqtt(mqttCurrentData);
+            string data = mqtt.data.Split(':')[1];
+            string mode = data.Split('+')[0];
+            if (mode == "0") // Move Character
+            {
+                moving = true;
+                string moveData = data.Split('+')[1];
+                ControlMovementByMqtt(moveData);
+            }
         }
         if (Input.anyKey)
         {

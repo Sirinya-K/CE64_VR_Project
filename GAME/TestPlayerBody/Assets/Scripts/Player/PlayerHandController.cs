@@ -85,14 +85,14 @@ public class PlayerHandController : MonoBehaviour
         }
 
         // Left
-        if (handSide[0] == "hl")
-        {
-            LThumbValue = float.Parse(handSide[1].Split(' ')[0]) / divisor;
-            LIndexValue = float.Parse(handSide[1].Split(' ')[1]) / divisor;
-            LMiddleValue = float.Parse(handSide[1].Split(' ')[2]) / divisor;
-            LRingValue = float.Parse(handSide[1].Split(' ')[3]) / divisor;
-            LPinkyValue = float.Parse(handSide[1].Split('+')[0].Split(' ')[4]) / divisor;
-        }
+        // if (handSide[0] == "hl")
+        // {
+        //     LThumbValue = float.Parse(handSide[1].Split(' ')[0]) / divisor;
+        //     LIndexValue = float.Parse(handSide[1].Split(' ')[1]) / divisor;
+        //     LMiddleValue = float.Parse(handSide[1].Split(' ')[2]) / divisor;
+        //     LRingValue = float.Parse(handSide[1].Split(' ')[3]) / divisor;
+        //     LPinkyValue = float.Parse(handSide[1].Split('+')[0].Split(' ')[4]) / divisor;
+        // }
     }
 
     void ControlHandByKeyboard()

@@ -161,7 +161,7 @@ public class EnemyAgentV2 : Agent
     public override void CollectObservations(VectorSensor sensor)
     {
         weapon = arena.GetPlayerCurrentWeapon();
-        weaponRB = weapon.GetComponent<Rigidbody>();
+        if (weapon != null) weaponRB = weapon.GetComponent<Rigidbody>();
 
         // * Agent/Enemy rotation
         sensor.AddObservation(this.transform.localRotation.eulerAngles.y / 360.0f);
@@ -177,11 +177,14 @@ public class EnemyAgentV2 : Agent
         sensor.AddObservation(agentRB.velocity.normalized);
         sensor.AddObservation(enemyRB.velocity.normalized);
         // * weapon Information
-        Vector3 toweapon = new Vector3((weaponRB.transform.position.x - this.transform.position.x),
-        (weaponRB.transform.position.y - this.transform.position.y),
-        (weaponRB.transform.position.z - this.transform.position.z));
-        sensor.AddObservation(toweapon.normalized);
-        sensor.AddObservation(toweapon.magnitude);
+        if (weapon != null)
+        {
+            Vector3 toweapon = new Vector3((weaponRB.transform.position.x - this.transform.position.x),
+            (weaponRB.transform.position.y - this.transform.position.y),
+            (weaponRB.transform.position.z - this.transform.position.z));
+            sensor.AddObservation(toweapon.normalized);
+            sensor.AddObservation(toweapon.magnitude);
+        }
         if (enemyType == EnemyType.WithShield)
         {
             // * Shield Information
@@ -191,8 +194,6 @@ public class EnemyAgentV2 : Agent
             sensor.AddObservation(toShield.normalized);
             sensor.AddObservation(toShield.magnitude);
         }
-
-        Debug.Log(toweapon.normalized);
     }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -237,7 +238,7 @@ public class EnemyAgentV2 : Agent
             // acttackAction_2
             discreteActionsOut[3] = 2;
         }
-        if(enemyType == EnemyType.WithShield) discreteActionsOut[4] = Input.GetKey(KeyCode.Space) ? 1 : 0;
+        if (enemyType == EnemyType.WithShield) discreteActionsOut[4] = Input.GetKey(KeyCode.Space) ? 1 : 0;
     }
     void OnCollisionEnter(Collision collision)
     {

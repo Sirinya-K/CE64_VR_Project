@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyManagement : MonoBehaviour
 {
-    private int totalEnemies = 1;
+    private int totalEnemies = 5;
     private GameObject[] enemies;
     private Enemy theEnemyProperty;
 
@@ -14,7 +14,7 @@ public class EnemyManagement : MonoBehaviour
         enemies = new GameObject[totalEnemies];
         for (int i = 0; i < totalEnemies; i++)
         {
-            enemies[i] = GameObject.Find("Enemy" + 1);
+            enemies[i] = GameObject.Find("Enemy" + i);
             Debug.Log(enemies[i].name);
 
             enemies[i].SetActive(false);
