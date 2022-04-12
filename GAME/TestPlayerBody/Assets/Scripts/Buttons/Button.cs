@@ -21,7 +21,7 @@ public class Button : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        Debug.Log("Press Button");
+        // Debug.Log("Press Button");
         collision = true;
         targetObj = other.gameObject;
     }

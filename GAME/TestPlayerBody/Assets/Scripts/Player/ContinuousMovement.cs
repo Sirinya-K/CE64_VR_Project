@@ -29,6 +29,10 @@ public class ContinuousMovement : MonoBehaviour
 
     public bool moving = false;
 
+    private float speedX, speedY, speedZ;
+    private float lastX, lastY, lastZ;
+    private Vector3 vn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +40,8 @@ public class ContinuousMovement : MonoBehaviour
         rig = GetComponent<XRRig>();
 
         lastPosition = transform.position;
+
+        lastX = transform.position.x;
     }
     // Update is called once per frame
     // void Update()
@@ -106,8 +112,28 @@ public class ContinuousMovement : MonoBehaviour
         }
     }
 
+    void CalculateSpeed()
+    {
+        speedX = (transform.position.x - lastX) / Time.deltaTime;
+        lastX = transform.position.x;
+
+        speedY = (transform.position.y - lastY) / Time.deltaTime;
+        lastY = transform.position.y;
+
+        speedZ = (transform.position.z - lastZ) / Time.deltaTime;
+        lastZ = transform.position.z;
+    }
+
+    public Vector3 GetVelocityNormalized()
+    {
+        return vn;
+    }
+
     private void FixedUpdate()
     {
+        // CalculateSpeed();
+        // Debug.Log(speedX + " " + speedY +  " " + speedZ);
+
         CapsuleFollowHeadset();
 
         // *** set ให้ player เคลื่อนไหวตามทิศทางของ headset
@@ -132,6 +158,8 @@ public class ContinuousMovement : MonoBehaviour
             ControlMovementByKeyboard();
         }
 
+        vn = character.velocity.normalized;
+
         // Vector3 direction = new Vector3(inputAxis.x, 0, inputAxis.y);
         // character.Move(direction * Time.fixedDeltaTime * speed);
 
@@ -141,13 +169,13 @@ public class ContinuousMovement : MonoBehaviour
         // [Foot Step Sound]
         if (lastPosition != transform.position && footStepSound.isPlaying == false && moving == true)
         {
-            Debug.Log("Moving");
+            // Debug.Log("Moving");
             footStepSound.Play();
         }
         else if (lastPosition == transform.position && (footStepSound.isPlaying == true || (footStepSound.isPlaying == false && moving == true)))
         {
             moving = false;
-            Debug.Log("Not Moving");
+            // Debug.Log("Not Moving");
             footStepSound.Stop();
         }
         lastPosition = transform.position;

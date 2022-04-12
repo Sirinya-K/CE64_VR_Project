@@ -36,6 +36,8 @@ public class EnemyWeapon : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("ec: " + other.gameObject.tag);
+
         if (!onPlayer && other.gameObject.CompareTag("PlayerShield"))
         {
             player.PublishArmStateToMqtt("Left", "Stop");

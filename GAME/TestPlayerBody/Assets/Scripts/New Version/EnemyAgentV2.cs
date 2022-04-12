@@ -37,6 +37,8 @@ public class EnemyAgentV2 : Agent
 
     private Arena arena;
 
+    private ContinuousMovement character;
+
     void Awake()
     {
         // envController = area.GetComponent<ArenaEnvControllerV2>();
@@ -50,7 +52,8 @@ public class EnemyAgentV2 : Agent
 
         agentRB = GetComponent<Rigidbody>();
         // weaponRB = weapon.GetComponent<Rigidbody>();
-        enemyRB = enemy.GetComponent<Rigidbody>();
+        // enemyRB = enemy.GetComponent<Rigidbody>();
+        character = enemy.GetComponent<ContinuousMovement>();
         if (enemyType == EnemyType.WithShield) shieldRB = shield.GetComponent<Rigidbody>();
 
         anim = GetComponentInChildren<Animator>();
@@ -118,36 +121,35 @@ public class EnemyAgentV2 : Agent
             rotateDir = transform.up * -1f;
         else if (rotateDirAction == 2)
             rotateDir = transform.up * 1f;
-        if (!tmpAttack)
+
+        if (dirToGoForwardAction == 1)
         {
-            if (dirToGoForwardAction == 1)
+            dirToGo = transform.forward * 1f;
+        }
+        else if (dirToGoForwardAction == 2)
+        {
+            dirToGo = transform.forward * -1f;
+        }
+        if (dirToGoSideAction == 1)
+        {
+            dirToGo = transform.right * arenaSettings.speedReductionFactor * -1f;
+        }
+        else if (dirToGoSideAction == 2)
+        {
+            dirToGo = transform.right * arenaSettings.speedReductionFactor;
+        }
+        if (enemyType == EnemyType.WithShield)
+        {
+            if (blockAction == 1)
             {
-                dirToGo = transform.forward * 1f;
+                this.block(true);
             }
-            else if (dirToGoForwardAction == 2)
+            else if (blockAction == 0)
             {
-                dirToGo = transform.forward * -1f;
-            }
-            if (dirToGoSideAction == 1)
-            {
-                dirToGo = transform.right * arenaSettings.speedReductionFactor * -1f;
-            }
-            else if (dirToGoSideAction == 2)
-            {
-                dirToGo = transform.right * arenaSettings.speedReductionFactor;
-            }
-            if (enemyType == EnemyType.WithShield)
-            {
-                if (blockAction == 1)
-                {
-                    this.block(true);
-                }
-                else if (blockAction == 0)
-                {
-                    this.block(false);
-                }
+                this.block(false);
             }
         }
+
 
         var force = agentRot * dirToGo * arenaSettings.agentRunSpeed;
         transform.Rotate(rotateDir, Time.fixedDeltaTime * 200f);
@@ -175,7 +177,14 @@ public class EnemyAgentV2 : Agent
         sensor.AddObservation((disZ - minDis) / (maxDis - minDis));
         // * Agent/Enemy velocity
         sensor.AddObservation(agentRB.velocity.normalized);
-        sensor.AddObservation(enemyRB.velocity.normalized);
+        // sensor.AddObservation(enemyRB.velocity.normalized);
+        sensor.AddObservation(character.GetVelocityNormalized());
+
+        // Debug.Log("rotation: " + enemy.transform.localRotation.eulerAngles.y / 360.0f);
+        // Debug.Log("disX: " + (disX - minDis) / (maxDis - minDis) + ", disZ: " + (disZ - minDis) / (maxDis - minDis));
+        // Debug.Log("local position" + enemy.transform.localPosition.x);
+        // Debug.Log(character.GetVelocityNormalized());
+
         // * weapon Information
         if (weapon != null)
         {

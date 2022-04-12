@@ -13,6 +13,9 @@ public class Arena : MonoBehaviour
 
     public SpawnManagement spawnManagement;
     public GameObject enemyWaypoint;
+    public GameObject winWayPoint;
+
+    public GameObject Keyboard;
 
     private GameObject theEnemyObj;
     private Enemy theEnemyProperty;
@@ -20,7 +23,7 @@ public class Arena : MonoBehaviour
     private bool initiateState, fightingState;
 
     private bool choseTheOrb;
-    private int finalLevel = 1;
+    private int finalLevel = 4;
     private float stateDelay = 1.5f;
     private GameObject showResult;
     private Text fightResult;
@@ -37,8 +40,6 @@ public class Arena : MonoBehaviour
     private GameObject[] traps;
 
     private GameObject playerCurrentWeapon;
-
-    public GameObject Keyboard;
 
     // Start is called before the first frame update
     void Start()
@@ -170,8 +171,6 @@ public class Arena : MonoBehaviour
 
                     // Active Keyboard
                     Keyboard.SetActive(true);
-
-                    // FinishGame();
                 }
                 else //ถ้ายัง ไม่ ถึงด่านสุดท้าย
                 {
@@ -191,12 +190,16 @@ public class Arena : MonoBehaviour
                     thirdRandomOrb = Random.Range(6, 9); // มีโอกาสสุ่มเจอ 6 7 8
                     orbManagement.Show(thirdRandomOrb, "ThirdOrb");
                 }
+
+                //spawn player in front of orbs/keyboard & rotate player camera
+                spawnManagement.spawn(playerObj, winWayPoint);
+                playerObj.GetComponent<RotateCamera>().ResetRotation();
             }
 
             //ถ้าผู้เล่นตาย
             if (player.GetCurrentHp() <= 0)
             {
-
+                GameOver();
             }
 
             if (firstOrb.collision) //กรณีเลือก 1st Orb
@@ -263,7 +266,7 @@ public class Arena : MonoBehaviour
         stateManagement.GoState(2);
     }
 
-    public void FinishGame()
+    public void FinishGame() // ถูกเรียกใช้หลังจาก player กดปุ่ม enter
     {
         // showResult.SetActive(true);
         // fightResult.text = "VICTORY! :D";
@@ -278,7 +281,7 @@ public class Arena : MonoBehaviour
         Invoke("RestartGame", stateDelay);
     }
 
-    private void GameOVer()
+    private void GameOver()
     {
         showResult.SetActive(true);
         fightResult.text = "GAME OVER :(";

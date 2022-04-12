@@ -24,7 +24,7 @@ public class FingerCollision : MonoBehaviour
             // Debug.Log(gameObject.name + " + " + other.gameObject.name + " --> Enter");
             collisionStatus = true;
 
-            Debug.Log(this.name + " --> " + other.gameObject.name);
+            // Debug.Log(this.name + " --> " + other.gameObject.name);
 
             // hand.PublishHandToMqtt("stop", gameObject.name);
         }

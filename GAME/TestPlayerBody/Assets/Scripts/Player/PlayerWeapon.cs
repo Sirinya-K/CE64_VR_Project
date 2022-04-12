@@ -48,7 +48,7 @@ public class PlayerWeapon : MonoBehaviour
         CalculateSpeed();
 
         // [Swing Sound]
-        Debug.Log(gameObject.name + " | Player's Weapon: " + speed);
+        // Debug.Log(gameObject.name + " | Player's Weapon: " + speed);
 
         if (((speed >= 5.5f && cMovement.moving) || (speed >= 3f && !cMovement.moving)) && (onEnemy == false && onShield == false) && enableSoft == true)
         {

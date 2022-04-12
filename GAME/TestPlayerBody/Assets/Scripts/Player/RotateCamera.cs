@@ -85,4 +85,11 @@ public class RotateCamera : MonoBehaviour
             sec = 0f;
         }
     }
+
+    public void ResetRotation()
+    {
+        float currentR = transform.eulerAngles.y;
+        Debug.Log("CurrentR: " + currentR);
+        transform.RotateAround(new Vector3(playerCamera.transform.position.x, 0, playerCamera.transform.position.z), Vector3.up, -currentR);
+    }
 }
