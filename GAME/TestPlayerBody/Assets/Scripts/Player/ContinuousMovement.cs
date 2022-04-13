@@ -28,9 +28,6 @@ public class ContinuousMovement : MonoBehaviour
     private Vector3 lastPosition;
 
     public bool moving = false;
-
-    private float speedX, speedY, speedZ;
-    private float lastX, lastY, lastZ;
     private Vector3 vn;
 
     // Start is called before the first frame update
@@ -40,8 +37,6 @@ public class ContinuousMovement : MonoBehaviour
         rig = GetComponent<XRRig>();
 
         lastPosition = transform.position;
-
-        lastX = transform.position.x;
     }
     // Update is called once per frame
     // void Update()
@@ -110,18 +105,6 @@ public class ContinuousMovement : MonoBehaviour
             direction = headYaw * new Vector3(0, 0, 1);
             character.Move(direction * Time.fixedDeltaTime * speed);
         }
-    }
-
-    void CalculateSpeed()
-    {
-        speedX = (transform.position.x - lastX) / Time.deltaTime;
-        lastX = transform.position.x;
-
-        speedY = (transform.position.y - lastY) / Time.deltaTime;
-        lastY = transform.position.y;
-
-        speedZ = (transform.position.z - lastZ) / Time.deltaTime;
-        lastZ = transform.position.z;
     }
 
     public Vector3 GetVelocityNormalized()

@@ -93,6 +93,11 @@ public class PlayerGtabItem : MonoBehaviour
                     theItem.transform.parent = GameObject.FindGameObjectWithTag("PlayerHand").transform;
 
                     player.SetCurrentWeapon(theItem);
+                    if (player.GetCurrentWeapon().tag == "Weapon")
+                    {
+                        GameObject info = player.GetCurrentWeapon().transform.Find("WeaponInfo").gameObject;
+                        info.SetActive(false);
+                    }
 
                     Debug.Log("Grab " + theItem.name);
                 }
@@ -105,14 +110,21 @@ public class PlayerGtabItem : MonoBehaviour
         Debug.Log("Release " + theItem.name);
 
         Destroy(itemJoint);
-        if(theItem.gameObject.tag != "Weapon") itemBody.useGravity = true;
+        if (theItem.gameObject.tag != "Weapon") itemBody.useGravity = true;
         itemBody = null;
 
         // finger = "";
         // fingerValue = 0f;
 
+        if (player.GetCurrentWeapon().tag == "Weapon")
+        {
+            GameObject info = player.GetCurrentWeapon().transform.Find("WeaponInfo").gameObject;
+            info.SetActive(true);
+        }
+
         //ให้ parent เป็น null เมื่อผู้เล่นปล่อย item แล้ว
         theItem.transform.parent = null;
+
         player.SetCurrentWeapon(null);
 
         theItem = null;

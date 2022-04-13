@@ -16,12 +16,19 @@ public class Button : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(pressSound.isPlaying == false) pressSound.Play();
+        // Debug.Log(other.name + " Press Button");
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Hands") || other.gameObject.layer == LayerMask.NameToLayer("Typing Hands"))
+        {
+            if (pressSound.isPlaying == false)
+            {
+                pressSound.Play();
+            }
+        }
     }
 
     void OnTriggerStay(Collider other)
     {
-        // Debug.Log("Press Button");
         collision = true;
         targetObj = other.gameObject;
     }
