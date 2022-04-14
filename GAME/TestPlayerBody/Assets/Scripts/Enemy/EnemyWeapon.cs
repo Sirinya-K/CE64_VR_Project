@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyWeapon : MonoBehaviour
 {
+    public AudioSource stabSound;
+
     public Player player;
     public OrbManagement orb;
 
@@ -36,7 +38,9 @@ public class EnemyWeapon : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ec: " + other.gameObject.tag);
+        Debug.Log("Enemy Attack: " + other.gameObject.tag);
+
+        stabSound.Play();
 
         if (!onPlayer && other.gameObject.CompareTag("PlayerShield"))
         {

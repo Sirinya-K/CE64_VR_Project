@@ -15,7 +15,7 @@ public class StateManagement : MonoBehaviour
 
     public GameObject arenaTest;
 
-    private int state = 3, playerState; //Default: state = 1
+    private int state = 1, playerState; //state = 1
 
     void Start()
     {

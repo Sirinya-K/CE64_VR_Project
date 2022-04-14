@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Arena : MonoBehaviour
 {
+    public AudioSource victorySound, clapLeftSound, clapRightSound, gameOverSound;
+
     public StateManagement stateManagement;
 
     public GameObject playerObj;
@@ -23,7 +25,7 @@ public class Arena : MonoBehaviour
     private bool initiateState, fightingState;
 
     private bool choseTheOrb;
-    private int finalLevel = 4;
+    private int finalLevel = 4; // finalLevel = 4
     private float stateDelay = 1.5f;
     private GameObject showResult;
     private Text fightResult;
@@ -164,6 +166,10 @@ public class Arena : MonoBehaviour
 
                 if (player.getLevel() == finalLevel) //ถ้าถึงด่านสุดท้าย
                 {
+                    if(victorySound.isPlaying == false) victorySound.Play();
+                    if(clapLeftSound.isPlaying == false) clapLeftSound.Play();
+                    if(clapRightSound.isPlaying == false) clapRightSound.Play();
+
                     Debug.Log("VICTORY");
 
                     // endtime
@@ -173,7 +179,10 @@ public class Arena : MonoBehaviour
                     Keyboard.SetActive(true);
                 }
                 else //ถ้ายัง ไม่ ถึงด่านสุดท้าย
-                {
+                {   
+                    if(clapLeftSound.isPlaying == false) clapLeftSound.Play();
+                    if(clapRightSound.isPlaying == false) clapRightSound.Play();
+
                     //active chest
                     chest.SetActive(true);
 
@@ -283,6 +292,7 @@ public class Arena : MonoBehaviour
 
     private void GameOver()
     {
+        if(gameOverSound.isPlaying == false) gameOverSound.Play();
         showResult.SetActive(true);
         fightResult.text = "GAME OVER :(";
         Invoke("RestartGame", stateDelay);

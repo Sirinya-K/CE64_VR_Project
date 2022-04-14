@@ -26,9 +26,9 @@ public class PlayerWeapon : MonoBehaviour
         player = FindObjectOfType<Player>();
         cMovement = FindObjectOfType<ContinuousMovement>();
 
-        stabSound = GameObject.Find("Stab").GetComponent<AudioSource>();
-        swingSoftSound = GameObject.Find("Swing (Soft)").GetComponent<AudioSource>();
-        swingHardSound = GameObject.Find("Swing (Hard)").GetComponent<AudioSource>();
+        stabSound = transform.Find("WeaponSounds/Stab").GetComponent<AudioSource>();
+        swingSoftSound = transform.Find("WeaponSounds/Swing (Soft)").GetComponent<AudioSource>();
+        swingHardSound = transform.Find("WeaponSounds/Swing (Hard)").GetComponent<AudioSource>();
 
         lastPosition = transform.position;
 

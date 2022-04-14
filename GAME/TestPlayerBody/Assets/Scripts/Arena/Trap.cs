@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
+    public AudioSource trapSound;
+    public AudioSource warningSound;
+
     private GameObject warmLight;
     private GameObject trap;
     private BoxCollider box;
@@ -28,6 +31,9 @@ public class Trap : MonoBehaviour
         warmLight.SetActive(false);
         trap.SetActive(false);
         box.enabled = false;
+
+        trapSound = transform.Find("TrapSound").GetComponent<AudioSource>();
+        warningSound = transform.Find("WarningSound").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -45,6 +51,7 @@ public class Trap : MonoBehaviour
             var randomX = Random.Range(x1, x2);
             var randomZ = Random.Range(z1, z2);
             gameObject.transform.localPosition = new Vector3(randomX, y, randomZ);
+            warningSound.Play();
         }
         else if (((int)currentTime) - ((int)timeStamp) == 5 && state == 1) //active: Trap (default = 22)
         {
@@ -52,6 +59,8 @@ public class Trap : MonoBehaviour
             warmLight.SetActive(false);
             trap.SetActive(true);
             box.enabled = true;
+            warningSound.Stop();
+            trapSound.Play();
         }
         else if (((int)currentTime) - ((int)timeStamp) == 10) //inactive: Trap (default = 30)
         {
@@ -59,6 +68,7 @@ public class Trap : MonoBehaviour
             trap.SetActive(false);
             box.enabled = false;
             timeStamp = currentTime;
+            trapSound.Stop();
         }
     }
 
@@ -77,6 +87,9 @@ public class Trap : MonoBehaviour
         state = 0;
 
         activeState = false;
+
+        warningSound.Stop();
+        trapSound.Stop();
     }
 
     public int GetDmg()

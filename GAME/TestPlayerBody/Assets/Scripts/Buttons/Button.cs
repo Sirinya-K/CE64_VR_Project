@@ -11,7 +11,7 @@ public class Button : MonoBehaviour
 
     void Start()
     {
-        pressSound = GameObject.Find("PressButton").GetComponent<AudioSource>();
+        pressSound = transform.Find("PressButtonSound").GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter(Collider other)

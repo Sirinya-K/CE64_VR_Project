@@ -9,6 +9,7 @@ using Unity.MLAgents.Policies;
 public class EnemyAgentV2 : Agent
 {
     public AudioSource footStepSound;
+    public AudioSource swingSound;
 
     public GameObject area;
     Rigidbody agentRB;
@@ -49,6 +50,9 @@ public class EnemyAgentV2 : Agent
         // envController = area.GetComponent<ArenaEnvControllerV2>();
 
         arena = FindObjectOfType<Arena>();
+
+        footStepSound = transform.Find("EnemySounds/FootStep (Enemy)").GetComponent<AudioSource>();
+        swingSound = transform.Find("EnemySounds/Swing (Enemy)").GetComponent<AudioSource>();
     }
 
     public override void Initialize()
@@ -113,6 +117,7 @@ public class EnemyAgentV2 : Agent
             {
                 anim.SetTrigger("Attack_2");
             }
+            swingSound.Play();
         }
     }
     void block(bool isBlock)
@@ -183,8 +188,8 @@ public class EnemyAgentV2 : Agent
     }
     public override void CollectObservations(VectorSensor sensor)
     {
-        weapon = arena.GetPlayerCurrentWeapon();
-        if (weapon != null) weaponRB = weapon.GetComponent<Rigidbody>();
+        // weapon = arena.GetPlayerCurrentWeapon();
+        // if (weapon != null) weaponRB = weapon.GetComponent<Rigidbody>();
 
         // * Agent/Enemy rotation
         sensor.AddObservation(this.transform.localRotation.eulerAngles.y / 360.0f);
@@ -207,23 +212,23 @@ public class EnemyAgentV2 : Agent
         // Debug.Log(character.GetVelocityNormalized());
 
         // * weapon Information
-        if (weapon != null)
-        {
-            Vector3 toweapon = new Vector3((weaponRB.transform.position.x - this.transform.position.x),
-            (weaponRB.transform.position.y - this.transform.position.y),
-            (weaponRB.transform.position.z - this.transform.position.z));
-            sensor.AddObservation(toweapon.normalized);
-            sensor.AddObservation(toweapon.magnitude);
-        }
-        if (enemyType == EnemyType.WithShield)
-        {
-            // * Shield Information
-            Vector3 toShield = new Vector3((shieldRB.transform.position.x - this.transform.position.x),
-            (shieldRB.transform.position.y - this.transform.position.y),
-            (shieldRB.transform.position.z - this.transform.position.z));
-            sensor.AddObservation(toShield.normalized);
-            sensor.AddObservation(toShield.magnitude);
-        }
+        // if (weapon != null)
+        // {
+        //     Vector3 toweapon = new Vector3((weaponRB.transform.position.x - this.transform.position.x),
+        //     (weaponRB.transform.position.y - this.transform.position.y),
+        //     (weaponRB.transform.position.z - this.transform.position.z));
+        //     sensor.AddObservation(toweapon.normalized);
+        //     sensor.AddObservation(toweapon.magnitude);
+        // }
+        // if (enemyType == EnemyType.WithShield)
+        // {
+        //     // * Shield Information
+        //     Vector3 toShield = new Vector3((shieldRB.transform.position.x - this.transform.position.x),
+        //     (shieldRB.transform.position.y - this.transform.position.y),
+        //     (shieldRB.transform.position.z - this.transform.position.z));
+        //     sensor.AddObservation(toShield.normalized);
+        //     sensor.AddObservation(toShield.magnitude);
+        // }
     }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
