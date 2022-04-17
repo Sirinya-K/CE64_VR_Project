@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class PreparationRoom : MonoBehaviour
 {
     public StateManagement stateManagement;
-    public Text stateNumber;
+    public Text stageNumber;
+    public GameObject enemyFirstType, enemySecondType;
     public Player player;
     public GameObject theRoof;
 
@@ -24,8 +25,20 @@ public class PreparationRoom : MonoBehaviour
     // Update is called once per fram e
     void Update()
     {
-        //โชว์เลข state ปัจจุบัน
-        stateNumber.text = player.getLevel().ToString();
+        //โชว์จำนวน stage ที่ผู้เล่นเคลียร์แล้วในปัจจุบัน
+        stageNumber.text = player.getLevel().ToString();
+
+        //แสดงศัตรูที่มีโอกาสเจอ
+        if(player.getLevel() == 0)
+        {
+            enemyFirstType.SetActive(true);
+            enemySecondType.SetActive(false);
+        }
+        else if(player.getLevel() >= 1 && player.getLevel() <= 3)
+        {
+            enemyFirstType.SetActive(false);
+            enemySecondType.SetActive(true);
+        }
 
         //เมื่อผู้เล่นยืนหน้าประตู
         if (arenaEntrance.collision)

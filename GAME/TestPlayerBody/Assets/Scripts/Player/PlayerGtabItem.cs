@@ -107,7 +107,7 @@ public class PlayerGtabItem : MonoBehaviour
 
     private void Release()
     {
-        Debug.Log("Release " + theItem.name);
+        Debug.Log(transform.name + " | Release: " + theItem.name);
 
         Destroy(itemJoint);
         if (theItem.gameObject.tag != "Weapon") itemBody.useGravity = true;
@@ -116,11 +116,16 @@ public class PlayerGtabItem : MonoBehaviour
         // finger = "";
         // fingerValue = 0f;
 
-        if (player.GetCurrentWeapon().tag == "Weapon")
+        //แสดง info ของอาวุธเมื่อปล่อย
+        if (player.GetCurrentWeapon() != null)
         {
-            GameObject info = player.GetCurrentWeapon().transform.Find("WeaponInfo").gameObject;
-            info.SetActive(true);
+            if (player.GetCurrentWeapon().tag == "Weapon")
+            {
+                GameObject info = player.GetCurrentWeapon().transform.Find("WeaponInfo").gameObject;
+                info.SetActive(true);
+            }
         }
+
 
         //ให้ parent เป็น null เมื่อผู้เล่นปล่อย item แล้ว
         theItem.transform.parent = null;
@@ -145,6 +150,8 @@ public class PlayerGtabItem : MonoBehaviour
         // {
         //     Release();
         // }
+
+        Debug.Log(transform.name + " | theItem: " + theItem);
 
         if (theItem != null && (indexCollision.collisionStatus == false || hand.RIndexValue < 0.15) && (middleCollision.collisionStatus == false || hand.RMiddleValue < 0.15) && (ringCollision.collisionStatus == false || hand.RRingValue < 0.15) && (pinkyCollision.collisionStatus == false || hand.RPinkyValue < 0.15))
         {
