@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Arena : MonoBehaviour
 {
     public AudioSource victorySound, clapLeftSound, clapRightSound, gameOverSound;
+    public GameObject selectOrbUI;
 
     public StateManagement stateManagement;
 
@@ -105,7 +106,7 @@ public class Arena : MonoBehaviour
             var currentLevel = player.getLevel();
             if (currentLevel == 0)
             {
-                var randomEnemy = Random.Range(0, 1); // (0, 2) สุ่ม enemy ลำดับที่ 0 1
+                var randomEnemy = Random.Range(4, 5); // (0, 2) สุ่ม enemy ลำดับที่ 0 1
                 theEnemyObj = enemyManagement.CreateEnemy(currentLevel, randomEnemy);
             }
             else
@@ -113,7 +114,8 @@ public class Arena : MonoBehaviour
                 var randomEnemy = Random.Range(0, 1); // (2, 5) สุ่ม enemy ลำดับที่ 2 3 4
                 theEnemyObj = enemyManagement.CreateEnemy(currentLevel, randomEnemy);
             }
-
+            
+            selectOrbUI.SetActive(false);
             //inactive orbs
             firstOrbObj.SetActive(false);
             secondOrbObj.SetActive(false);
@@ -183,9 +185,9 @@ public class Arena : MonoBehaviour
                     if(clapLeftSound.isPlaying == false) clapLeftSound.Play();
                     if(clapRightSound.isPlaying == false) clapRightSound.Play();
 
+                    selectOrbUI.SetActive(true);
                     //active chest
                     chest.SetActive(true);
-
                     //active orbs
                     firstOrbObj.SetActive(true); // Active & Random 1st Orb
                     firstRandomOrb = Random.Range(0, 3); // มีโอกาสสุ่มเจอ 0 1 2
@@ -250,6 +252,7 @@ public class Arena : MonoBehaviour
                 player.SetCurrentOrb(newOrbNum); //player เก็บ Orb ที่เลือก
                 player.ShowCurrentOrb(); //แสดงผล orb ที่เลือกผ่าน UI
 
+                selectOrbUI.SetActive(false);
                 //inactive orbs
                 firstOrbObj.SetActive(false);
                 secondOrbObj.SetActive(false);
