@@ -7,7 +7,7 @@ public class ArenaEntrance : MonoBehaviour
     [HideInInspector]
     public bool collision;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         collision = true;
     }

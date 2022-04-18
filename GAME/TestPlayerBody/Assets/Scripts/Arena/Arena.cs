@@ -100,18 +100,20 @@ public class Arena : MonoBehaviour
         //เมื่อ active arena
         if (initiateState)
         {
+            Debug.Log("initiateState");
+
             initiateState = false;
 
             //crate enemy via EnemyManagement class
             var currentLevel = player.getLevel();
             if (currentLevel == 0)
             {
-                var randomEnemy = Random.Range(4, 5); // (0, 2) สุ่ม enemy ลำดับที่ 0 1
+                var randomEnemy = Random.Range(0, 2); // (0, 2) สุ่ม enemy ลำดับที่ 0 1
                 theEnemyObj = enemyManagement.CreateEnemy(currentLevel, randomEnemy);
             }
             else
             {
-                var randomEnemy = Random.Range(0, 1); // (2, 5) สุ่ม enemy ลำดับที่ 2 3 4
+                var randomEnemy = Random.Range(2, 5); // (2, 5) สุ่ม enemy ลำดับที่ 2 3 4
                 theEnemyObj = enemyManagement.CreateEnemy(currentLevel, randomEnemy);
             }
             
@@ -140,6 +142,12 @@ public class Arena : MonoBehaviour
             {
                 traps[i].GetComponent<Trap>().active();
             }
+
+            //regen player's stamina
+            player.regenable = true;
+
+            //rotate player's camera
+            playerObj.GetComponent<RotateCamera>().ResetRotation();
 
             fightingState = true;
         }
@@ -190,7 +198,7 @@ public class Arena : MonoBehaviour
                     chest.SetActive(true);
                     //active orbs
                     firstOrbObj.SetActive(true); // Active & Random 1st Orb
-                    firstRandomOrb = Random.Range(0, 3); // มีโอกาสสุ่มเจอ 0 1 2
+                    firstRandomOrb = Random.Range(2, 3); // 0,3 มีโอกาสสุ่มเจอ 0 1 2
                     orbManagement.Show(firstRandomOrb, "FirstOrb");
 
                     secondOrbObj.SetActive(true); // Active & Random 2nd Orb

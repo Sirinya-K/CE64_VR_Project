@@ -11,7 +11,7 @@ public class EnemyWeapon : MonoBehaviour
 
     protected int impactAtk;
     protected int slashAtk;
-    protected float minAtkBias = 1.1f, maxAtkBias = 1.2f;
+    protected float minAtkBias = 0.8f, maxAtkBias = 1.1f; //1.1 - 1.2
 
     private bool onShield = false, onPlayer = false;
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+    public MqttProtocol mqtt;
     public StateManagement stateManagement;
 
     public StartButton startButton;
@@ -27,6 +28,8 @@ public class MainMenu : MonoBehaviour
         //ถ้า player กดปุ่ม start
         if (startButton.collision)
         {
+            mqtt.Publish("/cmd/","start");
+
             startButton.collision = false;
 
             Invoke("StartGame", delay);
@@ -35,6 +38,8 @@ public class MainMenu : MonoBehaviour
         //ถ้า player กดปุ่ม exit
         if (exitButton.collision)
         {
+            mqtt.Publish("/cmd/","exit");
+
             exitButton.collision = false;
 
             Invoke("ExitGame", delay);

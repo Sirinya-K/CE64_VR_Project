@@ -18,8 +18,10 @@ public class Button : MonoBehaviour
     {
         // Debug.Log(other.name + " Press Button");
 
-        if (other.gameObject.layer == LayerMask.NameToLayer("Hands") || other.gameObject.layer == LayerMask.NameToLayer("Typing Hands"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Typing Hands"))
         {
+            collision = true;
+            
             if (pressSound.isPlaying == false)
             {
                 pressSound.Play();
@@ -29,7 +31,6 @@ public class Button : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        collision = true;
         targetObj = other.gameObject;
     }
 

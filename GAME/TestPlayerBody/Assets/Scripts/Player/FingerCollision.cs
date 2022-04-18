@@ -26,7 +26,7 @@ public class FingerCollision : MonoBehaviour
 
             // Debug.Log(this.name + " --> " + other.gameObject.name);
 
-            // hand.PublishHandToMqtt("stop", gameObject.name);
+            hand.PublishHandToMqtt("stop", gameObject.name);
         }
     }
 
@@ -37,7 +37,7 @@ public class FingerCollision : MonoBehaviour
             // Debug.Log(gameObject.name + " + " + other.gameObject.name + " --> Exit");
             collisionStatus = false;
 
-            // hand.PublishHandToMqtt("free", gameObject.name);
+            hand.PublishHandToMqtt("free", gameObject.name);
         }
     }
 }

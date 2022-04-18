@@ -27,19 +27,19 @@ public class EnemyManagement : MonoBehaviour
 
         if (level == 0)
         {
-            theEnemyProperty.SetMaxHp(150); // 5000
+            theEnemyProperty.SetMaxHp(1000); // 5000
         }
         else if (level == 1)
         {
-            theEnemyProperty.SetMaxHp(150);
+            theEnemyProperty.SetMaxHp(2000);
         }
         else if (level == 2)
         {
-            theEnemyProperty.SetMaxHp(150);
+            theEnemyProperty.SetMaxHp(3000);
         }
         else if (level == 3)
         {
-            theEnemyProperty.SetMaxHp(150);
+            theEnemyProperty.SetMaxHp(4000);
         }
 
         Debug.Log("Level: " + level + ", Create: " + enemies[num].name + ", MaxHP: " + theEnemyProperty.GetMaxHp());

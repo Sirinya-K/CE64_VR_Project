@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     public ScoreManager scoreManager;
 
     private int maxHealth = 500, maxStamina = 150;
-    private float increaseStaminaPoint = 0.02f;
+    private float increaseStaminaPoint = 0.06f; //0.02f
     [HideInInspector] public int currentHealth;
     [HideInInspector] public float currentStamina;
     [HideInInspector] public bool regenable;
@@ -266,7 +266,7 @@ public class Player : MonoBehaviour
 
     public IEnumerator DelayRegenerateStamina()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3); //5
         regenable = true;
     }
 }

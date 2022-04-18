@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StateManagement : MonoBehaviour
 {
+    public AudioSource ppBgm, arenaBgm;
     public GameObject mainMenu;
     public GameObject preparationRoom;
     public GameObject arena;
@@ -15,7 +16,7 @@ public class StateManagement : MonoBehaviour
 
     public GameObject arenaTest;
 
-    private int state = 3, playerState; //state = 1
+    private int state = 1, playerState; //state = 1
 
     void Start()
     {
@@ -46,8 +47,11 @@ public class StateManagement : MonoBehaviour
         //State: MM
         else if(state == 1)
         {
-            // player.PublishArmStateToMqtt("Left", "Free");
-            // player.PublishArmStateToMqtt("Right","Free");
+            ppBgm.Stop();
+            arenaBgm.Stop();
+
+            player.PublishArmStateToMqtt("Left", "Free");
+            player.PublishArmStateToMqtt("Right","Free");
             spawnManagement.spawn(playerObj, mainMenu.transform.Find("PlayerWaypoint").gameObject);
             playerState = 1;
             state = 0;
@@ -55,9 +59,12 @@ public class StateManagement : MonoBehaviour
         //State: PP
         else if(state == 2)
         {
-            // player.PublishArmStateToMqtt("Left", "Free");
-            // player.PublishArmStateToMqtt("Right","Free");
-            // timeCounter.EndTimer();
+            ppBgm.Play();
+            arenaBgm.Stop();
+            
+            player.PublishArmStateToMqtt("Left", "Free");
+            player.PublishArmStateToMqtt("Right","Free");
+            timeCounter.EndTimer();
             spawnManagement.spawn(playerObj, preparationRoom.transform.Find("PlayerWaypoint").gameObject);
             playerState = 2;
             state = 0;
@@ -65,6 +72,9 @@ public class StateManagement : MonoBehaviour
         //State: A
         else if(state == 3)
         {
+            ppBgm.Stop();
+            arenaBgm.Play();
+
             FindObjectOfType<Player>().SetOriginalStat(); //เก็บพวกค่าเลือดของผู้เล่น เผื่อกรณีผู้เล่นกดปุ่มกลับห้องเตรียมตัว
             timeCounter.BeginTimer();
             spawnManagement.spawn(playerObj, arena.transform.Find("PlayerWaypoint").gameObject);

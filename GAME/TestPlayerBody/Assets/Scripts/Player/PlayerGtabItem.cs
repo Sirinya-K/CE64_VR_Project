@@ -99,7 +99,7 @@ public class PlayerGtabItem : MonoBehaviour
                         info.SetActive(false);
                     }
 
-                    Debug.Log("Grab " + theItem.name);
+                    // Debug.Log("Grab " + theItem.name);
                 }
             }
         }
@@ -107,7 +107,7 @@ public class PlayerGtabItem : MonoBehaviour
 
     private void Release()
     {
-        Debug.Log(transform.name + " | Release: " + theItem.name);
+        // Debug.Log(transform.name + " | Release: " + theItem.name);
 
         Destroy(itemJoint);
         if (theItem.gameObject.tag != "Weapon") itemBody.useGravity = true;
@@ -151,7 +151,7 @@ public class PlayerGtabItem : MonoBehaviour
         //     Release();
         // }
 
-        Debug.Log(transform.name + " | theItem: " + theItem);
+        // Debug.Log(transform.name + " | theItem: " + theItem);
 
         if (theItem != null && (indexCollision.collisionStatus == false || hand.RIndexValue < 0.15) && (middleCollision.collisionStatus == false || hand.RMiddleValue < 0.15) && (ringCollision.collisionStatus == false || hand.RRingValue < 0.15) && (pinkyCollision.collisionStatus == false || hand.RPinkyValue < 0.15))
         {

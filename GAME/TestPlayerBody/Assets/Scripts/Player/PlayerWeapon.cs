@@ -73,7 +73,7 @@ public class PlayerWeapon : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // player.PublishArmStateToMqtt("Right","Stop");
+        player.PublishArmStateToMqtt("Right","Stop");
 
         // Debug.Log("Sword Speed: " + speed);
 
@@ -112,7 +112,7 @@ public class PlayerWeapon : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        // player.PublishArmStateToMqtt("Right","Free");
+        player.PublishArmStateToMqtt("Right","Free");
 
         if (other.gameObject.CompareTag("EnemyShield"))
         {
