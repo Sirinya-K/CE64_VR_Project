@@ -69,7 +69,7 @@ public class EnemyAgentV2 : Agent
         anim.SetFloat("Velocity X", velocityX * agentRot);
 
         // * Event check distance between 2 agent (out of range?)
-        envController.ResolveEvent(Event1.OutOfRange);
+        // envController.ResolveEvent(Event1.OutOfRange);
     }
     void attack(int attackType)
     {
@@ -112,8 +112,8 @@ public class EnemyAgentV2 : Agent
             rotateDir = transform.up * -1f;
         else if (rotateDirAction == 2)
             rotateDir = transform.up * 1f;
-        // if (!tmpAttack)
-        // {
+        if (!tmpAttack)
+        {
             if (dirToGoForwardAction == 1)
             {
                 dirToGo = transform.forward * 1f;
@@ -141,7 +141,7 @@ public class EnemyAgentV2 : Agent
                     this.block(false);
                 }
             }
-        // }
+        }
 
         var force = agentRot * dirToGo * arenaSettings.agentRunSpeed;
         transform.Rotate(rotateDir, Time.fixedDeltaTime * 200f);
@@ -164,15 +164,15 @@ public class EnemyAgentV2 : Agent
         var disZ = Mathf.Abs(enemy.transform.localPosition.z - this.transform.localPosition.z);
         sensor.AddObservation((disX - minDis) / (maxDis - minDis));
         sensor.AddObservation((disZ - minDis) / (maxDis - minDis));
-        // * Agent/Enemy velocity
+        // // * Agent/Enemy velocity
         sensor.AddObservation(agentRB.velocity.normalized);
         sensor.AddObservation(enemyRB.velocity.normalized);
-        // * weapon Information
-        Vector3 toweapon = new Vector3((weaponRB.transform.position.x - this.transform.position.x),
-        (weaponRB.transform.position.y - this.transform.position.y),
-        (weaponRB.transform.position.z - this.transform.position.z));
-        sensor.AddObservation(toweapon.normalized);
-        sensor.AddObservation(toweapon.magnitude);
+        // // * weapon Information
+        // Vector3 toweapon = new Vector3((weaponRB.transform.position.x - this.transform.position.x),
+        // (weaponRB.transform.position.y - this.transform.position.y),
+        // (weaponRB.transform.position.z - this.transform.position.z));
+        // sensor.AddObservation(toweapon.normalized);
+        // sensor.AddObservation(toweapon.magnitude);
         // if (enemyType == EnemyType.WithShield)
         // {
         //     // * Shield Information
@@ -226,7 +226,7 @@ public class EnemyAgentV2 : Agent
             // acttackAction_2
             discreteActionsOut[3] = 2;
         }
-        // if(enemyType == EnemyType.WithShield) discreteActionsOut[4] = Input.GetKey(KeyCode.Space) ? 1 : 0;
+        if (enemyType == EnemyType.WithShield) discreteActionsOut[4] = Input.GetKey(KeyCode.Space) ? 1 : 0;
     }
     void OnCollisionEnter(Collision collision)
     {

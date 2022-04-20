@@ -123,7 +123,7 @@ public class SwordandShieldControllerV2 : MonoBehaviour
             }
             if (collision.gameObject.CompareTag("purpleAgent") && !isBlock)
             {
-                //envController.ResolveEvent(Event1.HitPurpleEnemy);
+                /*envController.ResolveEvent(Event1.HitPurpleEnemy);*/
                 isAttack = true;
             }
             envController.UpdateEnemySide(teamId);
@@ -137,7 +137,7 @@ public class SwordandShieldControllerV2 : MonoBehaviour
             }
             if (collision.gameObject.CompareTag("blueAgent") && !isBlock)
             {
-                //envController.ResolveEvent(Event1.HitBlueEnemy);
+                /*envController.ResolveEvent(Event1.HitBlueEnemy);*/
                 isAttack = true;
             }
             envController.UpdateEnemySide(teamId);

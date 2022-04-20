@@ -205,7 +205,7 @@ public class ArenaEnvControllerV2 : MonoBehaviour
             agentRot = rot;
             // randomise starting positions and rotations
             var randomPosX = Random.Range(-5f, 5f);
-            var randomPosZ = Random.Range(1f * -agentRot, 9f * -agentRot);
+            var randomPosZ = Random.Range(5f * -agentRot, 10f * -agentRot);
             var randomRot = Random.Range(-90f, 90f);
             agent.transform.localPosition = new Vector3(randomPosX, 0, randomPosZ);
             agent.transform.eulerAngles = new Vector3(0, randomRot, 0);

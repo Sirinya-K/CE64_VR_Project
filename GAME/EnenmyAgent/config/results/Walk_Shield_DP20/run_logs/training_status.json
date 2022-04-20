@@ -1,0 +1,65 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 999994,
+                "file_path": "results\\Walk_Shield_DP20\\AttackBehavior\\AttackBehavior-999994.onnx",
+                "reward": -0.004115255791901656,
+                "creation_time": 1649761289.6044035,
+                "auxillary_file_paths": [
+                    "results\\Walk_Shield_DP20\\AttackBehavior\\AttackBehavior-999994.pt"
+                ]
+            },
+            {
+                "steps": 1499994,
+                "file_path": "results\\Walk_Shield_DP20\\AttackBehavior\\AttackBehavior-1499994.onnx",
+                "reward": 0.080121726402338,
+                "creation_time": 1649762795.706811,
+                "auxillary_file_paths": [
+                    "results\\Walk_Shield_DP20\\AttackBehavior\\AttackBehavior-1499994.pt"
+                ]
+            },
+            {
+                "steps": 1999983,
+                "file_path": "results\\Walk_Shield_DP20\\AttackBehavior\\AttackBehavior-1999983.onnx",
+                "reward": 0.12876104359078197,
+                "creation_time": 1649764323.2953367,
+                "auxillary_file_paths": [
+                    "results\\Walk_Shield_DP20\\AttackBehavior\\AttackBehavior-1999983.pt"
+                ]
+            },
+            {
+                "steps": 2499988,
+                "file_path": "results\\Walk_Shield_DP20\\AttackBehavior\\AttackBehavior-2499988.onnx",
+                "reward": 0.1671728649381864,
+                "creation_time": 1649765860.8374603,
+                "auxillary_file_paths": [
+                    "results\\Walk_Shield_DP20\\AttackBehavior\\AttackBehavior-2499988.pt"
+                ]
+            },
+            {
+                "steps": 2836634,
+                "file_path": "results\\Walk_Shield_DP20\\AttackBehavior\\AttackBehavior-2836634.onnx",
+                "reward": 0.1590486711330628,
+                "creation_time": 1649766914.430241,
+                "auxillary_file_paths": [
+                    "results\\Walk_Shield_DP20\\AttackBehavior\\AttackBehavior-2836634.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2836634,
+            "file_path": "results\\Walk_Shield_DP20\\AttackBehavior.onnx",
+            "reward": 0.1590486711330628,
+            "creation_time": 1649766914.430241,
+            "auxillary_file_paths": [
+                "results\\Walk_Shield_DP20\\AttackBehavior\\AttackBehavior-2836634.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}
