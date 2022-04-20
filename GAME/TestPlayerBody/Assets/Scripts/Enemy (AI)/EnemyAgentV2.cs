@@ -38,8 +38,6 @@ public class EnemyAgentV2 : Agent
     float agentRot;
     EnvironmentParameters resetParams;
 
-    private Arena arena;
-
     private ContinuousMovement character;
 
     private Vector3 lastPosition;
@@ -48,8 +46,6 @@ public class EnemyAgentV2 : Agent
     void Awake()
     {
         // envController = area.GetComponent<ArenaEnvControllerV2>();
-
-        arena = FindObjectOfType<Arena>();
 
         footStepSound = transform.Find("EnemySounds/FootStep (Enemy)").GetComponent<AudioSource>();
         swingSound = transform.Find("EnemySounds/Swing (Enemy)").GetComponent<AudioSource>();
@@ -67,15 +63,8 @@ public class EnemyAgentV2 : Agent
 
         anim = GetComponentInChildren<Animator>();
 
-        // * For symmetry between agent 
-        if (teamId == Team1.Blue)
-        {
-            agentRot = -1;
-        }
-        else
-        {
-            agentRot = 1;
-        }
+        agentRot = -1;
+
     }
     private void FixedUpdate()
     {
@@ -87,7 +76,7 @@ public class EnemyAgentV2 : Agent
         anim.SetFloat("Velocity X", velocityX * agentRot);
 
         // [Foot Step Sound]
-        if(lastPosition != transform.position)
+        if (lastPosition != transform.position)
         {
             moving = true;
         }

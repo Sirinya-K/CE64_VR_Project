@@ -23,7 +23,7 @@ public class PreparationRoom : MonoBehaviour
     }
 
     // Update is called once per fram e
-    void Update()
+    void FixedUpdate()
     {
         //โชว์จำนวน stage ที่ผู้เล่นเคลียร์แล้วในปัจจุบัน
         stageNumber.text = player.getLevel().ToString();

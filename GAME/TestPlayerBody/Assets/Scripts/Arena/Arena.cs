@@ -140,7 +140,7 @@ public class Arena : MonoBehaviour
             //active traps
             for (int i = 0; i < totalTrap; i++)
             {
-                traps[i].GetComponent<Trap>().active();
+                traps[i].GetComponent<Trap>().Active();
             }
 
             //regen player's stamina
@@ -160,7 +160,7 @@ public class Arena : MonoBehaviour
                 //inactive traps
                 for (int i = 0; i < totalTrap; i++)
                 {
-                    traps[i].GetComponent<Trap>().inactive();
+                    traps[i].GetComponent<Trap>().Inactive();
                 }
 
                 //remove the orb's effect
@@ -198,15 +198,15 @@ public class Arena : MonoBehaviour
                     chest.SetActive(true);
                     //active orbs
                     firstOrbObj.SetActive(true); // Active & Random 1st Orb
-                    firstRandomOrb = Random.Range(2, 3); // 0,3 มีโอกาสสุ่มเจอ 0 1 2
+                    firstRandomOrb = Random.Range(0, 3); // 0,3 มีโอกาสสุ่มเจอ 0 1 2
                     orbManagement.Show(firstRandomOrb, "FirstOrb");
 
                     secondOrbObj.SetActive(true); // Active & Random 2nd Orb
-                    secondRandomOrb = Random.Range(3, 4); // มีโอกาสสุ่มเจอ 3 4 5
+                    secondRandomOrb = Random.Range(3, 6); // 3,6 มีโอกาสสุ่มเจอ 3 4 5
                     orbManagement.Show(secondRandomOrb, "SecondOrb");
 
                     thirdOrbObj.SetActive(true); // Active & Random 3rd Orb
-                    thirdRandomOrb = Random.Range(6, 9); // มีโอกาสสุ่มเจอ 6 7 8
+                    thirdRandomOrb = Random.Range(6, 9); // 6,9 มีโอกาสสุ่มเจอ 6 7 8
                     orbManagement.Show(thirdRandomOrb, "ThirdOrb");
                 }
 

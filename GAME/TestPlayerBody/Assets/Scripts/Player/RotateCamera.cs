@@ -48,7 +48,7 @@ public class RotateCamera : MonoBehaviour
         }
     }
 
-    void RotateLeft()
+    private void RotateLeft()
     {
         if(left == true)
         {
@@ -67,7 +67,7 @@ public class RotateCamera : MonoBehaviour
         }
     }
 
-    void RotateRight()
+    private void RotateRight()
     {
         if(right == true)
         {

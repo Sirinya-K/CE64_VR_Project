@@ -15,7 +15,7 @@ public class Trap : MonoBehaviour
     private float x1 = -7.64f, x2 = 7.64f, y = 0.25f, z1 = -7.64f, z2 = 8.68f;
     // private float x1 = 41.76f, x2 = 59.41f, y = 14.1f, z1 = -38.26f, z2 = -53.44f;
 
-    private int dmg = 5;
+    private int dmg = 10;
     private int state = 0;
     private bool onHit = true;
 
@@ -72,12 +72,12 @@ public class Trap : MonoBehaviour
         }
     }
 
-    public void active()
+    public void Active()
     {
         activeState = true;
     }
 
-    public void inactive()
+    public void Inactive()
     {
         warmLight.SetActive(false);
         trap.SetActive(false);
@@ -117,13 +117,13 @@ public class Trap : MonoBehaviour
         if (!other.gameObject.CompareTag("Player")) return;
 
         countTime += Time.deltaTime;
-        
+
         if(((int)countTime) == 0 && onHit)
         {
             FindObjectOfType<Player>().TakeDamage(dmg);
             onHit = false;
         }
-        else if(((int)countTime) == 2 && !onHit)
+        else if(((int)countTime) == 1 && !onHit) //2
         {
             countTime = 0f;
             onHit = true;

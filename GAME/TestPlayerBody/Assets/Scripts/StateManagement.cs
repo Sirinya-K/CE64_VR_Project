@@ -14,7 +14,7 @@ public class StateManagement : MonoBehaviour
     public TimeCounter timeCounter;
     public Player player;
 
-    public GameObject arenaTest;
+    // public GameObject arenaTest;
 
     private int state = 1, playerState; //state = 1
 
@@ -28,7 +28,7 @@ public class StateManagement : MonoBehaviour
         timeCounter = FindObjectOfType<TimeCounter>();
         player = FindObjectOfType<Player>();
 
-        arenaTest = GameObject.Find("ArenaV3");
+        // arenaTest = GameObject.Find("ArenaV3");
     }
 
     void Update()
@@ -90,11 +90,11 @@ public class StateManagement : MonoBehaviour
             state = 2;
         }
         //State: Test with AI Enemy
-        else if(state == 99)
-        {
-            spawnManagement.spawn(playerObj, arenaTest.transform.Find("PlayerWaypoint").gameObject);
-            state = 0;
-        }
+        // else if(state == 99)
+        // {
+        //     spawnManagement.spawn(playerObj, arenaTest.transform.Find("PlayerWaypoint").gameObject);
+        //     state = 0;
+        // }
     }
 
     public void GoState(int num)
