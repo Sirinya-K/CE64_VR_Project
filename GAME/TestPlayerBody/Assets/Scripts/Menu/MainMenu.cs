@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     public StateManagement stateManagement;
 
     public StartButton startButton;
+    public CalibrateButton calibrateButton;
     public ExitButton exitButton;
 
     private float delay;
@@ -17,13 +18,14 @@ public class MainMenu : MonoBehaviour
     {
         stateManagement = FindObjectOfType<StateManagement>();
         startButton = GetComponentInChildren<StartButton>();
+        calibrateButton = GetComponentInChildren<CalibrateButton>();
         exitButton = GetComponentInChildren<ExitButton>();
 
         delay = 0.2f;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //ถ้า player กดปุ่ม start
         if (startButton.collision)
@@ -43,6 +45,14 @@ public class MainMenu : MonoBehaviour
             exitButton.collision = false;
 
             Invoke("ExitGame", delay);
+        }
+
+        //ถ้า player กดปุ่ม start
+        if (calibrateButton.collision)
+        {
+            mqtt.Publish("/hr/","C");
+
+            calibrateButton.collision = false;
         }
     }
 

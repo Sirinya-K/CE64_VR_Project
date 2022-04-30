@@ -68,6 +68,7 @@ public class StateManagement : MonoBehaviour
             spawnManagement.spawn(playerObj, preparationRoom.transform.Find("PlayerWaypoint").gameObject);
             playerState = 2;
             state = 0;
+            preparationRoom.GetComponent<PreparationRoom>().enter = true;
         }
         //State: A
         else if(state == 3)
@@ -88,6 +89,7 @@ public class StateManagement : MonoBehaviour
             timeCounter.EndTimer();
             FindObjectOfType<Player>().ReturnOriginalStat(); //คืนพวกค่าเลือดของผู้เล่น เมื้อผู้เล่นกดปุ่มกลับห้องเตรียมตัว
             state = 2;
+            arena.GetComponent<Arena>().theEnemyObj.SetActive(false);
         }
         //State: Test with AI Enemy
         // else if(state == 99)

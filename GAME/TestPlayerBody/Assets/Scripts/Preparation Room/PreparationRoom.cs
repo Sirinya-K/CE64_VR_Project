@@ -11,6 +11,8 @@ public class PreparationRoom : MonoBehaviour
     public Player player;
     public GameObject theRoof;
 
+    public bool enter = false;
+
     private ArenaEntrance arenaEntrance;
 
     // Start is called before the first frame update
@@ -41,7 +43,7 @@ public class PreparationRoom : MonoBehaviour
         }
 
         //เมื่อผู้เล่นยืนหน้าประตู
-        if (arenaEntrance.collision)
+        if (arenaEntrance.collision && enter == true)
         {
             //เช็คว่าหยิบอาวุธหรือยัง
             if (player.GetCurrentWeapon() != null)
@@ -52,6 +54,8 @@ public class PreparationRoom : MonoBehaviour
 
                     Debug.Log("GO TO ARENA");
                     stateManagement.GoState(3);
+
+                    enter = false;
                 }
             }
 

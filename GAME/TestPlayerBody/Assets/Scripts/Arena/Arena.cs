@@ -20,7 +20,7 @@ public class Arena : MonoBehaviour
 
     public GameObject Keyboard;
 
-    private GameObject theEnemyObj;
+    public GameObject theEnemyObj;
     private Enemy theEnemyProperty;
 
     private bool initiateState, fightingState;

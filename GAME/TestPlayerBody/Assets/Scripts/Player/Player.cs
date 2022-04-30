@@ -46,10 +46,11 @@ public class Player : MonoBehaviour
 
         currentStamina = maxStamina;
 
-        ShowCurrentOrb();
-
         timeCounter = FindObjectOfType<TimeCounter>();
         scoreManager = FindObjectOfType<ScoreManager>();
+        theOrb = FindObjectOfType<OrbManagement>();
+
+        ShowCurrentOrb();
 
         currentShield = GameObject.FindGameObjectWithTag("PlayerShield");
     }
