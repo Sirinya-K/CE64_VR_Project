@@ -1,0 +1,65 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 56499926,
+                "file_path": "results\\SwordAndShield\\AttackBehavior\\AttackBehavior-56499926.onnx",
+                "reward": -0.14480847690967805,
+                "creation_time": 1647272997.4858768,
+                "auxillary_file_paths": [
+                    "results\\SwordAndShield\\AttackBehavior\\AttackBehavior-56499926.pt"
+                ]
+            },
+            {
+                "steps": 56999988,
+                "file_path": "results\\SwordAndShield\\AttackBehavior\\AttackBehavior-56999988.onnx",
+                "reward": -0.2275760384357494,
+                "creation_time": 1647273830.5447428,
+                "auxillary_file_paths": [
+                    "results\\SwordAndShield\\AttackBehavior\\AttackBehavior-56999988.pt"
+                ]
+            },
+            {
+                "steps": 57499972,
+                "file_path": "results\\SwordAndShield\\AttackBehavior\\AttackBehavior-57499972.onnx",
+                "reward": -0.256478561965408,
+                "creation_time": 1647274678.7101893,
+                "auxillary_file_paths": [
+                    "results\\SwordAndShield\\AttackBehavior\\AttackBehavior-57499972.pt"
+                ]
+            },
+            {
+                "steps": 57999970,
+                "file_path": "results\\SwordAndShield\\AttackBehavior\\AttackBehavior-57999970.onnx",
+                "reward": -0.0804042029888072,
+                "creation_time": 1647275519.3154123,
+                "auxillary_file_paths": [
+                    "results\\SwordAndShield\\AttackBehavior\\AttackBehavior-57999970.pt"
+                ]
+            },
+            {
+                "steps": 58434472,
+                "file_path": "results\\SwordAndShield\\AttackBehavior\\AttackBehavior-58434472.onnx",
+                "reward": -0.11697994768619538,
+                "creation_time": 1647276320.981209,
+                "auxillary_file_paths": [
+                    "results\\SwordAndShield\\AttackBehavior\\AttackBehavior-58434472.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 58434472,
+            "file_path": "results\\SwordAndShield\\AttackBehavior.onnx",
+            "reward": -0.11697994768619538,
+            "creation_time": 1647276320.981209,
+            "auxillary_file_paths": [
+                "results\\SwordAndShield\\AttackBehavior\\AttackBehavior-58434472.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}

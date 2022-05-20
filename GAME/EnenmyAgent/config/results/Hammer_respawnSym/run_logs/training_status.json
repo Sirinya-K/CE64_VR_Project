@@ -1,0 +1,65 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 20999826,
+                "file_path": "results\\Hammer_respawnSym\\AttackBehavior\\AttackBehavior-20999826.onnx",
+                "reward": -6.653726797212254,
+                "creation_time": 1648447899.9676435,
+                "auxillary_file_paths": [
+                    "results\\Hammer_respawnSym\\AttackBehavior\\AttackBehavior-20999826.pt"
+                ]
+            },
+            {
+                "steps": 21499921,
+                "file_path": "results\\Hammer_respawnSym\\AttackBehavior\\AttackBehavior-21499921.onnx",
+                "reward": -5.619332865432456,
+                "creation_time": 1648448702.4557757,
+                "auxillary_file_paths": [
+                    "results\\Hammer_respawnSym\\AttackBehavior\\AttackBehavior-21499921.pt"
+                ]
+            },
+            {
+                "steps": 21999920,
+                "file_path": "results\\Hammer_respawnSym\\AttackBehavior\\AttackBehavior-21999920.onnx",
+                "reward": -5.199457892527183,
+                "creation_time": 1648449501.6810274,
+                "auxillary_file_paths": [
+                    "results\\Hammer_respawnSym\\AttackBehavior\\AttackBehavior-21999920.pt"
+                ]
+            },
+            {
+                "steps": 22499926,
+                "file_path": "results\\Hammer_respawnSym\\AttackBehavior\\AttackBehavior-22499926.onnx",
+                "reward": -4.362685893096176,
+                "creation_time": 1648450301.8825836,
+                "auxillary_file_paths": [
+                    "results\\Hammer_respawnSym\\AttackBehavior\\AttackBehavior-22499926.pt"
+                ]
+            },
+            {
+                "steps": 22682310,
+                "file_path": "results\\Hammer_respawnSym\\AttackBehavior\\AttackBehavior-22682310.onnx",
+                "reward": -2.17421030527667,
+                "creation_time": 1648450617.1138248,
+                "auxillary_file_paths": [
+                    "results\\Hammer_respawnSym\\AttackBehavior\\AttackBehavior-22682310.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 22682310,
+            "file_path": "results\\Hammer_respawnSym\\AttackBehavior.onnx",
+            "reward": -2.17421030527667,
+            "creation_time": 1648450617.1138248,
+            "auxillary_file_paths": [
+                "results\\Hammer_respawnSym\\AttackBehavior\\AttackBehavior-22682310.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}

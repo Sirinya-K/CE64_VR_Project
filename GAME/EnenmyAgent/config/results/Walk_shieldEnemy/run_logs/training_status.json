@@ -1,0 +1,65 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 54499932,
+                "file_path": "results\\Walk_shieldEnemy\\AttackBehavior\\AttackBehavior-54499932.onnx",
+                "reward": -0.33032255788003245,
+                "creation_time": 1648542992.2870877,
+                "auxillary_file_paths": [
+                    "results\\Walk_shieldEnemy\\AttackBehavior\\AttackBehavior-54499932.pt"
+                ]
+            },
+            {
+                "steps": 54999968,
+                "file_path": "results\\Walk_shieldEnemy\\AttackBehavior\\AttackBehavior-54999968.onnx",
+                "reward": -0.7681176440388549,
+                "creation_time": 1648543897.0600677,
+                "auxillary_file_paths": [
+                    "results\\Walk_shieldEnemy\\AttackBehavior\\AttackBehavior-54999968.pt"
+                ]
+            },
+            {
+                "steps": 55499958,
+                "file_path": "results\\Walk_shieldEnemy\\AttackBehavior\\AttackBehavior-55499958.onnx",
+                "reward": -0.4843249924480915,
+                "creation_time": 1648544822.024324,
+                "auxillary_file_paths": [
+                    "results\\Walk_shieldEnemy\\AttackBehavior\\AttackBehavior-55499958.pt"
+                ]
+            },
+            {
+                "steps": 55999998,
+                "file_path": "results\\Walk_shieldEnemy\\AttackBehavior\\AttackBehavior-55999998.onnx",
+                "reward": -0.3511799818277359,
+                "creation_time": 1648545767.274733,
+                "auxillary_file_paths": [
+                    "results\\Walk_shieldEnemy\\AttackBehavior\\AttackBehavior-55999998.pt"
+                ]
+            },
+            {
+                "steps": 56392026,
+                "file_path": "results\\Walk_shieldEnemy\\AttackBehavior\\AttackBehavior-56392026.onnx",
+                "reward": -0.5328285847391401,
+                "creation_time": 1648546490.197856,
+                "auxillary_file_paths": [
+                    "results\\Walk_shieldEnemy\\AttackBehavior\\AttackBehavior-56392026.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 56392026,
+            "file_path": "results\\Walk_shieldEnemy\\AttackBehavior.onnx",
+            "reward": -0.5328285847391401,
+            "creation_time": 1648546490.197856,
+            "auxillary_file_paths": [
+                "results\\Walk_shieldEnemy\\AttackBehavior\\AttackBehavior-56392026.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}

@@ -8,6 +8,12 @@ public enum Team1
     Purple = 1,
     Default = 2
 }
+public enum EnemyType
+{
+    NoShield = 0,
+    WithShield = 1
+
+}
 public enum Event1
 {
     HitBlueEnemy = 0,
@@ -27,9 +33,9 @@ public class ArenaEnvControllerV2 : MonoBehaviour
 
     public EnemyAgentV2 blueAgent;
     public EnemyAgentV2 purpleAgent;
-
     public List<EnemyAgentV2> AgentsList = new List<EnemyAgentV2>();
-    public List<SwordControllerV2> SwordsList = new List<SwordControllerV2>();
+    public List<GameObject> weaponsList = new List<GameObject>();
+    public List<ShieldController> ShieldList = new List<ShieldController>();
 
     Rigidbody blueAgentRb;
     Rigidbody purpleAgentRb;
@@ -129,12 +135,12 @@ public class ArenaEnvControllerV2 : MonoBehaviour
                 if (Team1.Blue == currentOppositeTeam)
                 {
                     Debug.Log("BLUE CAN BLOCK");
-                    blueAgent.AddReward(.5f);
+                    blueAgent.AddReward(1f);
                 }
                 else if (Team1.Purple == currentOppositeTeam)
                 {
                     Debug.Log("PURPLE CAN BLOCK");
-                    purpleAgent.AddReward(.5f);
+                    purpleAgent.AddReward(1f);
                 }
                 break;
             case Event1.OutOfRange:
@@ -176,27 +182,45 @@ public class ArenaEnvControllerV2 : MonoBehaviour
     {
         resetTimer = 0;
         currentTeam = Team1.Default; // reset last hitter
+        var rot = 0;
         foreach (var agent in AgentsList)
         {
+            if (agent.CompareTag("blueAgent"))
+            {
+                var rand = Random.Range(0, 2);
+                if (rand == 0) rot = 1;
+                else if (rand == 1) rot = -1;
+            }
             if (agent.CompareTag("purpleAgent"))
             {
-                agentRot = 1;
+                if (rot == 1)
+                {
+                    rot = -1;
+                }
+                else if (rot == -1)
+                {
+                    rot = 1;
+                }
             }
-            else if (agent.CompareTag("blueAgent"))
-            {
-                agentRot = -1;
-            }
+            agentRot = rot;
             // randomise starting positions and rotations
             var randomPosX = Random.Range(-5f, 5f);
-            var randomPosZ = Random.Range(3f * -agentRot, 6f * -agentRot);
+            var randomPosZ = Random.Range(5f * -agentRot, 10f * -agentRot);
             var randomRot = Random.Range(-90f, 90f);
             agent.transform.localPosition = new Vector3(randomPosX, 0, randomPosZ);
             agent.transform.eulerAngles = new Vector3(0, randomRot, 0);
             agent.GetComponent<Rigidbody>().velocity = default(Vector3);
         }
-        foreach (var sword in SwordsList)
+        foreach (var weapon in weaponsList)
         {
-            sword.transform.localPosition = new Vector3(0, 0, 0);
+            // ! For weapon position
+            weapon.transform.localPosition = new Vector3(0,0,0);
+            // ! For Hammer position
+            // weapon.transform.localPosition = new Vector3(-0.075f, 0.02f, 0);
+        }
+        foreach (var shield in ShieldList)
+        {
+            shield.transform.localPosition = new Vector3(0.085f, 0.004f, 0.112f);
         }
     }
 }

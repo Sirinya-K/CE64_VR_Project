@@ -1,0 +1,65 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 24499977,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-24499977.onnx",
+                "reward": 0.1480314285231278,
+                "creation_time": 1649068393.6012478,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-24499977.pt"
+                ]
+            },
+            {
+                "steps": 24999966,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-24999966.onnx",
+                "reward": 0.1403474920129372,
+                "creation_time": 1649069725.8132548,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-24999966.pt"
+                ]
+            },
+            {
+                "steps": 25000100,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-25000100.onnx",
+                "reward": 0.13905488602219754,
+                "creation_time": 1649069726.1279032,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-25000100.pt"
+                ]
+            },
+            {
+                "steps": 25499996,
+                "file_path": "results\\hammerwithshield_DP10_small\\AttackBehavior\\AttackBehavior-25499996.onnx",
+                "reward": 0.21087015913678453,
+                "creation_time": 1649072229.0233989,
+                "auxillary_file_paths": [
+                    "results\\hammerwithshield_DP10_small\\AttackBehavior\\AttackBehavior-25499996.pt"
+                ]
+            },
+            {
+                "steps": 25944370,
+                "file_path": "results\\hammerwithshield_DP10_small\\AttackBehavior\\AttackBehavior-25944370.onnx",
+                "reward": null,
+                "creation_time": 1649073463.3319306,
+                "auxillary_file_paths": [
+                    "results\\hammerwithshield_DP10_small\\AttackBehavior\\AttackBehavior-25944370.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 25944370,
+            "file_path": "results\\hammerwithshield_DP10_small\\AttackBehavior.onnx",
+            "reward": null,
+            "creation_time": 1649073463.3319306,
+            "auxillary_file_paths": [
+                "results\\hammerwithshield_DP10_small\\AttackBehavior\\AttackBehavior-25944370.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}

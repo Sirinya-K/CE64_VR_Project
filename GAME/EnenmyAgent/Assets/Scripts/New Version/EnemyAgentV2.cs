@@ -11,11 +11,14 @@ public class EnemyAgentV2 : Agent
     public GameObject area;
     Rigidbody agentRB;
     public Team1 teamId;
+    public EnemyType enemyType;
 
-    // * Sword/opposite enemy Location for observations
-    public GameObject sword;
+    // * weapon/opposite enemy Location for observations
+    public GameObject weapon;
+    public GameObject shield;
     public GameObject enemy;
-    Rigidbody swordRB;
+    Rigidbody weaponRB;
+    Rigidbody shieldRB;
     Rigidbody enemyRB;
 
     // * Arena environment setting for controll response of agent each side
@@ -40,8 +43,9 @@ public class EnemyAgentV2 : Agent
         arenaSettings = FindObjectOfType<ArenaSettings>();
 
         agentRB = GetComponent<Rigidbody>();
-        swordRB = sword.GetComponent<Rigidbody>();
+        weaponRB = weapon.GetComponent<Rigidbody>();
         enemyRB = enemy.GetComponent<Rigidbody>();
+        if (enemyType == EnemyType.WithShield) shieldRB = shield.GetComponent<Rigidbody>();
 
         anim = GetComponentInChildren<Animator>();
 
@@ -65,11 +69,11 @@ public class EnemyAgentV2 : Agent
         anim.SetFloat("Velocity X", velocityX * agentRot);
 
         // * Event check distance between 2 agent (out of range?)
-        envController.ResolveEvent(Event1.OutOfRange);
+        // envController.ResolveEvent(Event1.OutOfRange);
     }
     void attack(int attackType)
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Movement"))
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Movement") || anim.GetCurrentAnimatorStateInfo(0).IsName("Movement_Block"))
         {
             if (attackType == 1)
             {
@@ -98,7 +102,7 @@ public class EnemyAgentV2 : Agent
 
         // * For check attack animation is working?
         tmpAttack = anim.GetCurrentAnimatorStateInfo(0).IsName("Attack_1") || anim.GetCurrentAnimatorStateInfo(0).IsName("Attack_2");
-        tmpBlock = anim.GetCurrentAnimatorStateInfo(0).IsName("Movement_Block");
+        if (enemyType == EnemyType.WithShield) tmpBlock = anim.GetCurrentAnimatorStateInfo(0).IsName("Movement_Block");
 
         if (attackAction == 1 || attackAction == 2)
         {
@@ -126,21 +130,20 @@ public class EnemyAgentV2 : Agent
             {
                 dirToGo = transform.right * arenaSettings.speedReductionFactor;
             }
+            if (enemyType == EnemyType.WithShield)
+            {
+                if (blockAction == 1)
+                {
+                    this.block(true);
+                }
+                else if (blockAction == 0)
+                {
+                    this.block(false);
+                }
+            }
         }
-        // if (blockAction == 1)
-        // {
-        //     this.block(true);
-        // }
-        // if (blockAction == 0)
-        // {
-        //     this.block(false);
-        // }
 
         var force = agentRot * dirToGo * arenaSettings.agentRunSpeed;
-        // if (force.magnitude > 0)
-        // {
-        //     this.AddReward(0.001f);
-        // }
         transform.Rotate(rotateDir, Time.fixedDeltaTime * 200f);
         agentRB.AddForce(force, ForceMode.VelocityChange);
 
@@ -152,24 +155,33 @@ public class EnemyAgentV2 : Agent
     public override void CollectObservations(VectorSensor sensor)
     {
         // * Agent/Enemy rotation
-        sensor.AddObservation(this.transform.localRotation.eulerAngles.y/360.0f);
-        sensor.AddObservation(enemy.transform.localRotation.eulerAngles.y/360.0f);
+        sensor.AddObservation(this.transform.localRotation.eulerAngles.y / 360.0f);
+        sensor.AddObservation(enemy.transform.localRotation.eulerAngles.y / 360.0f);
         // * Distance between gent and enemy
         var minDis = 0;
         var maxDis = 26.5f;
         var disX = Mathf.Abs(enemy.transform.localPosition.x - this.transform.localPosition.x);
         var disZ = Mathf.Abs(enemy.transform.localPosition.z - this.transform.localPosition.z);
-        sensor.AddObservation((disX-minDis)/(maxDis-minDis));
-        sensor.AddObservation((disZ-minDis)/(maxDis-minDis));
-        // * Agent/Enemy velocity
+        sensor.AddObservation((disX - minDis) / (maxDis - minDis));
+        sensor.AddObservation((disZ - minDis) / (maxDis - minDis));
+        // // * Agent/Enemy velocity
         sensor.AddObservation(agentRB.velocity.normalized);
         sensor.AddObservation(enemyRB.velocity.normalized);
-        // * Sword Information
-        Vector3 toSword = new Vector3((swordRB.transform.position.x - this.transform.position.x),
-        (swordRB.transform.position.y - this.transform.position.y),
-        (swordRB.transform.position.z - this.transform.position.z));
-        sensor.AddObservation(toSword.normalized);
-        sensor.AddObservation(toSword.magnitude);
+        // // * weapon Information
+        // Vector3 toweapon = new Vector3((weaponRB.transform.position.x - this.transform.position.x),
+        // (weaponRB.transform.position.y - this.transform.position.y),
+        // (weaponRB.transform.position.z - this.transform.position.z));
+        // sensor.AddObservation(toweapon.normalized);
+        // sensor.AddObservation(toweapon.magnitude);
+        // if (enemyType == EnemyType.WithShield)
+        // {
+        //     // * Shield Information
+        //     Vector3 toShield = new Vector3((shieldRB.transform.position.x - this.transform.position.x),
+        //     (shieldRB.transform.position.y - this.transform.position.y),
+        //     (shieldRB.transform.position.z - this.transform.position.z));
+        //     sensor.AddObservation(toShield.normalized);
+        //     sensor.AddObservation(toShield.magnitude);
+        // }
     }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -214,7 +226,7 @@ public class EnemyAgentV2 : Agent
             // acttackAction_2
             discreteActionsOut[3] = 2;
         }
-        //discreteActionsOut[4] = Input.GetKey(KeyCode.Space) ? 1 : 0;
+        if (enemyType == EnemyType.WithShield) discreteActionsOut[4] = Input.GetKey(KeyCode.Space) ? 1 : 0;
     }
     void OnCollisionEnter(Collision collision)
     {

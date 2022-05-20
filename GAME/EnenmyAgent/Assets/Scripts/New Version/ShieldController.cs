@@ -21,12 +21,11 @@ public class ShieldController : MonoBehaviour
     {
         if (enemy.tmpBlock)
         {
-            isActionBlock = true;
-        }
-        if (!enemy.tmpBlock && isActionBlock)
-        {
             swordController.oppositeEnemyAgent.enemyBlock = true;
-            isActionBlock = false;
+        }
+        if (!enemy.tmpBlock)
+        {
+            swordController.oppositeEnemyAgent.enemyBlock = false;
         }
     }
 }

@@ -1,0 +1,65 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 13999971,
+                "file_path": "results\\hammerwithshield_10_DP10\\AttackBehavior\\AttackBehavior-13999971.onnx",
+                "reward": -0.03826280644961766,
+                "creation_time": 1649875975.2683032,
+                "auxillary_file_paths": [
+                    "results\\hammerwithshield_10_DP10\\AttackBehavior\\AttackBehavior-13999971.pt"
+                ]
+            },
+            {
+                "steps": 14499985,
+                "file_path": "results\\hammerwithshield_10_DP10\\AttackBehavior\\AttackBehavior-14499985.onnx",
+                "reward": -0.10159993648529053,
+                "creation_time": 1649877198.7089512,
+                "auxillary_file_paths": [
+                    "results\\hammerwithshield_10_DP10\\AttackBehavior\\AttackBehavior-14499985.pt"
+                ]
+            },
+            {
+                "steps": 14999988,
+                "file_path": "results\\hammerwithshield_10_DP10\\AttackBehavior\\AttackBehavior-14999988.onnx",
+                "reward": 0.0070101552539401585,
+                "creation_time": 1649878377.0939014,
+                "auxillary_file_paths": [
+                    "results\\hammerwithshield_10_DP10\\AttackBehavior\\AttackBehavior-14999988.pt"
+                ]
+            },
+            {
+                "steps": 15499984,
+                "file_path": "results\\hammerwithshield_10_DP10\\AttackBehavior\\AttackBehavior-15499984.onnx",
+                "reward": 0.017667610747564892,
+                "creation_time": 1649879537.7960348,
+                "auxillary_file_paths": [
+                    "results\\hammerwithshield_10_DP10\\AttackBehavior\\AttackBehavior-15499984.pt"
+                ]
+            },
+            {
+                "steps": 15633704,
+                "file_path": "results\\hammerwithshield_10_DP10\\AttackBehavior\\AttackBehavior-15633704.onnx",
+                "reward": 0.025000043426241195,
+                "creation_time": 1649879858.5243204,
+                "auxillary_file_paths": [
+                    "results\\hammerwithshield_10_DP10\\AttackBehavior\\AttackBehavior-15633704.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 15633704,
+            "file_path": "results\\hammerwithshield_10_DP10\\AttackBehavior.onnx",
+            "reward": 0.025000043426241195,
+            "creation_time": 1649879858.5243204,
+            "auxillary_file_paths": [
+                "results\\hammerwithshield_10_DP10\\AttackBehavior\\AttackBehavior-15633704.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}
