@@ -152,7 +152,7 @@ public class PlayerHandController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (mqttTempData != mqtt.data)
         {

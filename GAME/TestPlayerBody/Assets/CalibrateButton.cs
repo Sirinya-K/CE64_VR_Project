@@ -16,11 +16,11 @@ public class CalibrateButton : Button
 
     void FixedUpdate()
     {
-        Debug.Log(mqtt.data);
+        // Debug.Log(mqtt.data);
 
         if (mqtt.data == "nc" && !publish)
         {
-            mqtt.Publish("/hr/", "m 90 90 90 90 90");
+            mqtt.Publish("/hr/", "s 90 90 90 90 90");
             publish = true;
         }
         else if(mqtt.data.Split(':')[0] == "hr")
