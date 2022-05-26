@@ -106,8 +106,9 @@ public class EnemyNoShieldAgent : Agent
             rotateDir = transform.up * -1f;
         else if (rotateDirAction == 2)
             rotateDir = transform.up * 1f;
-        if (!tmpAttack)
-        {
+        // * Use tmpAttack when want to break agent while attack
+        // if (!tmpAttack)
+        // {
             if (dirToGoForwardAction == 1)
             {
                 dirToGo = transform.forward * 1f;
@@ -124,7 +125,7 @@ public class EnemyNoShieldAgent : Agent
             {
                 dirToGo = transform.right * arenaSettings.speedReductionFactor;
             }
-        }
+        // }
 
         var force = agentRot * dirToGo * arenaSettings.agentRunSpeed;
         transform.Rotate(rotateDir, Time.fixedDeltaTime * 200f);
