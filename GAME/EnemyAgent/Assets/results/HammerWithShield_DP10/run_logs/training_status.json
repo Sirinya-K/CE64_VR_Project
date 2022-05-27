@@ -1,0 +1,65 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 18499986,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-18499986.onnx",
+                "reward": 0.01663179539418423,
+                "creation_time": 1648630236.9922163,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-18499986.pt"
+                ]
+            },
+            {
+                "steps": 18634307,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-18634307.onnx",
+                "reward": 0.09982057565297836,
+                "creation_time": 1648630568.361578,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-18634307.pt"
+                ]
+            },
+            {
+                "steps": 18999999,
+                "file_path": "results\\HammerWithShield_DP10\\AttackBehavior\\AttackBehavior-18999999.onnx",
+                "reward": -0.017204683010033736,
+                "creation_time": 1648637084.219562,
+                "auxillary_file_paths": [
+                    "results\\HammerWithShield_DP10\\AttackBehavior\\AttackBehavior-18999999.pt"
+                ]
+            },
+            {
+                "steps": 19499978,
+                "file_path": "results\\HammerWithShield_DP10\\AttackBehavior\\AttackBehavior-19499978.onnx",
+                "reward": 0.07923012708140685,
+                "creation_time": 1648644627.7872453,
+                "auxillary_file_paths": [
+                    "results\\HammerWithShield_DP10\\AttackBehavior\\AttackBehavior-19499978.pt"
+                ]
+            },
+            {
+                "steps": 19864251,
+                "file_path": "results\\HammerWithShield_DP10\\AttackBehavior\\AttackBehavior-19864251.onnx",
+                "reward": 0.016389632139428515,
+                "creation_time": 1648650060.1161938,
+                "auxillary_file_paths": [
+                    "results\\HammerWithShield_DP10\\AttackBehavior\\AttackBehavior-19864251.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 19864251,
+            "file_path": "results\\HammerWithShield_DP10\\AttackBehavior.onnx",
+            "reward": 0.016389632139428515,
+            "creation_time": 1648650060.1161938,
+            "auxillary_file_paths": [
+                "results\\HammerWithShield_DP10\\AttackBehavior\\AttackBehavior-19864251.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}

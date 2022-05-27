@@ -1,0 +1,65 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 98499933,
+                "file_path": "results\\Hammer_ChangRaySersor\\AttackBehavior\\AttackBehavior-98499933.onnx",
+                "reward": -0.023156019827214682,
+                "creation_time": 1648398927.0779896,
+                "auxillary_file_paths": [
+                    "results\\Hammer_ChangRaySersor\\AttackBehavior\\AttackBehavior-98499933.pt"
+                ]
+            },
+            {
+                "steps": 98999968,
+                "file_path": "results\\Hammer_ChangRaySersor\\AttackBehavior\\AttackBehavior-98999968.onnx",
+                "reward": -0.14545446634292603,
+                "creation_time": 1648399776.3271234,
+                "auxillary_file_paths": [
+                    "results\\Hammer_ChangRaySersor\\AttackBehavior\\AttackBehavior-98999968.pt"
+                ]
+            },
+            {
+                "steps": 99499959,
+                "file_path": "results\\Hammer_ChangRaySersor\\AttackBehavior\\AttackBehavior-99499959.onnx",
+                "reward": -0.018361854553222656,
+                "creation_time": 1648400622.0865188,
+                "auxillary_file_paths": [
+                    "results\\Hammer_ChangRaySersor\\AttackBehavior\\AttackBehavior-99499959.pt"
+                ]
+            },
+            {
+                "steps": 99999918,
+                "file_path": "results\\Hammer_ChangRaySersor\\AttackBehavior\\AttackBehavior-99999918.onnx",
+                "reward": -0.052202057965258335,
+                "creation_time": 1648401469.6811502,
+                "auxillary_file_paths": [
+                    "results\\Hammer_ChangRaySersor\\AttackBehavior\\AttackBehavior-99999918.pt"
+                ]
+            },
+            {
+                "steps": 100000090,
+                "file_path": "results\\Hammer_ChangRaySersor\\AttackBehavior\\AttackBehavior-100000090.onnx",
+                "reward": -0.05876835208190115,
+                "creation_time": 1648401469.880159,
+                "auxillary_file_paths": [
+                    "results\\Hammer_ChangRaySersor\\AttackBehavior\\AttackBehavior-100000090.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 100000090,
+            "file_path": "results\\Hammer_ChangRaySersor\\AttackBehavior.onnx",
+            "reward": -0.05876835208190115,
+            "creation_time": 1648401469.880159,
+            "auxillary_file_paths": [
+                "results\\Hammer_ChangRaySersor\\AttackBehavior\\AttackBehavior-100000090.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}

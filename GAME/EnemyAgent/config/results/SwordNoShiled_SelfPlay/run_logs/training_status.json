@@ -1,0 +1,66 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 8499954,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-8499954.onnx",
+                "reward": 2.0,
+                "creation_time": 1646024780.1729856,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-8499954.pt"
+                ]
+            },
+            {
+                "steps": 8999984,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-8999984.onnx",
+                "reward": 2.298076923076923,
+                "creation_time": 1646026284.982316,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-8999984.pt"
+                ]
+            },
+            {
+                "steps": 9499946,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-9499946.onnx",
+                "reward": 1.8754448398576513,
+                "creation_time": 1646027787.370831,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-9499946.pt"
+                ]
+            },
+            {
+                "steps": 9999969,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-9999969.onnx",
+                "reward": 2.65,
+                "creation_time": 1646029304.0025961,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-9999969.pt"
+                ]
+            },
+            {
+                "steps": 10100067,
+                "file_path": "results\\ppo\\AttackBehavior\\AttackBehavior-10100067.onnx",
+                "reward": 1.3125,
+                "creation_time": 1646029623.3793485,
+                "auxillary_file_paths": [
+                    "results\\ppo\\AttackBehavior\\AttackBehavior-10100067.pt"
+                ]
+            }
+        ],
+        "elo": 2162.5315839035284,
+        "final_checkpoint": {
+            "steps": 10100067,
+            "file_path": "results\\ppo\\AttackBehavior.onnx",
+            "reward": 1.3125,
+            "creation_time": 1646029623.3793485,
+            "auxillary_file_paths": [
+                "results\\ppo\\AttackBehavior\\AttackBehavior-10100067.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}

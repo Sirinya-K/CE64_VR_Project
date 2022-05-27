@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Weapon
+  - EnemyWeapon
+  - Stoppable
+  - blueAgent
+  - blueSword
+  - walkableSurface
+  - PlayerBody
+  - Enemy
+  - PlayerHand
+  - EnemyShield
+  - PlayerShield
+  - blueShield
+  - purpleShield
+  - purpleSword
+  - wall
+  - purpleAgent
+  - LeftFinger
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Grabbable
+  - Furniture
+  - Hands
+  - Interactive
+  - Typing Hands
+  - Keyboard
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

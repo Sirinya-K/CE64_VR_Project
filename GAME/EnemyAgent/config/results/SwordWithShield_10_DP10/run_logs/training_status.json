@@ -1,0 +1,65 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 16499994,
+                "file_path": "results\\swordwithshield_10_DP10\\AttackBehavior\\AttackBehavior-16499994.onnx",
+                "reward": 0.11674290895462036,
+                "creation_time": 1649844781.7963688,
+                "auxillary_file_paths": [
+                    "results\\swordwithshield_10_DP10\\AttackBehavior\\AttackBehavior-16499994.pt"
+                ]
+            },
+            {
+                "steps": 16999999,
+                "file_path": "results\\swordwithshield_10_DP10\\AttackBehavior\\AttackBehavior-16999999.onnx",
+                "reward": 0.05407221661400549,
+                "creation_time": 1649845987.4962468,
+                "auxillary_file_paths": [
+                    "results\\swordwithshield_10_DP10\\AttackBehavior\\AttackBehavior-16999999.pt"
+                ]
+            },
+            {
+                "steps": 17499992,
+                "file_path": "results\\swordwithshield_10_DP10\\AttackBehavior\\AttackBehavior-17499992.onnx",
+                "reward": 0.05037713720155071,
+                "creation_time": 1649847197.9952886,
+                "auxillary_file_paths": [
+                    "results\\swordwithshield_10_DP10\\AttackBehavior\\AttackBehavior-17499992.pt"
+                ]
+            },
+            {
+                "steps": 17999964,
+                "file_path": "results\\swordwithshield_10_DP10\\AttackBehavior\\AttackBehavior-17999964.onnx",
+                "reward": 0.05376196096813868,
+                "creation_time": 1649848412.9826434,
+                "auxillary_file_paths": [
+                    "results\\swordwithshield_10_DP10\\AttackBehavior\\AttackBehavior-17999964.pt"
+                ]
+            },
+            {
+                "steps": 18083416,
+                "file_path": "results\\swordwithshield_10_DP10\\AttackBehavior\\AttackBehavior-18083416.onnx",
+                "reward": 0.041678227227309655,
+                "creation_time": 1649848605.8730764,
+                "auxillary_file_paths": [
+                    "results\\swordwithshield_10_DP10\\AttackBehavior\\AttackBehavior-18083416.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 18083416,
+            "file_path": "results\\swordwithshield_10_DP10\\AttackBehavior.onnx",
+            "reward": 0.041678227227309655,
+            "creation_time": 1649848605.8730764,
+            "auxillary_file_paths": [
+                "results\\swordwithshield_10_DP10\\AttackBehavior\\AttackBehavior-18083416.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}

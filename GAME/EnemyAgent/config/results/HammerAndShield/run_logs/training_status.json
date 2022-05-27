@@ -1,0 +1,65 @@
+{
+    "AttackBehavior": {
+        "checkpoints": [
+            {
+                "steps": 39999886,
+                "file_path": "results\\HammerAndShield\\AttackBehavior\\AttackBehavior-39999886.onnx",
+                "reward": -13.063874661922455,
+                "creation_time": 1647615966.0725794,
+                "auxillary_file_paths": [
+                    "results\\HammerAndShield\\AttackBehavior\\AttackBehavior-39999886.pt"
+                ]
+            },
+            {
+                "steps": 40499940,
+                "file_path": "results\\HammerAndShield\\AttackBehavior\\AttackBehavior-40499940.onnx",
+                "reward": -9.88338073094686,
+                "creation_time": 1647616779.1054935,
+                "auxillary_file_paths": [
+                    "results\\HammerAndShield\\AttackBehavior\\AttackBehavior-40499940.pt"
+                ]
+            },
+            {
+                "steps": 40999052,
+                "file_path": "results\\HammerAndShield\\AttackBehavior\\AttackBehavior-40999052.onnx",
+                "reward": -13.508352596093626,
+                "creation_time": 1647617583.8584552,
+                "auxillary_file_paths": [
+                    "results\\HammerAndShield\\AttackBehavior\\AttackBehavior-40999052.pt"
+                ]
+            },
+            {
+                "steps": 41499340,
+                "file_path": "results\\HammerAndShield\\AttackBehavior\\AttackBehavior-41499340.onnx",
+                "reward": -14.018818085843867,
+                "creation_time": 1647618395.3847225,
+                "auxillary_file_paths": [
+                    "results\\HammerAndShield\\AttackBehavior\\AttackBehavior-41499340.pt"
+                ]
+            },
+            {
+                "steps": 41781110,
+                "file_path": "results\\HammerAndShield\\AttackBehavior\\AttackBehavior-41781110.onnx",
+                "reward": null,
+                "creation_time": 1647618859.5921495,
+                "auxillary_file_paths": [
+                    "results\\HammerAndShield\\AttackBehavior\\AttackBehavior-41781110.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 41781110,
+            "file_path": "results\\HammerAndShield\\AttackBehavior.onnx",
+            "reward": null,
+            "creation_time": 1647618859.5921495,
+            "auxillary_file_paths": [
+                "results\\HammerAndShield\\AttackBehavior\\AttackBehavior-41781110.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.2+cu102"
+    }
+}
